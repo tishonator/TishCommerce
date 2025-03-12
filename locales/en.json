@@ -1,0 +1,26 @@
+{
+    "email": "contact@example.com",
+    "phone": "+1 234 567 890",
+    "address": "123 Main Street, Tish City",
+    "siteName": "TishCommerce",
+    "siteTagline": "Your Database-Free Store",
+    "menu": [
+      { "label": "Homepage", "href": "/" },
+      { "label": "News", "href": "/news" },
+      { "label": "Contacts", "href": "/contactus" }
+    ],
+    "footerLinks": [
+      { "label": "Home", "href": "/" },
+      { "label": "Features", "href": "/features" },
+      { "label": "Pricing", "href": "/pricing" },
+      { "label": "Contact", "href": "/contact" }
+    ],
+    "socialLinks": [
+      { "id": "facebook", "icon": "SiFacebook", "url": "https://facebook.com/yourpage" },
+      { "id": "x", "icon": "SiX", "url": "https://x.com/yourprofile" },
+      { "id": "instagram", "icon": "SiInstagram", "url": "https://instagram.com/yourpage" },
+      { "id": "linkedin", "icon": "SiLinkedin", "url": "https://linkedin.com/in/yourprofile" }
+    ],
+    "copyright": "© 2025 Tishonator. All rights reserved."
+  }
+  
