@@ -1,26 +1,41 @@
 {
-    "email": "contact@example.com",
-    "phone": "+1 234 567 890",
-    "address": "123 Main Street, Tish City",
-    "siteName": "TishCommerce",
-    "siteTagline": "Your Database-Free Store",
-    "menu": [
-      { "label": "Homepage", "href": "/" },
-      { "label": "News", "href": "/news" },
-      { "label": "Contacts", "href": "/contactus" }
-    ],
-    "footerLinks": [
-      { "label": "Home", "href": "/" },
-      { "label": "Features", "href": "/features" },
-      { "label": "Pricing", "href": "/pricing" },
-      { "label": "Contact", "href": "/contact" }
-    ],
-    "socialLinks": [
-      { "id": "facebook", "icon": "SiFacebook", "url": "https://facebook.com/yourpage" },
-      { "id": "x", "icon": "SiX", "url": "https://x.com/yourprofile" },
-      { "id": "instagram", "icon": "SiInstagram", "url": "https://instagram.com/yourpage" },
-      { "id": "linkedin", "icon": "SiLinkedin", "url": "https://linkedin.com/in/yourprofile" }
-    ],
-    "copyright": "© 2025 Tishonator. All rights reserved."
-  }
-  
+  "colors": {
+    "primary": "text-red-700",
+    "secondary": "text-red-900",
+    "hover": "hover:text-red-600",
+    "footerBg": "bg-gray-800",
+    "footerText": "text-gray-400"
+  },
+  "email": "contact@example.com",
+  "phone": "+1 234 567 890",
+  "address": "123 Main Street, Tish City",
+  "siteName": "TishCommerce",
+  "siteTagline": "Your Database-Free Store",
+  "labels": {
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "quickLinks": "Quick Links",
+    "contactUs": "Contact Us",
+    "followUs": "Follow Us",
+    "poweredBy": "Powered by TishCommerce"
+  },
+  "menu": [
+    { "label": "Homepage", "href": "/" },
+    { "label": "News", "href": "/news" },
+    { "label": "Contacts", "href": "/contactus" }
+  ],
+  "footerLinks": [
+    { "label": "Home", "href": "/" },
+    { "label": "Features", "href": "/features" },
+    { "label": "Pricing", "href": "/pricing" },
+    { "label": "Contact", "href": "/contact" }
+  ],
+  "socialLinks": [
+    { "id": "facebook", "icon": "SiFacebook", "url": "https://facebook.com/yourpage" },
+    { "id": "x", "icon": "SiX", "url": "https://x.com/yourprofile" },
+    { "id": "instagram", "icon": "SiInstagram", "url": "https://instagram.com/yourpage" },
+    { "id": "linkedin", "icon": "SiLinkedin", "url": "https://linkedin.com/in/yourprofile" }
+  ],
+  "copyright": "© 2025 Tishonator. All rights reserved."
+}

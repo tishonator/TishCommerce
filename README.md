@@ -46,6 +46,14 @@ cd TishCommerce
 npm install
 ```
 
+### Code and TypeScript validation
+```sh
+npm run lint
+```
+
+```sh
+npx tsc --noEmit
+```
 
 ### Run the Development Server
 ```sh
