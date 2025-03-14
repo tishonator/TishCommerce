@@ -10,10 +10,10 @@
           "Fiction",
           "Dystopian"
        ],
-       "FeatureImageURL":"https://via.placeholder.com/300x400?text=1984",
+       "FeatureImageURL":"/books/book-001.jpg",
        "ProductImageGallery":[
-          "https://via.placeholder.com/300x400?text=1984-1",
-          "https://via.placeholder.com/300x400?text=1984-2"
+          "/books/book-001-1.jpg",
+          "/books/book-001-2.jpg"
        ],
        "ShortDescription":"A dystopian novel by George Orwell about surveillance and totalitarianism.",
        "LongDescription":"Published in 1949, George Orwell’s '1984' is a cautionary tale about a totalitarian regime that enforces thought control and relentless surveillance. The story follows Winston Smith, a man struggling against the oppressive Party and its leader, Big Brother.",
@@ -33,10 +33,10 @@
           "Fiction",
           "Classic"
        ],
-       "FeatureImageURL":"https://via.placeholder.com/300x400?text=Mockingbird",
+       "FeatureImageURL":"/books/300x400?text=Mockingbird",
        "ProductImageGallery":[
-          "https://via.placeholder.com/300x400?text=Mockingbird-1",
-          "https://via.placeholder.com/300x400?text=Mockingbird-2"
+          "/books/300x400?text=Mockingbird-1",
+          "/books/300x400?text=Mockingbird-2"
        ],
        "ShortDescription":"A novel by Harper Lee exploring racial injustice in the Deep South.",
        "LongDescription":"'To Kill a Mockingbird' by Harper Lee is a deeply moving novel set in the racially segregated American South. It follows young Scout Finch as she navigates issues of morality, prejudice, and justice through the trial of Tom Robinson, a Black man falsely accused of a crime.",
@@ -56,10 +56,10 @@
           "Fiction",
           "Classic"
        ],
-       "FeatureImageURL":"https://via.placeholder.com/300x400?text=Gatsby",
+       "FeatureImageURL":"/books/300x400?text=Gatsby",
        "ProductImageGallery":[
-          "https://via.placeholder.com/300x400?text=Gatsby-1",
-          "https://via.placeholder.com/300x400?text=Gatsby-2"
+          "/books/300x400?text=Gatsby-1",
+          "/books/300x400?text=Gatsby-2"
        ],
        "ShortDescription":"A novel by F. Scott Fitzgerald depicting the Jazz Age.",
        "LongDescription":"'The Great Gatsby' by F. Scott Fitzgerald is a tragic love story set in the Roaring Twenties. It follows Jay Gatsby, a wealthy and mysterious man, who throws lavish parties in hopes of reuniting with his lost love, Daisy Buchanan.",
@@ -79,10 +79,10 @@
           "Fiction",
           "Adventure"
        ],
-       "FeatureImageURL":"https://via.placeholder.com/300x400?text=Moby-Dick",
+       "FeatureImageURL":"/books/300x400?text=Moby-Dick",
        "ProductImageGallery":[
-          "https://via.placeholder.com/300x400?text=Moby-Dick-1",
-          "https://via.placeholder.com/300x400?text=Moby-Dick-2"
+          "/books/300x400?text=Moby-Dick-1",
+          "/books/300x400?text=Moby-Dick-2"
        ],
        "ShortDescription":"A novel by Herman Melville about the obsessive quest for revenge against a white whale.",
        "LongDescription":"Herman Melville’s 'Moby-Dick' is a gripping tale of Captain Ahab’s relentless pursuit of the great white whale. This epic novel explores themes of obsession, revenge, and the human struggle against nature.",
@@ -102,10 +102,10 @@
           "Fiction",
           "Romance"
        ],
-       "FeatureImageURL":"https://via.placeholder.com/300x400?text=Pride-Prejudice",
+       "FeatureImageURL":"/books/300x400?text=Pride-Prejudice",
        "ProductImageGallery":[
-          "https://via.placeholder.com/300x400?text=Pride-1",
-          "https://via.placeholder.com/300x400?text=Pride-2"
+          "/books/300x400?text=Pride-1",
+          "/books/300x400?text=Pride-2"
        ],
        "ShortDescription":"A novel by Jane Austen that explores themes of love and social standing.",
        "LongDescription":"Jane Austen’s 'Pride and Prejudice' is a classic romance novel about Elizabeth Bennet and her evolving relationship with the wealthy and reserved Mr. Darcy. It examines themes of pride, class distinctions, and societal expectations in 19th-century England.",
@@ -125,10 +125,10 @@
           "Fiction",
           "Historical"
        ],
-       "FeatureImageURL":"https://via.placeholder.com/300x400?text=War-Peace",
+       "FeatureImageURL":"/books/300x400?text=War-Peace",
        "ProductImageGallery":[
-          "https://via.placeholder.com/300x400?text=War-Peace-1",
-          "https://via.placeholder.com/300x400?text=War-Peace-2"
+          "/books/300x400?text=War-Peace-1",
+          "/books/300x400?text=War-Peace-2"
        ],
        "ShortDescription":"A historical novel by Leo Tolstoy that tells the story of Russian society during the Napoleonic Wars.",
        "LongDescription":"One of the greatest novels ever written, War and Peace chronicles the French invasion of Russia and the impact of the Napoleonic era on Tsarist society. With a broad array of characters and intricate storytelling, Tolstoy paints a vivid picture of life, love, and war.",
@@ -148,10 +148,10 @@
           "Fiction",
           "Psychological"
        ],
-       "FeatureImageURL":"https://via.placeholder.com/300x400?text=Crime-Punishment",
+       "FeatureImageURL":"/books/300x400?text=Crime-Punishment",
        "ProductImageGallery":[
-          "https://via.placeholder.com/300x400?text=Crime-Punishment-1",
-          "https://via.placeholder.com/300x400?text=Crime-Punishment-2"
+          "/books/300x400?text=Crime-Punishment-1",
+          "/books/300x400?text=Crime-Punishment-2"
        ],
        "ShortDescription":"A novel by Fyodor Dostoevsky that explores guilt, redemption, and moral dilemmas.",
        "LongDescription":"Crime and Punishment is a psychological thriller that follows the young and impoverished Raskolnikov as he commits a murder in St. Petersburg and struggles with guilt and paranoia. The novel delves deep into morality, justice, and the human condition.",
@@ -171,10 +171,10 @@
           "Fiction",
           "Dystopian"
        ],
-       "FeatureImageURL":"https://via.placeholder.com/300x400?text=Brave-New-World",
+       "FeatureImageURL":"/books/300x400?text=Brave-New-World",
        "ProductImageGallery":[
-          "https://via.placeholder.com/300x400?text=Brave-New-World-1",
-          "https://via.placeholder.com/300x400?text=Brave-New-World-2"
+          "/books/300x400?text=Brave-New-World-1",
+          "/books/300x400?text=Brave-New-World-2"
        ],
        "ShortDescription":"A dystopian novel by Aldous Huxley exploring the consequences of technological and genetic advancements.",
        "LongDescription":"Set in a futuristic world, Brave New World explores the dangers of a society built on consumerism, technological advancement, and state-controlled happiness. Huxley presents a chilling vision of a world where individuality and freedom are sacrificed for stability.",
@@ -194,10 +194,10 @@
           "Fiction",
           "Classic"
        ],
-       "FeatureImageURL":"https://via.placeholder.com/300x400?text=Catcher-Rye",
+       "FeatureImageURL":"/books/300x400?text=Catcher-Rye",
        "ProductImageGallery":[
-          "https://via.placeholder.com/300x400?text=Catcher-Rye-1",
-          "https://via.placeholder.com/300x400?text=Catcher-Rye-2"
+          "/books/300x400?text=Catcher-Rye-1",
+          "/books/300x400?text=Catcher-Rye-2"
        ],
        "ShortDescription":"A novel by J.D. Salinger about teenage alienation and identity crisis.",
        "LongDescription":"Narrated by the cynical teenager Holden Caulfield, The Catcher in the Rye follows his experiences in New York after being expelled from prep school. The novel explores themes of adolescence, alienation, and the struggles of finding one's place in the world.",
@@ -217,10 +217,10 @@
           "Fiction",
           "Fantasy"
        ],
-       "FeatureImageURL":"https://via.placeholder.com/300x400?text=The-Hobbit",
+       "FeatureImageURL":"/books/300x400?text=The-Hobbit",
        "ProductImageGallery":[
-          "https://via.placeholder.com/300x400?text=The-Hobbit-1",
-          "https://via.placeholder.com/300x400?text=The-Hobbit-2"
+          "/books/300x400?text=The-Hobbit-1",
+          "/books/300x400?text=The-Hobbit-2"
        ],
        "ShortDescription":"A fantasy novel by J.R.R. Tolkien that follows the adventure of Bilbo Baggins.",
        "LongDescription":"The Hobbit is a timeless fantasy adventure that follows Bilbo Baggins, a humble hobbit, as he is swept into an epic journey to reclaim a treasure guarded by the dragon Smaug. Filled with magic, courage, and heroism, it serves as a prelude to The Lord of the Rings.",
@@ -234,62 +234,65 @@
        "Title":"Basic Hosting Plan",
        "Slug":"basic-hosting",
        "Enabled":true,
-       "CatalogVisible":true,
+       "CatalogVisible":false,
        "ProductCategories":[
           "Hosting",
           "Subscription"
        ],
-       "FeatureImageURL":"https://via.placeholder.com/300x400?text=Basic-Hosting",
+       "FeatureImageURL":"/books/300x400?text=Basic-Hosting",
        "ProductImageGallery":[
           
        ],
        "ShortDescription":"A basic hosting plan suitable for small websites.",
        "LongDescription":"The Basic Hosting Plan is perfect for individuals and small businesses that need a reliable, low-cost hosting solution. It includes essential features like domain hosting, email support, and basic security.",
        "RegularPrice":"9.99",
-       "SalePrice":"7.99",
-       "SubscriptionEnabled":true,
-       "SubscriptionType":"month"
+       "SalePrice":"99.99",
+       "SubscriptionEnabled":false,
+       "SubscriptionType":"month",
+       "SaleSubscriptionType":"year"
     },
     {
        "ID":"sub-002",
        "Title":"Premium Hosting Plan",
        "Slug":"premium-hosting",
        "Enabled":true,
-       "CatalogVisible":true,
+       "CatalogVisible":false,
        "ProductCategories":[
           "Hosting",
           "Subscription"
        ],
-       "FeatureImageURL":"https://via.placeholder.com/300x400?text=Premium-Hosting",
+       "FeatureImageURL":"/books/300x400?text=Premium-Hosting",
        "ProductImageGallery":[
           
        ],
        "ShortDescription":"A premium hosting plan with more resources for larger websites.",
        "LongDescription":"The Premium Hosting Plan is designed for businesses that require enhanced performance, security, and support. It includes higher bandwidth, SSL certification, and dedicated customer service.",
        "RegularPrice":"19.99",
-       "SalePrice":"15.99",
+       "SalePrice":"179.99",
        "SubscriptionEnabled":true,
-       "SubscriptionType":"month"
+       "SubscriptionType":"month",
+       "SaleSubscriptionType":"year"
     },
     {
        "ID":"sub-003",
        "Title":"Enterprise Hosting Plan",
        "Slug":"enterprise-hosting",
        "Enabled":true,
-       "CatalogVisible":true,
+       "CatalogVisible":false,
        "ProductCategories":[
           "Hosting",
           "Subscription"
        ],
-       "FeatureImageURL":"https://via.placeholder.com/300x400?text=Enterprise-Hosting",
+       "FeatureImageURL":"/books/300x400?text=Enterprise-Hosting",
        "ProductImageGallery":[
           
        ],
        "ShortDescription":"An enterprise-level hosting plan for large-scale websites and businesses.",
        "LongDescription":"The Enterprise Hosting Plan is the ultimate hosting solution for large businesses and organizations. It provides premium security, high-speed servers, unlimited bandwidth, and advanced support for mission-critical applications.",
        "RegularPrice":"49.99",
-       "SalePrice":"39.99",
+       "SalePrice":"499.99",
        "SubscriptionEnabled":true,
-       "SubscriptionType":"month"
+       "SubscriptionType":"month",
+       "SaleSubscriptionType":"year"
     }
  ]

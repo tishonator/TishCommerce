@@ -18,16 +18,24 @@
     "quickLinks": "Quick Links",
     "contactUs": "Contact Us",
     "followUs": "Follow Us",
+    "searchPlaceholder": "Search products...",
+    "allCategories": "All Categories",
+    "sortByName": "Sort by Name",
+    "sortByPrice": "Sort by Price",
+    "sortByNewest": "Sort by Newest",
+    "loadingProducts": "Loading products...",
+    "noProductsFound": "No products found...",
     "poweredBy": "Powered by TishCommerce"
   },
   "menu": [
     { "label": "Homepage", "href": "/" },
+    { "label": "Products", "href": "/products" },
     { "label": "News", "href": "/news" },
     { "label": "Contacts", "href": "/contactus" }
   ],
   "footerLinks": [
     { "label": "Home", "href": "/" },
-    { "label": "Features", "href": "/features" },
+    { "label": "Products", "href": "/products" },
     { "label": "Pricing", "href": "/pricing" },
     { "label": "Contact", "href": "/contact" }
   ],
