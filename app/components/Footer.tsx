@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import Link from "next/link";
 import { SiFacebook, SiInstagram, SiLinkedin, SiX } from "react-icons/si";
-import ScrollToTopButton from "./ScrollToTopButton"; // Client-side scroll-to-top button
+import ScrollToTopButton from "./ScrollToTopButton"; // Keep this as a client component
 
 // Define TypeScript interfaces
 interface FooterLink {
@@ -24,20 +24,25 @@ const iconMap = {
   SiLinkedin: SiLinkedin
 };
 
-// Load content from JSON file with explicit typing
-const filePath = path.join(process.cwd(), process.env.LOCALES_PATH || "locales/en.json");
-const content: {
-  colors: { primary: string; secondary: string; hover: string; footerBg: string; footerText: string };
-  email: string;
-  phone: string;
-  address: string;
-  labels: { quickLinks: string; contactUs: string; followUs: string };
-  footerLinks: FooterLink[];
-  socialLinks: SocialLink[];
-  copyright: string;
-} = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+// Fetch localization data server-side
+async function getLocalizationData() {
+  const filePath = path.join(process.cwd(), "locales/en.json");
+  const content = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+  return content as {
+    colors: { primary: string; secondary: string; hover: string; footerBg: string; footerText: string };
+    email: string;
+    phone: string;
+    address: string;
+    labels: { quickLinks: string; contactUs: string; followUs: string };
+    footerLinks: FooterLink[];
+    socialLinks: SocialLink[]; // Explicitly define as SocialLink[]
+    copyright: string;
+  };
+}
 
-const Footer = () => {
+export default async function Footer() {
+  const content = await getLocalizationData(); // Load localization on the server
+
   return (
     <footer className={`${content.colors.footerBg} ${content.colors.footerText} py-12 relative`}>
       <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
@@ -96,6 +101,4 @@ const Footer = () => {
       <ScrollToTopButton />
     </footer>
   );
-};
-
-export default Footer;
+}

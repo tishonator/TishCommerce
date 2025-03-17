@@ -1,14 +1,22 @@
 "use client";
 
+import { useLocalization } from "../../context/LocalizationContext";
+
 interface ProductFiltersProps {
   setSearchQuery: (query: string) => void;
   setCategoryFilter: (category: string) => void;
   setSortBy: (sort: string) => void;
   categories: string[];
-  labels: { [key: string]: string };
 }
 
-export default function ProductFilters({ setSearchQuery, setCategoryFilter, setSortBy, categories, labels }: ProductFiltersProps) {
+export default function ProductFilters({
+  setSearchQuery,
+  setCategoryFilter,
+  setSortBy,
+  categories,
+}: ProductFiltersProps) {
+  const { labels } = useLocalization();
+
   return (
     <div className="mb-8 grid grid-cols-1 md:grid-cols-3 gap-4">
       {/* Search Bar */}
