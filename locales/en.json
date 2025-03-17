@@ -25,7 +25,14 @@
     "sortByNewest": "Sort by Newest",
     "loadingProducts": "Loading products...",
     "noProductsFound": "No products found...",
-    "poweredBy": "Powered by TishCommerce"
+    "poweredBy": "Powered by TishCommerce",
+    "products": "Products",
+    "noProductsFound": "No products found",
+    "searchPlaceholder": "Search products...",
+    "allCategories": "All Categories",
+    "sortByName": "Sort by Name",
+    "sortByPrice": "Sort by Price",
+    "sortByNewest": "Sort by Newest"
   },
   "menu": [
     { "label": "Homepage", "href": "/" },

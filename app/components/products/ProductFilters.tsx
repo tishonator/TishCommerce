@@ -5,7 +5,7 @@ interface ProductFiltersProps {
   setCategoryFilter: (category: string) => void;
   setSortBy: (sort: string) => void;
   categories: string[];
-  labels: { [key: string]: string }; // Labels received from API
+  labels: { [key: string]: string };
 }
 
 export default function ProductFilters({ setSearchQuery, setCategoryFilter, setSortBy, categories, labels }: ProductFiltersProps) {

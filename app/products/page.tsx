@@ -1,8 +1,8 @@
-import ProductGrid from "../components/products/ProductGrid";
 import fs from "fs";
 import path from "path";
+import ProductGrid from "../components/products/ProductGrid";
 
-// Load localization settings
+// Load localization file
 const localePath = path.join(process.cwd(), "locales/en.json");
 const localeData = JSON.parse(fs.readFileSync(localePath, "utf-8"));
 

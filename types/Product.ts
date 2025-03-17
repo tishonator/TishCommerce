@@ -11,6 +11,7 @@ export interface Product {
     LongDescription: string;
     RegularPrice: string;
     SalePrice: string;
+    Currency: string;
     SubscriptionEnabled: boolean;
     SubscriptionType: string;
     SaleSubscriptionType?: string;
