@@ -12,8 +12,8 @@
        ],
        "FeatureImageURL":"/books/book-001.jpg",
        "ProductImageGallery":[
-          "/books/book-001-1.jpg",
-          "/books/book-001-2.jpg"
+          "/books/book-001.jpg",
+          "/books/book-001.jpg"
        ],
        "ShortDescription":"A dystopian novel by George Orwell about surveillance and totalitarianism.",
        "LongDescription":"Published in 1949, George Orwell’s '1984' is a cautionary tale about a totalitarian regime that enforces thought control and relentless surveillance. The story follows Winston Smith, a man struggling against the oppressive Party and its leader, Big Brother.",

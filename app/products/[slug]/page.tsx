@@ -1,10 +1,16 @@
+import { getProductBySlug } from "../../utils/getProducts";
+import { getLocalization } from "../../utils/getLocalization";
+import { getCurrencySymbol } from "../../utils/getCurrencySymbol";
 import { notFound } from "next/navigation";
-import getProducts from "../../utils/getProducts";
-import Image from "next/image";
+import ProductLightbox from "../../components/products/ProductLightbox";
 
-export default async function ProductPage({ params }: { params: { slug: string } }) {
-  const products = await getProducts();
-  const product = products.find((p) => p.Slug === params.slug);
+interface ProductPageProps {
+  params: { slug: string };
+}
+
+export default function ProductPage({ params }: ProductPageProps) {
+  const product = getProductBySlug(params.slug);
+  const localeData = getLocalization();
 
   if (!product) {
     return notFound();
@@ -12,14 +18,42 @@ export default async function ProductPage({ params }: { params: { slug: string }
 
   return (
     <section className="py-12 bg-stone-100">
-      <div className="container mx-auto px-4 max-w-4xl">
-        <div className="bg-white shadow-md p-6 rounded-lg">
-          <h1 className="text-3xl font-bold">{product.Title}</h1>
-          <p className="text-gray-700 mt-2">{product.LongDescription}</p>
-          <div className="relative w-full h-96 mt-6">
-            <Image src={product.FeatureImageURL} alt={product.Title} fill className="rounded-lg object-cover" />
+      <div className="container mx-auto px-4">
+        {/* Title */}
+        <h1 className={`text-3xl font-bold ${localeData.colors?.primary || "text-black"}`}>
+          {product.Title}
+        </h1>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+          {/* LEFT COLUMN - Feature Image & Gallery */}
+          <ProductLightbox images={[product.FeatureImageURL, ...product.ProductImageGallery]} />
+
+          {/* RIGHT COLUMN - Product Details */}
+          <div>
+            <p className="text-lg text-gray-700">{product.ShortDescription}</p>
+            <div className="mt-4">
+              {product.SalePrice !== product.RegularPrice ? (
+                <p className="text-xl font-bold text-red-600">
+                  {getCurrencySymbol(product.Currency)}{product.SalePrice}
+                  <span className="ml-2 text-gray-500 line-through">
+                    {getCurrencySymbol(product.Currency)}{product.RegularPrice}
+                  </span>
+                </p>
+              ) : (
+                <p className="text-xl font-bold text-gray-900">
+                  {getCurrencySymbol(product.Currency)}{product.RegularPrice}
+                </p>
+              )}
+            </div>
           </div>
-          <p className="text-xl font-semibold mt-4 text-red-600">${product.SalePrice}</p>
+        </div>
+
+        {/* LONG DESCRIPTION */}
+        <div className="mt-10">
+          <h2 className={`text-2xl font-semibold ${localeData.colors?.primary || "text-black"}`}>
+            {localeData.labels.productDetails || "Product Details"} {/* Fallback if missing */}
+          </h2>
+          <p className="text-gray-700 mt-4">{product.LongDescription}</p>
         </div>
       </div>
     </section>
