@@ -1,30 +1,7 @@
-import fs from "fs";
-import path from "path";
 import Link from "next/link";
 import { SiFacebook, SiInstagram, SiLinkedin, SiX } from "react-icons/si";
 import MobileMenu from "./MobileMenu";
-
-// Define TypeScript interfaces
-interface SocialLink {
-  id: string;
-  icon: keyof typeof iconMap;
-  url: string;
-}
-
-interface MenuItem {
-  label: string;
-  href: string;
-}
-
-interface LocalizationData {
-  colors: { primary: string; secondary: string; hover: string };
-  email: string;
-  siteName: string;
-  siteTagline: string;
-  labels: { email: string };
-  menu: MenuItem[];
-  socialLinks: SocialLink[];
-}
+import { getLocalization } from "../utils/getLocalization";
 
 // Map icon strings to components
 const iconMap = {
@@ -34,24 +11,17 @@ const iconMap = {
   SiLinkedin: SiLinkedin,
 };
 
-// Fetch localization data server-side
-async function getLocalizationData(): Promise<LocalizationData> {
-  const filePath = path.join(process.cwd(), "locales/en.json");
-  const content = JSON.parse(fs.readFileSync(filePath, "utf-8"));
-  return content;
-}
-
-export default async function Header() {
-  const content = await getLocalizationData(); // Load localization on the server
+export default function Header() {
+  const content = getLocalization(); // Fetch localization data
 
   return (
     <>
       {/* TOP BAR */}
-      <div className="bg-stone-100 text-black py-2 px-4 flex justify-between items-center text-sm md:text-base">
+      <div className="bg-gray-100 text-gray-900 py-2 px-4 flex justify-between items-center text-sm md:text-base">
         {/* Email */}
         <p className="hidden md:block">
           {content.labels.email}:{" "}
-          <Link href={`mailto:${content.email}`} className={`text-black ${content.colors.hover} transition`}>
+          <Link href={`mailto:${content.email}`} className="text-gray-800 hover:text-gray-600 transition">
             {content.email}
           </Link>
         </p>
@@ -61,7 +31,7 @@ export default async function Header() {
           {content.socialLinks.map(({ id, icon, url }) => {
             const IconComponent = iconMap[icon as keyof typeof iconMap];
             return (
-              <Link key={id} href={url} target="_blank" className={content.colors.hover}>
+              <Link key={id} href={url} target="_blank" className="text-gray-700 hover:text-gray-500">
                 <IconComponent size={20} />
               </Link>
             );
@@ -71,22 +41,22 @@ export default async function Header() {
         {/* Mobile Email */}
         <p className="block md:hidden text-center w-full mt-2">
           {content.labels.email}:{" "}
-          <Link href={`mailto:${content.email}`} className={`text-black ${content.colors.hover} transition`}>
+          <Link href={`mailto:${content.email}`} className="text-gray-800 hover:text-gray-600 transition">
             {content.email}
           </Link>
         </p>
       </div>
 
       {/* MAIN HEADER */}
-      <header className={`bg-white ${content.colors.primary} py-4 px-4 flex justify-between items-center relative z-50`}>
+      <header className="bg-white text-gray-900 py-4 px-4 flex justify-between items-center relative z-50">
         {/* Logo & Tagline */}
         <div>
           <h1 className="text-2xl font-bold">
-            <Link href="/" className={`text-black ${content.colors.hover}`}>
+            <Link href="/" className="text-gray-900 hover:text-gray-700">
               {content.siteName}
             </Link>
           </h1>
-          <strong className={`fontNormal ${content.colors.secondary}`}>{content.siteTagline}</strong>
+          <strong className="text-gray-700">{content.siteTagline}</strong>
         </div>
 
         {/* Mobile Menu (Client Component) */}

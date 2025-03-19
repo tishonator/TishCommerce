@@ -20,7 +20,7 @@ export default function ProductPage({ params }: ProductPageProps) {
     <section className="py-12 bg-stone-100">
       <div className="container mx-auto px-4">
         {/* Title */}
-        <h1 className={`text-3xl font-bold ${localeData.colors?.primary || "text-black"}`}>
+        <h1 className="text-3xl font-bold text-gray-800">
           {product.Title}
         </h1>
 
@@ -50,7 +50,7 @@ export default function ProductPage({ params }: ProductPageProps) {
 
         {/* LONG DESCRIPTION */}
         <div className="mt-10">
-          <h2 className={`text-2xl font-semibold ${localeData.colors?.primary || "text-black"}`}>
+          <h2 className="text-2xl font-semibold text-gray-800">
             {localeData.labels.productDetails || "Product Details"} {/* Fallback if missing */}
           </h2>
           <p className="text-gray-700 mt-4">{product.LongDescription}</p>

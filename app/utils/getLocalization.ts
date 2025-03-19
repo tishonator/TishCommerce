@@ -3,14 +3,18 @@ import path from "path";
 
 // Define Localization Structure
 interface LocalizationData {
-  colors?: {
-    primary: string;
-    secondary: string;
-    hover: string;
-    footerBg?: string;
-    footerText?: string;
-  };
+  email: string;
+  phone: string;
+  address: string;
+  siteName: string;
+  siteTagline: string;
   labels: {
+    email: string;
+    phone: string;
+    address: string;
+    quickLinks: string;
+    contactUs: string;
+    followUs: string;
     searchPlaceholder: string;
     allCategories: string;
     sortByName: string;
@@ -19,12 +23,28 @@ interface LocalizationData {
     loadingProducts: string;
     noProductsFound: string;
     productDetails: string;
+    products: string;
   };
+  menu: { label: string; href: string }[];
+  footerLinks: { label: string; href: string }[];
+  socialLinks: { id: string; icon: string; url: string }[];
+  copyright: string;
 }
 
 // Default Localization Fallback
 const defaultLocalization: LocalizationData = {
+  email: "contact@example.com",
+  phone: "+1 234 567 890",
+  address: "123 Main Street, Tish City",
+  siteName: "TishCommerce",
+  siteTagline: "Your Database-Free Store",
   labels: {
+    email: "Email",
+    phone: "Phone",
+    address: "Address",
+    quickLinks: "Quick Links",
+    contactUs: "Contact Us",
+    followUs: "Follow Us",
     searchPlaceholder: "Search products...",
     allCategories: "All Categories",
     sortByName: "Sort by Name",
@@ -32,8 +52,13 @@ const defaultLocalization: LocalizationData = {
     sortByNewest: "Sort by Newest",
     loadingProducts: "Loading products...",
     noProductsFound: "No products found...",
-    productDetails: "Product Details"
+    productDetails: "Product Details",
+    products: "Products"
   },
+  menu: [],
+  footerLinks: [],
+  socialLinks: [],
+  copyright: "© 2025 Tishonator. All rights reserved.",
 };
 
 // Fetch Localization Data

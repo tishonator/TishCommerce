@@ -1,8 +1,7 @@
-import fs from "fs";
-import path from "path";
 import Link from "next/link";
 import { SiFacebook, SiInstagram, SiLinkedin, SiX } from "react-icons/si";
 import ScrollToTopButton from "./ScrollToTopButton"; // Keep this as a client component
+import { getLocalization } from "../utils/getLocalization";
 
 // Define TypeScript interfaces
 interface FooterLink {
@@ -10,50 +9,32 @@ interface FooterLink {
   href: string;
 }
 
-interface SocialLink {
-  id: string;
-  icon: keyof typeof iconMap;
-  url: string;
-}
+type SocialIcon = "SiFacebook" | "SiX" | "SiInstagram" | "SiLinkedin";
 
 // Map icon strings to components
-const iconMap = {
+const iconMap: Record<SocialIcon, React.ElementType> = {
   SiFacebook: SiFacebook,
   SiX: SiX,
   SiInstagram: SiInstagram,
   SiLinkedin: SiLinkedin
 };
 
-// Fetch localization data server-side
-async function getLocalizationData() {
-  const filePath = path.join(process.cwd(), "locales/en.json");
-  const content = JSON.parse(fs.readFileSync(filePath, "utf-8"));
-  return content as {
-    colors: { primary: string; secondary: string; hover: string; footerBg: string; footerText: string };
-    email: string;
-    phone: string;
-    address: string;
-    labels: { quickLinks: string; contactUs: string; followUs: string };
-    footerLinks: FooterLink[];
-    socialLinks: SocialLink[]; // Explicitly define as SocialLink[]
-    copyright: string;
-  };
-}
-
-export default async function Footer() {
-  const content = await getLocalizationData(); // Load localization on the server
+export default function Footer() {
+  const content = getLocalization(); // Load localization data
 
   return (
-    <footer className={`${content.colors.footerBg} ${content.colors.footerText} py-12 relative`}>
+    <footer className="bg-gray-900 text-gray-300 py-12 relative">
       <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
         
         {/* Quick Links */}
         <div>
-          <h3 className={`text-xl font-semibold mb-4 ${content.colors.primary}`}>{content.labels.quickLinks}</h3>
+          <h3 className="text-xl font-semibold mb-4 text-gray-100">{content.labels.quickLinks}</h3>
           <ul className="space-y-2">
             {content.footerLinks.map((link: FooterLink) => (
               <li key={link.label}>
-                <Link href={link.href} className={content.colors.hover}>{link.label}</Link>
+                <Link href={link.href} className="text-gray-300 hover:text-gray-400 transition">
+                  {link.label}
+                </Link>
               </li>
             ))}
           </ul>
@@ -61,38 +42,33 @@ export default async function Footer() {
 
         {/* Contact Info */}
         <div>
-          <h3 className={`text-xl font-semibold mb-4 ${content.colors.primary}`}>{content.labels.contactUs}</h3>
-          <p>Email: <a href={`mailto:${content.email}`} className={content.colors.hover}>{content.email}</a></p>
-          <p>Phone: <a href={`tel:${content.phone}`} className={content.colors.hover}>{content.phone}</a></p>
-          <p>Address: {content.address}</p>
+          <h3 className="text-xl font-semibold mb-4 text-gray-100">{content.labels.contactUs}</h3>
+          <p>{content.labels.email}: <a href={`mailto:${content.email}`} className="text-gray-300 hover:text-gray-400 transition">{content.email}</a></p>
+          <p>{content.labels.phone}: <a href={`tel:${content.phone}`} className="text-gray-300 hover:text-gray-400 transition">{content.phone}</a></p>
+          <p>{content.labels.address}: {content.address}</p>
         </div>
 
         {/* Social Media */}
         <div>
-          <h3 className={`text-xl font-semibold mb-4 ${content.colors.primary}`}>{content.labels.followUs}</h3>
+          <h3 className="text-xl font-semibold mb-4 text-gray-100">{content.labels.followUs}</h3>
           <div className="flex justify-center md:justify-start space-x-4">
-            {content.socialLinks.map((social: SocialLink) => {
-              const IconComponent = iconMap[social.icon];
+            {content.socialLinks.map((social) => {
+              const IconComponent = iconMap[social.icon as SocialIcon]; // Type assertion to ensure TS compliance
               return (
-                <Link key={social.id} href={social.url} target="_blank" className={content.colors.hover}>
+                <Link key={social.id} href={social.url} target="_blank" className="text-gray-300 hover:text-gray-400 transition">
                   <IconComponent size={24} />
                 </Link>
               );
             })}
           </div>
         </div>
-
       </div>
 
-      {/* 
-        Copyright text is loaded from the JSON file for easy customization. 
-        However, as per the license, the "Powered by TishCommerce" link 
-        to the GitHub repository must remain intact and visible.
-      */}
+      {/* Copyright & Attribution */}
       <div className="text-center text-sm mt-8">
         {content.copyright}  
         <span className="mx-1">|</span>  
-        <Link href="https://github.com/tishonator/TishCommerce" target="_blank" className={content.colors.hover}>
+        <Link href="https://github.com/tishonator/TishCommerce" target="_blank" className="text-gray-300 hover:text-gray-400 transition">
           Powered by TishCommerce
         </Link>
       </div>

@@ -1,11 +1,4 @@
 {
-  "colors": {
-    "primary": "text-red-700",
-    "secondary": "text-red-900",
-    "hover": "hover:text-red-600",
-    "footerBg": "bg-gray-800",
-    "footerText": "text-gray-400"
-  },
   "email": "contact@example.com",
   "phone": "+1 234 567 890",
   "address": "123 Main Street, Tish City",
@@ -26,14 +19,7 @@
     "loadingProducts": "Loading products...",
     "noProductsFound": "No products found...",
     "productDetails": "Product Details",
-    "poweredBy": "Powered by TishCommerce",
-    "products": "Products",
-    "noProductsFound": "No products found",
-    "searchPlaceholder": "Search products...",
-    "allCategories": "All Categories",
-    "sortByName": "Sort by Name",
-    "sortByPrice": "Sort by Price",
-    "sortByNewest": "Sort by Newest"
+    "products": "Products"
   },
   "menu": [
     { "label": "Homepage", "href": "/" },

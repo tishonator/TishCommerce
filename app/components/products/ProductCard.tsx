@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getCurrencySymbol } from "../../utils/getCurrencySymbol";
-import { useLocalization } from "../../context/LocalizationContext";
 import { Product } from "../../../types/Product";
 
 interface ProductCardProps {
@@ -9,8 +8,6 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
-  const { colors, labels } = useLocalization();
-
   const hasDiscount = parseFloat(product.SalePrice) < parseFloat(product.RegularPrice);
   const currencySymbol = getCurrencySymbol(product.Currency); // Get currency symbol
 
@@ -31,8 +28,8 @@ export default function ProductCard({ product }: ProductCardProps) {
       {/* Product Info */}
       <div className="p-6">
         {/* Title with Link */}
-        <h3 className="text-xl font-semibold text-black truncate">
-          <Link href={`/products/${product.Slug}`} className={colors.hover}>
+        <h3 className="text-xl font-semibold text-gray-900 truncate">
+          <Link href={`/products/${product.Slug}`} className="hover:text-gray-600">
             {product.Title}
           </Link>
         </h3>
@@ -45,14 +42,14 @@ export default function ProductCard({ product }: ProductCardProps) {
           {hasDiscount ? (
             <div className="flex items-center gap-2">
               <span className="text-lg font-bold text-red-600">
-                {currencySymbol} {product.SalePrice}
+                {currencySymbol}{product.SalePrice}
               </span>
               <span className="text-gray-500 line-through">
-                {currencySymbol} {product.RegularPrice}
+                {currencySymbol}{product.RegularPrice}
               </span>
             </div>
           ) : (
-            <span className="text-lg font-bold text-black">
+            <span className="text-lg font-bold text-gray-900">
               {currencySymbol} {product.RegularPrice}
             </span>
           )}
@@ -62,9 +59,9 @@ export default function ProductCard({ product }: ProductCardProps) {
         <div className="mt-4">
           <Link href={`/products/${product.Slug}`}>
             <span
-              className={`inline-block ${colors.primary} ${colors.hover} text-white px-4 py-2 rounded-full text-sm font-semibold transition`}
+              className="inline-block bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-full text-sm font-semibold transition"
             >
-              {labels.viewProduct}
+              View Product
             </span>
           </Link>
         </div>

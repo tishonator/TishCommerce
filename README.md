@@ -48,9 +48,9 @@ npm install
 
 ### Configuration
 
-**/products.json** - update `products.json` with your products, including digital goods and subscriptions. Each product entry includes fields like Title, Price, SubscriptionType, and SaleSubscriptionType for flexible pricing. Subscription products can have discounted yearly pricing using SaleSubscriptionType: "year". Customize prices, categories, and images to fit your store.
+**/products.json** - update with your products, including digital goods and subscriptions. Each product entry includes fields like Title, Price, SubscriptionType, and SaleSubscriptionType for flexible pricing. Subscription products can have discounted yearly pricing using SaleSubscriptionType: "year". Customize prices, categories, and images to fit your store.
 
-**/locales/en.json** - update `/locales/en.json` to customize text labels, colors, contact details, menu items, and social links. Modify `colors` to change the site's theme, update `labels` for translations, and adjust `menu` or `footerLinks` as needed. Social links and copyright text can be personalized while keeping the **"Powered by TishCommerce"** attribution.
+**/locales/en.json** - update text labels, contact details, menu items, and social links. Modify update `labels` for translations, and adjust `menu` or `footerLinks` as needed. Social links and copyright text can be personalized while keeping the **"Powered by TishCommerce"** attribution.
 
 ### Code and TypeScript validation
 ```sh
