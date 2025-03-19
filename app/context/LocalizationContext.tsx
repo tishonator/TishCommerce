@@ -1,11 +1,30 @@
 "use client";
 import { createContext, useContext, useEffect, useState } from "react";
 
+// Define Localization Structure
 interface LocalizationData {
-  colors: { primary: string; secondary: string; hover: string; footerBg: string; footerText: string };
   labels: { [key: string]: string };
+  menu: { label: string; href: string }[];
+  footerLinks: { label: string; href: string }[];
+  socialLinks: { id: string; icon: string; url: string }[];
+  homepage: {
+    banner: {
+      title: string;
+      subtitle: string;
+      buttonText: string;
+      imagePath: string;
+      ctaLink: string;
+    };
+  };
+  email: string;
+  phone: string;
+  address: string;
+  siteName: string;
+  siteTagline: string;
+  copyright: string;
 }
 
+// Create Context
 const LocalizationContext = createContext<LocalizationData | null>(null);
 
 export function LocalizationProvider({ children }: { children: React.ReactNode }) {

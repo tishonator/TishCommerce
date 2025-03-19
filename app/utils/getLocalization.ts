@@ -25,6 +25,15 @@ interface LocalizationData {
     productDetails: string;
     products: string;
   };
+  homepage: {
+    banner: {
+      title: string;
+      subtitle: string;
+      buttonText: string;
+      imagePath: string;
+      ctaLink: string;
+    };
+  };
   menu: { label: string; href: string }[];
   footerLinks: { label: string; href: string }[];
   socialLinks: { id: string; icon: string; url: string }[];
@@ -54,6 +63,15 @@ const defaultLocalization: LocalizationData = {
     noProductsFound: "No products found...",
     productDetails: "Product Details",
     products: "Products"
+  },
+  homepage: {
+    banner: {
+      title: "Welcome to TishCommerce",
+      subtitle: "The easiest way to manage and sell your products online.",
+      buttonText: "Get Started Now",
+      imagePath: "/homepage-banner.jpg",
+      ctaLink: "/products"
+    }
   },
   menu: [],
   footerLinks: [],

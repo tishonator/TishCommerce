@@ -39,5 +39,14 @@
     { "id": "instagram", "icon": "SiInstagram", "url": "https://instagram.com/yourpage" },
     { "id": "linkedin", "icon": "SiLinkedin", "url": "https://linkedin.com/in/yourprofile" }
   ],
+  "homepage": {
+    "banner": {
+      "title": "Welcome to TishCommerce",
+      "subtitle": "The easiest way to manage and sell your products online.",
+      "buttonText": "Get Started Now",
+      "imagePath": "/homepage-banner.jpg",
+      "ctaLink": "/products"
+    }
+  },
   "copyright": "© 2025 Tishonator. All rights reserved."
 }
