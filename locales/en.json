@@ -19,7 +19,8 @@
     "loadingProducts": "Loading products...",
     "noProductsFound": "No products found...",
     "productDetails": "Product Details",
-    "products": "Products"
+    "products": "Products",
+    "recentProducts": "Recent Products"
   },
   "menu": [
     { "label": "Homepage", "href": "/" },
@@ -46,7 +47,56 @@
       "buttonText": "Get Started Now",
       "imagePath": "/homepage-banner.jpg",
       "ctaLink": "/products"
-    }
+    },
+    "brandStory": {
+      "title": "Our Story",
+      "description": "We’re a family-owned business dedicated to eco-friendly materials and fair trade practices. Our mission is to bring you high-quality, sustainable products that make a difference.",
+      "buttonText": "Read More",
+      "ctaLink": "/about"
+    },
+    "testimonialsTitle": "What Our Customers Say",
+    "testimonials": [
+      {
+        "id": 1,
+        "name": "Jessica B.",
+        "avatar": "/images/user1.jpg",
+        "rating": 4.5,
+        "review": "These shoes changed my life! Comfortable and stylish."
+      },
+      {
+        "id": 2,
+        "name": "Ethan Walker",
+        "avatar": "/images/user2.jpg",
+        "rating": 4,
+        "review": "The best purchase I made this year. The quality is outstanding!"
+      },
+      {
+        "id": 3,
+        "name": "Sophia Martinez",
+        "avatar": "/images/user3.jpg",
+        "rating": 5,
+        "review": "Exceptional customer service and fast delivery. Highly recommend!"
+      }
+    ],
+    "newsletter": {
+      "title": "Subscribe to Our Newsletter",
+      "description": "Join our mailing list to receive exclusive updates and special offers.",
+      "placeholder": "Enter your email",
+      "buttonText": "Subscribe"
+    },
+    "brandsTitle": "Trusted by Top Brands",
+    "brands": [
+      { "name": "Brand 1", "logo": "/images/brands/1.png" },
+      { "name": "Brand 2", "logo": "/images/brands/2.png" },
+      { "name": "Brand 3", "logo": "/images/brands/3.png" },
+      { "name": "Brand 4", "logo": "/images/brands/4.png" },
+      { "name": "Brand 5", "logo": "/images/brands/5.png" },
+      { "name": "Brand 6", "logo": "/images/brands/6.png" },
+      { "name": "Brand 7", "logo": "/images/brands/7.png" },
+      { "name": "Brand 8", "logo": "/images/brands/8.png" },
+      { "name": "Brand 9", "logo": "/images/brands/9.png" },
+      { "name": "Brand 10", "logo": "/images/brands/10.png" }
+    ]
   },
   "copyright": "© 2025 Tishonator. All rights reserved."
 }

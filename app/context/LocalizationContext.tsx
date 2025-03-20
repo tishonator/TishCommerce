@@ -1,4 +1,5 @@
 "use client";
+
 import { createContext, useContext, useEffect, useState } from "react";
 
 // Define Localization Structure
@@ -14,6 +15,18 @@ interface LocalizationData {
       buttonText: string;
       imagePath: string;
       ctaLink: string;
+    };
+    brandStory: {
+      title: string;
+      description: string;
+      buttonText: string;
+      ctaLink: string;
+    };
+    newsletter: {
+      title: string;
+      description: string;
+      placeholder: string;
+      buttonText: string;
     };
   };
   email: string;

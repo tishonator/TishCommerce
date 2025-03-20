@@ -24,7 +24,11 @@ interface LocalizationData {
     noProductsFound: string;
     productDetails: string;
     products: string;
+    recentProducts: string;
   };
+  menu: { label: string; href: string }[];
+  footerLinks: { label: string; href: string }[];
+  socialLinks: { id: string; icon: string; url: string }[];
   homepage: {
     banner: {
       title: string;
@@ -33,10 +37,23 @@ interface LocalizationData {
       imagePath: string;
       ctaLink: string;
     };
+    brandStory: {
+      title: string;
+      description: string;
+      buttonText: string;
+      ctaLink: string;
+    };
+    testimonialsTitle: string;
+    testimonials: {
+      id: number;
+      name: string;
+      avatar: string;
+      rating: number;
+      review: string;
+    }[];
+    brandsTitle: string;
+    brands: { name: string; logo: string }[];
   };
-  menu: { label: string; href: string }[];
-  footerLinks: { label: string; href: string }[];
-  socialLinks: { id: string; icon: string; url: string }[];
   copyright: string;
 }
 
@@ -62,20 +79,47 @@ const defaultLocalization: LocalizationData = {
     loadingProducts: "Loading products...",
     noProductsFound: "No products found...",
     productDetails: "Product Details",
-    products: "Products"
+    products: "Products",
+    recentProducts: "Recent Products",
   },
+  menu: [
+    { label: "Homepage", href: "/" },
+    { label: "Products", href: "/products" },
+    { label: "News", href: "/news" },
+    { label: "Contacts", href: "/contactus" },
+  ],
+  footerLinks: [
+    { label: "Home", href: "/" },
+    { label: "Products", href: "/products" },
+    { label: "Pricing", href: "/pricing" },
+    { label: "Contact", href: "/contact" },
+  ],
+  socialLinks: [
+    { id: "facebook", icon: "SiFacebook", url: "https://facebook.com/yourpage" },
+    { id: "x", icon: "SiX", url: "https://x.com/yourprofile" },
+    { id: "instagram", icon: "SiInstagram", url: "https://instagram.com/yourpage" },
+    { id: "linkedin", icon: "SiLinkedin", url: "https://linkedin.com/in/yourprofile" },
+  ],
   homepage: {
     banner: {
       title: "Welcome to TishCommerce",
       subtitle: "The easiest way to manage and sell your products online.",
       buttonText: "Get Started Now",
       imagePath: "/homepage-banner.jpg",
-      ctaLink: "/products"
-    }
+      ctaLink: "/products",
+    },
+    brandStory: {
+      title: "Our Story",
+      description:
+        "We’re a family-owned business dedicated to eco-friendly materials and fair trade practices. Our mission is to bring you high-quality, sustainable products that make a difference.",
+      buttonText: "Read More",
+      ctaLink: "/about",
+    },
+    testimonialsTitle: "What Our Customers Say",
+    testimonials: [],
+    brandsTitle: 'Trusted by Top Brands',
+    brands: []
   },
-  menu: [],
-  footerLinks: [],
-  socialLinks: [],
   copyright: "© 2025 Tishonator. All rights reserved.",
 };
 
