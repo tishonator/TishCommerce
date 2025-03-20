@@ -1,26 +1,27 @@
 @import "tailwindcss";
 
+/* Map the font variables to something usable */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-heading: var(--font-poppins);
+  --font-body: var(--font-inter);
+
+  /* If you want colors or other global styles, define them here */
+  --color-background: #ffffff;
+  --color-foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Body uses body font */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-body, sans-serif);
+}
+
+/* Headings use heading font */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading, sans-serif);
+  margin: 0;
+  padding: 0;
 }
