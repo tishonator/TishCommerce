@@ -1,66 +1,70 @@
-"use client";
-import { useParams, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import { useLocalization } from "../../context/LocalizationContext";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { getProductBySlug } from "../../utils/getProducts";
 import { getCurrencySymbol } from "../../utils/getCurrencySymbol";
 import ProductLightbox from "../../components/products/ProductLightbox";
+import { getLocalization } from "../../utils/getLocalization";
 
-interface Product {
-  ID: string;
-  Title: string;
-  Slug: string;
-  ShortDescription: string;
-  LongDescription: string;
-  RegularPrice: string;
-  SalePrice: string;
-  Currency: string;
-  FeatureImageURL: string;
-  ProductImageGallery: string[];
+// Define a type for route params as a Promise
+type AsyncParams = Promise<{ slug?: string }>;
+
+// read localization
+const localeData = getLocalization();
+
+/**
+ * Note: `generateMetadata` must also treat `params` as a Promise.
+ * Then "await params" to get the real slug value.
+ */
+export async function generateMetadata({
+  params,
+}: {
+  params: AsyncParams;
+}): Promise<Metadata> {
+  const { slug } = await params; // MUST await
+
+  if (!slug) {
+    return {
+      title: "Product Not Found",
+      description: "No product slug provided.",
+    };
+  }
+
+  // Local file read is now allowed, as we properly awaited the param
+  const product = getProductBySlug(slug);
+  if (!product) {
+    return {
+      title: "Product Not Found",
+      description: `Product with slug "${slug}" does not exist.`,
+    };
+  }
+
+  return {
+    title: `${product.Title} - ${localeData.siteName}`,
+    description: product.ShortDescription,
+  };
 }
 
-export default function ProductPage() {
-  const params = useParams();
-  const router = useRouter();
-  const slug = params?.slug as string;
-  const { labels } = useLocalization();  // Get localization from context
-
-  const [product, setProduct] = useState<Product | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    if (!slug) {
-      // If no slug, push user to 404 or handle error
-      router.push("/404");
-      return;
-    }
-
-    // Fetch the single product
-    const fetchProduct = async () => {
-      try {
-        const res = await fetch(`/api/products?slug=${slug}`);
-        if (!res.ok) throw new Error("Failed to fetch product data");
-        const data: Product = await res.json();
-        setProduct(data);
-      } catch (err) {
-        console.error(err);
-        router.push("/404");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProduct();
-  }, [slug, router]);
-
-  if (loading) {
-    return <p className="text-center text-gray-500">Loading...</p>;
+/**
+ * The route itself must also treat `params` as a Promise.
+ */
+export default async function ProductPage({
+  params,
+}: {
+  params: AsyncParams;
+}) {
+  // First await for the real param
+  const { slug } = await params;
+  if (!slug) {
+    return notFound();
   }
 
+  // Now do local file read
+  const product = getProductBySlug(slug);
   if (!product) {
-    return <p className="text-center text-gray-500">Product not found.</p>;
+    return notFound();
   }
 
-  // Price block
+  // Build SSR UI
   const priceBlock =
     product.SalePrice !== product.RegularPrice ? (
       <p className="text-xl font-bold text-red-600">
@@ -97,7 +101,7 @@ export default function ProductPage() {
         {/* LONG DESCRIPTION */}
         <div className="mt-10">
           <h2 className="text-2xl font-semibold text-gray-800">
-            {labels.productDetails || "Product Details"}
+            {localeData.labels.productDetails || "Product Details"}
           </h2>
           <p className="text-gray-700 mt-4">{product.LongDescription}</p>
         </div>

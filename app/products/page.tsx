@@ -1,9 +1,17 @@
 import ProductGrid from "../components/products/ProductGrid";
 import { getLocalization } from "../utils/getLocalization";
+import type { Metadata } from "next";
+
+// Fetch localization data
+const localeData = getLocalization();
+
+// Set page metadata
+export const metadata: Metadata = {
+  title: `${localeData.siteName} - ${localeData.labels.products}`,
+  description: localeData.siteTagline,
+};
 
 export default function ProductsPage() {
-  const localeData = getLocalization(); // Fetch localization data
-
   return (
     <section className="py-12 bg-stone-100">
       <div className="container mx-auto px-4">
