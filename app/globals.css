@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+/* Map the font variables to something usable */
+:root {
+  --font-heading: var(--font-poppins);
+  --font-body: var(--font-inter);
+
+  /* If you want colors or other global styles, define them here */
+  --color-background: #ffffff;
+  --color-foreground: #171717;
+}
+
+/* Body uses body font */
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-body, sans-serif);
+}
+
+/* Headings use heading font */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading, sans-serif);
+  margin: 0;
+  padding: 0;
+}

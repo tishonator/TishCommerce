@@ -1,0 +1,115 @@
+{
+  "email": "contact@example.com",
+  "phone": "+1 234 567 890",
+  "address": "123 Main Street, Tish City",
+  "siteName": "TishCommerce",
+  "siteTagline": "Your Database-Free Store",
+  "labels": {
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "quickLinks": "Quick Links",
+    "contactUs": "Contact Us",
+    "followUs": "Follow Us",
+    "searchPlaceholder": "Search products...",
+    "allCategories": "All Categories",
+    "sortByName": "Sort by Name",
+    "sortByPrice": "Sort by Price",
+    "sortByNewest": "Sort by Newest",
+    "loadingProducts": "Loading products...",
+    "noProductsFound": "No products found...",
+    "productDetails": "Product Details",
+    "products": "Products",
+    "recentProducts": "Recent Products"
+  },
+  "menu": [
+    { "label": "Home", "href": "/" },
+    { "label": "Products", "href": "/products" },
+    { "label": "About", "href": "/about" },
+    { "label": "Contact", "href": "/contact" }
+  ],
+  "footerLinks": [
+    { "label": "Home", "href": "/" },
+    { "label": "Products", "href": "/products" },
+    { "label": "About", "href": "/about" },
+    { "label": "Contact", "href": "/contact" }
+  ],
+  "socialLinks": [
+    { "id": "facebook", "icon": "SiFacebook", "url": "https://facebook.com/yourpage" },
+    { "id": "x", "icon": "SiX", "url": "https://x.com/yourprofile" },
+    { "id": "instagram", "icon": "SiInstagram", "url": "https://instagram.com/yourpage" },
+    { "id": "linkedin", "icon": "SiLinkedin", "url": "https://linkedin.com/in/yourprofile" }
+  ],
+  "homepage": {
+    "banner": {
+      "title": "Welcome to TishCommerce",
+      "subtitle": "The easiest way to manage and sell your products online.",
+      "buttonText": "Get Started Now",
+      "imagePath": "/homepage-banner.jpg",
+      "ctaLink": "/products"
+    },
+    "brandStory": {
+      "title": "Our Story",
+      "description": "Founded by three generations of passionate book lovers, our family-run store is built on a love for storytelling and community. We take pride in offering handpicked titles, personalized service, and a warm, welcoming experience for every reader.",
+      "buttonText": "Read More",
+      "ctaLink": "/about"
+    },
+    "testimonialsTitle": "What Our Customers Say",
+    "testimonials": [
+      {
+        "id": 1,
+        "name": "Jessica B.",
+        "avatar": "/user1.jpg",
+        "rating": 4.5,
+        "review": "These shoes changed my life! Comfortable and stylish."
+      },
+      {
+        "id": 2,
+        "name": "Ethan Walker",
+        "avatar": "/user2.jpg",
+        "rating": 4,
+        "review": "The best purchase I made this year. The quality is outstanding!"
+      },
+      {
+        "id": 3,
+        "name": "Sophia Martinez",
+        "avatar": "/user3.jpg",
+        "rating": 5,
+        "review": "Exceptional customer service and fast delivery. Highly recommend!"
+      }
+    ],
+    "newsletter": {
+      "title": "Subscribe to Our Newsletter",
+      "description": "Join our mailing list to receive exclusive updates and special offers.",
+      "placeholder": "Enter your email",
+      "buttonText": "Subscribe"
+    },
+    "brandsTitle": "Trusted by Top Brands",
+    "brands": [
+      { "name": "Brand 1", "logo": "/brands/brand1.svg" },
+      { "name": "Brand 2", "logo": "/brands/brand2.svg" },
+      { "name": "Brand 3", "logo": "/brands/brand3.svg" },
+      { "name": "Brand 4", "logo": "/brands/brand4.svg" },
+      { "name": "Brand 5", "logo": "/brands/brand5.svg" }
+    ]
+  },
+  "about": {
+    "title": "Our Story",
+    "imagePath": "/about-us.jpg",
+    "content": "Our family business began with a shared love for books and a dream to create something meaningful together.\n\nWhat started as a small garage project has grown into a trusted shop known for its handpicked collection, personal touch, and commitment to sustainability.\n\nWe believe in the power of storytelling, the value of independent creators, and the joy of sharing great reads with the community. Every book we sell is chosen with care—and every customer becomes part of our extended family."
+  },
+  "contactForm": {
+    "title": "Contact Us",
+    "nameLabel": "Name",
+    "emailLabel": "Email",
+    "messageLabel": "Message",
+    "namePlaceholder": "Your Name",
+    "emailPlaceholder": "you@example.com",
+    "messagePlaceholder": "Your Message",
+    "buttonText": "Send Message",
+    "successMessage": "Your message has been sent successfully!",
+    "errorMessage": "Failed to send message. Please try again later.",
+    "captchaError": "reCAPTCHA is not yet available."
+  },
+  "copyright": "© 2025 Tihomir Ivanov @tishonator. All rights reserved."
+}
