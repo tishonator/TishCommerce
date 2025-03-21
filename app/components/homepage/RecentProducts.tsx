@@ -22,7 +22,7 @@ export default async function RecentProducts() {
         </h2>
 
         {/* Use the same layout as `ProductGrid.tsx` */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 mt-4 md:grid-cols-3 gap-6">
           {recentProducts.map((product: Product) => (
             <ProductCard key={product.ID} product={product} />
           ))}

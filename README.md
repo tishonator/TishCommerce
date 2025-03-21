@@ -12,7 +12,7 @@ TishCommerce is a **database-free, self-hosted eCommerce solution** built with *
 **Order Processing via Email** – No database, just simple email notifications.  
 **Customizable UI** – Tailwind CSS for easy theming.  
 **SEO Optimized** – Fast, indexable product pages.  
-**Deploy Anywhere** – Works on Vercel, Netlify, or any static hosting.  
+**Deploy Anywhere** – Works on Vercel, or any static hosting.  
 
 ---
 
@@ -28,8 +28,7 @@ TishCommerce is a **database-free, self-hosted eCommerce solution** built with *
 **Frontend**: Next.js 15, TypeScript, Tailwind CSS  
 **Storage**: JSON-based file system (No DB required)  
 **Payments**: Stripe API, PayPal API  
-**Hosting**: Vercel, Netlify, or any static hosting  
-**Order Processing**: Serverless email service (Resend API, SendGrid, or SMTP)  
+**Hosting**: Vercel, or any static hosting  
 
 ---
 
@@ -51,6 +50,8 @@ npm install
 **/products.json** - update with your products, including digital goods and subscriptions. Each product entry includes fields like Title, Price, SubscriptionType, and SaleSubscriptionType for flexible pricing. Subscription products can have discounted yearly pricing using SaleSubscriptionType: "year". Customize prices, categories, and images to fit your store.
 
 **/locales/en.json** - update text labels, contact details, menu items, and social links. Modify update `labels` for translations, and adjust `menu` or `footerLinks` as needed. Social links and copyright text can be personalized while keeping the **"Powered by TishCommerce"** attribution.
+
+**/.env.local** – define environment-specific settings such as email delivery, payment integrations, and admin access. This file is used for secrets and flags that control your store’s backend behavior. Do not commit it to version control. If deploying to Vercel, define these environment variables in your project’s Settings → Environment Variables section.
 
 ### Code and TypeScript validation
 ```sh
@@ -74,23 +75,16 @@ Product Listings – Products are stored in a simple products.json file.
 Cart & Checkout – Users add items to cart (stored in LocalStorage).
 Payment Processing – Integrated with PayPal & Stripe APIs.
 Order Confirmation – Orders are emailed to the store owner.
-Digital Product Delivery – Instant download links are generated post-purchase.
 
-### Roadmap
+### Release Notes
 
-##### Phase 1: MVP (Core Features)
+##### 1.0.0: MVP (Core Features) 30-April-2025
 
 - JSON-based product listings
 - Cart stored in LocalStorage
 - Checkout with PayPal/Stripe
 - Orders sent via email
 - Basic JSON Admin Panel
-
-
-##### Phase 2: Enhancements
-
-- Users registration
-- Subscription-Based Digital Products
 
 
 ### License

@@ -54,6 +54,11 @@ interface LocalizationData {
     brandsTitle: string;
     brands: { name: string; logo: string }[];
   };
+  about: {
+    title: string,
+    imagePath: string,
+    content: string
+  },
   copyright: string;
 }
 
@@ -119,6 +124,12 @@ const defaultLocalization: LocalizationData = {
     testimonials: [],
     brandsTitle: 'Trusted by Top Brands',
     brands: []
+  },
+  about: {
+    title: "About Our Family Business",
+    imagePath: "/images/about-us.jpg",
+    content:
+      "We’re a family-owned business dedicated to eco-friendly materials and fair trade practices.\n\nOur mission is to bring you high-quality, sustainable products that make a difference.",
   },
   copyright: "© 2025 Tishonator. All rights reserved.",
 };

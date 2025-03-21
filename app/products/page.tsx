@@ -18,7 +18,9 @@ export default function ProductsPage() {
         <h2 className="text-4xl font-bold text-gray-800 text-center mb-8">
           {localeData.labels.products}
         </h2>
-        <ProductGrid />
+        <div className="mt-2">
+          <ProductGrid />
+        </div>
       </div>
     </section>
   );

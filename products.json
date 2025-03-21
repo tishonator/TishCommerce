@@ -10,10 +10,10 @@
           "Fiction",
           "Dystopian"
        ],
-       "FeatureImageURL":"/books/book-001.jpg",
+       "FeatureImageURL":"/books/book-1.jpg",
        "ProductImageGallery":[
-          "/books/book-001.jpg",
-          "/books/book-001.jpg"
+          "/books/book-a.jpg",
+          "/books/book-b.jpg"
        ],
        "ShortDescription":"A dystopian novel by George Orwell about surveillance and totalitarianism.",
        "LongDescription":"Published in 1949, George Orwell’s '1984' is a cautionary tale about a totalitarian regime that enforces thought control and relentless surveillance. The story follows Winston Smith, a man struggling against the oppressive Party and its leader, Big Brother.",
@@ -34,10 +34,10 @@
           "Fiction",
           "Classic"
        ],
-       "FeatureImageURL":"/books/300x400?text=Mockingbird",
+       "FeatureImageURL":"/books/book-2.jpg",
        "ProductImageGallery":[
-          "/books/300x400?text=Mockingbird-1",
-          "/books/300x400?text=Mockingbird-2"
+          "/books/book-a.jpg",
+          "/books/book-b.jpg"
        ],
        "ShortDescription":"A novel by Harper Lee exploring racial injustice in the Deep South.",
        "LongDescription":"'To Kill a Mockingbird' by Harper Lee is a deeply moving novel set in the racially segregated American South. It follows young Scout Finch as she navigates issues of morality, prejudice, and justice through the trial of Tom Robinson, a Black man falsely accused of a crime.",
@@ -58,10 +58,10 @@
           "Fiction",
           "Classic"
        ],
-       "FeatureImageURL":"/books/300x400?text=Gatsby",
+       "FeatureImageURL":"/books/book-3.jpg",
        "ProductImageGallery":[
-          "/books/300x400?text=Gatsby-1",
-          "/books/300x400?text=Gatsby-2"
+          "/books/book-a.jpg",
+          "/books/book-b.jpg"
        ],
        "ShortDescription":"A novel by F. Scott Fitzgerald depicting the Jazz Age.",
        "LongDescription":"'The Great Gatsby' by F. Scott Fitzgerald is a tragic love story set in the Roaring Twenties. It follows Jay Gatsby, a wealthy and mysterious man, who throws lavish parties in hopes of reuniting with his lost love, Daisy Buchanan.",
@@ -82,10 +82,10 @@
           "Fiction",
           "Adventure"
        ],
-       "FeatureImageURL":"/books/300x400?text=Moby-Dick",
+       "FeatureImageURL":"/books/book-4.jpg",
        "ProductImageGallery":[
-          "/books/300x400?text=Moby-Dick-1",
-          "/books/300x400?text=Moby-Dick-2"
+          "/books/book-a.jpg",
+          "/books/book-b.jpg"
        ],
        "ShortDescription":"A novel by Herman Melville about the obsessive quest for revenge against a white whale.",
        "LongDescription":"Herman Melville’s 'Moby-Dick' is a gripping tale of Captain Ahab’s relentless pursuit of the great white whale. This epic novel explores themes of obsession, revenge, and the human struggle against nature.",
@@ -106,10 +106,10 @@
           "Fiction",
           "Romance"
        ],
-       "FeatureImageURL":"/books/300x400?text=Pride-Prejudice",
+       "FeatureImageURL":"/books/book-5.jpg",
        "ProductImageGallery":[
-          "/books/300x400?text=Pride-1",
-          "/books/300x400?text=Pride-2"
+          "/books/book-a.jpg",
+          "/books/book-b.jpg"
        ],
        "ShortDescription":"A novel by Jane Austen that explores themes of love and social standing.",
        "LongDescription":"Jane Austen’s 'Pride and Prejudice' is a classic romance novel about Elizabeth Bennet and her evolving relationship with the wealthy and reserved Mr. Darcy. It examines themes of pride, class distinctions, and societal expectations in 19th-century England.",
@@ -130,10 +130,10 @@
           "Fiction",
           "Historical"
        ],
-       "FeatureImageURL":"/books/300x400?text=War-Peace",
+       "FeatureImageURL":"/books/book-6.jpg",
        "ProductImageGallery":[
-          "/books/300x400?text=War-Peace-1",
-          "/books/300x400?text=War-Peace-2"
+          "/books/book-a.jpg",
+          "/books/book-b.jpg"
        ],
        "ShortDescription":"A historical novel by Leo Tolstoy that tells the story of Russian society during the Napoleonic Wars.",
        "LongDescription":"One of the greatest novels ever written, War and Peace chronicles the French invasion of Russia and the impact of the Napoleonic era on Tsarist society. With a broad array of characters and intricate storytelling, Tolstoy paints a vivid picture of life, love, and war.",
@@ -154,10 +154,10 @@
           "Fiction",
           "Psychological"
        ],
-       "FeatureImageURL":"/books/300x400?text=Crime-Punishment",
+       "FeatureImageURL":"/books/book-7.jpg",
        "ProductImageGallery":[
-          "/books/300x400?text=Crime-Punishment-1",
-          "/books/300x400?text=Crime-Punishment-2"
+          "/books/book-a.jpg",
+          "/books/book-b.jpg"
        ],
        "ShortDescription":"A novel by Fyodor Dostoevsky that explores guilt, redemption, and moral dilemmas.",
        "LongDescription":"Crime and Punishment is a psychological thriller that follows the young and impoverished Raskolnikov as he commits a murder in St. Petersburg and struggles with guilt and paranoia. The novel delves deep into morality, justice, and the human condition.",
@@ -178,10 +178,10 @@
           "Fiction",
           "Dystopian"
        ],
-       "FeatureImageURL":"/books/300x400?text=Brave-New-World",
+       "FeatureImageURL":"/books/book-8.jpg",
        "ProductImageGallery":[
-          "/books/300x400?text=Brave-New-World-1",
-          "/books/300x400?text=Brave-New-World-2"
+          "/books/book-a.jpg",
+          "/books/book-b.jpg"
        ],
        "ShortDescription":"A dystopian novel by Aldous Huxley exploring the consequences of technological and genetic advancements.",
        "LongDescription":"Set in a futuristic world, Brave New World explores the dangers of a society built on consumerism, technological advancement, and state-controlled happiness. Huxley presents a chilling vision of a world where individuality and freedom are sacrificed for stability.",
@@ -202,10 +202,10 @@
           "Fiction",
           "Classic"
        ],
-       "FeatureImageURL":"/books/300x400?text=Catcher-Rye",
+       "FeatureImageURL":"/books/book-9.jpg",
        "ProductImageGallery":[
-          "/books/300x400?text=Catcher-Rye-1",
-          "/books/300x400?text=Catcher-Rye-2"
+          "/books/book-a.jpg",
+          "/books/book-b.jpg"
        ],
        "ShortDescription":"A novel by J.D. Salinger about teenage alienation and identity crisis.",
        "LongDescription":"Narrated by the cynical teenager Holden Caulfield, The Catcher in the Rye follows his experiences in New York after being expelled from prep school. The novel explores themes of adolescence, alienation, and the struggles of finding one's place in the world.",
@@ -226,10 +226,10 @@
           "Fiction",
           "Fantasy"
        ],
-       "FeatureImageURL":"/books/300x400?text=The-Hobbit",
+       "FeatureImageURL":"/books/book-10.jpg",
        "ProductImageGallery":[
-          "/books/300x400?text=The-Hobbit-1",
-          "/books/300x400?text=The-Hobbit-2"
+          "/books/book-a.jpg",
+          "/books/book-b.jpg"
        ],
        "ShortDescription":"A fantasy novel by J.R.R. Tolkien that follows the adventure of Bilbo Baggins.",
        "LongDescription":"The Hobbit is a timeless fantasy adventure that follows Bilbo Baggins, a humble hobbit, as he is swept into an epic journey to reclaim a treasure guarded by the dragon Smaug. Filled with magic, courage, and heroism, it serves as a prelude to The Lord of the Rings.",

@@ -9,35 +9,33 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   const hasDiscount = parseFloat(product.SalePrice) < parseFloat(product.RegularPrice);
-  const currencySymbol = getCurrencySymbol(product.Currency); // Get currency symbol
+  const currencySymbol = getCurrencySymbol(product.Currency);
 
   return (
     <div className="bg-white shadow-md rounded-lg overflow-hidden transition hover:scale-105">
       {/* Product Image with Link to Product Page */}
       <Link href={`/products/${product.Slug}`}>
-        <div className="relative w-full h-56 cursor-pointer">
+        <div className="w-full">
           <Image
             src={product.FeatureImageURL}
             alt={product.Title}
-            fill
-            className="rounded-t-lg object-cover"
+            width={400}
+            height={0} // height auto
+            className="w-full h-auto object-contain rounded-t-lg"
           />
         </div>
       </Link>
 
       {/* Product Info */}
       <div className="p-6">
-        {/* Title with Link */}
         <h3 className="text-xl font-semibold text-gray-900 truncate">
           <Link href={`/products/${product.Slug}`} className="hover:text-gray-600">
             {product.Title}
           </Link>
         </h3>
 
-        {/* Short Description */}
         <p className="text-gray-700 mt-2 text-sm line-clamp-2">{product.ShortDescription}</p>
 
-        {/* Price Section */}
         <div className="mt-3">
           {hasDiscount ? (
             <div className="flex items-center gap-2">
@@ -50,17 +48,14 @@ export default function ProductCard({ product }: ProductCardProps) {
             </div>
           ) : (
             <span className="text-lg font-bold text-gray-900">
-              {currencySymbol} {product.RegularPrice}
+              {currencySymbol}{product.RegularPrice}
             </span>
           )}
         </div>
 
-        {/* View Product Button */}
         <div className="mt-4">
           <Link href={`/products/${product.Slug}`}>
-            <span
-              className="inline-block bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-full text-sm font-semibold transition"
-            >
+            <span className="inline-block bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-full text-sm font-semibold transition">
               View Product
             </span>
           </Link>

@@ -19,7 +19,7 @@ export default function ProductLightbox({ images }: ProductLightboxProps) {
     <div>
       {/* MAIN IMAGE (Click to Open Lightbox) */}
       <div
-        className="relative w-full h-96 cursor-pointer"
+        className="w-full cursor-pointer"
         onClick={() => {
           setLightboxIndex(0);
           setLightboxOpen(true);
@@ -28,14 +28,15 @@ export default function ProductLightbox({ images }: ProductLightboxProps) {
         <Image
           src={images[0]}
           alt="Main Product Image"
-          layout="fill"
-          className="rounded-lg object-cover"
+          width={800}
+          height={0} // auto height
+          className="w-full h-auto object-contain rounded-lg border"
           priority
         />
       </div>
 
       {/* IMAGE GALLERY (Below Main Image) */}
-      <div className="flex gap-2 mt-4">
+      <div className="flex gap-2 mt-4 flex-wrap">
         {images.slice(1).map((image, index) => (
           <div
             key={index}
@@ -48,8 +49,9 @@ export default function ProductLightbox({ images }: ProductLightboxProps) {
             <Image
               src={image}
               alt={`Gallery image ${index + 1}`}
-              layout="fill"
-              className="object-cover"
+              width={96}
+              height={96}
+              className="object-contain w-full h-full"
             />
           </div>
         ))}

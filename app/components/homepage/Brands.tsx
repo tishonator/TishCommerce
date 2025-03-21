@@ -15,7 +15,7 @@ export default function Brands() {
         <h2 className="text-3xl font-bold text-gray-800 mb-8">{homepage.brandsTitle}</h2>
 
         {/* Brand Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 gap-6 items-center justify-center">
+        <div className="grid grid-cols-1 mt-2 sm:grid-cols-3 md:grid-cols-5 gap-6 items-center justify-center">
           {homepage.brands.map((brand, index) => (
             <div key={index} className="flex justify-center">
               <Image

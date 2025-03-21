@@ -23,15 +23,15 @@
     "recentProducts": "Recent Products"
   },
   "menu": [
-    { "label": "Homepage", "href": "/" },
+    { "label": "Home", "href": "/" },
     { "label": "Products", "href": "/products" },
-    { "label": "News", "href": "/news" },
-    { "label": "Contacts", "href": "/contactus" }
+    { "label": "About", "href": "/about" },
+    { "label": "Contact", "href": "/contact" }
   ],
   "footerLinks": [
     { "label": "Home", "href": "/" },
     { "label": "Products", "href": "/products" },
-    { "label": "Pricing", "href": "/pricing" },
+    { "label": "About", "href": "/about" },
     { "label": "Contact", "href": "/contact" }
   ],
   "socialLinks": [
@@ -50,7 +50,7 @@
     },
     "brandStory": {
       "title": "Our Story",
-      "description": "We’re a family-owned business dedicated to eco-friendly materials and fair trade practices. Our mission is to bring you high-quality, sustainable products that make a difference.",
+      "description": "Founded by three generations of passionate book lovers, our family-run store is built on a love for storytelling and community. We take pride in offering handpicked titles, personalized service, and a warm, welcoming experience for every reader.",
       "buttonText": "Read More",
       "ctaLink": "/about"
     },
@@ -59,21 +59,21 @@
       {
         "id": 1,
         "name": "Jessica B.",
-        "avatar": "/images/user1.jpg",
+        "avatar": "/user1.jpg",
         "rating": 4.5,
         "review": "These shoes changed my life! Comfortable and stylish."
       },
       {
         "id": 2,
         "name": "Ethan Walker",
-        "avatar": "/images/user2.jpg",
+        "avatar": "/user2.jpg",
         "rating": 4,
         "review": "The best purchase I made this year. The quality is outstanding!"
       },
       {
         "id": 3,
         "name": "Sophia Martinez",
-        "avatar": "/images/user3.jpg",
+        "avatar": "/user3.jpg",
         "rating": 5,
         "review": "Exceptional customer service and fast delivery. Highly recommend!"
       }
@@ -86,17 +86,30 @@
     },
     "brandsTitle": "Trusted by Top Brands",
     "brands": [
-      { "name": "Brand 1", "logo": "/images/brands/1.png" },
-      { "name": "Brand 2", "logo": "/images/brands/2.png" },
-      { "name": "Brand 3", "logo": "/images/brands/3.png" },
-      { "name": "Brand 4", "logo": "/images/brands/4.png" },
-      { "name": "Brand 5", "logo": "/images/brands/5.png" },
-      { "name": "Brand 6", "logo": "/images/brands/6.png" },
-      { "name": "Brand 7", "logo": "/images/brands/7.png" },
-      { "name": "Brand 8", "logo": "/images/brands/8.png" },
-      { "name": "Brand 9", "logo": "/images/brands/9.png" },
-      { "name": "Brand 10", "logo": "/images/brands/10.png" }
+      { "name": "Brand 1", "logo": "/brands/brand1.svg" },
+      { "name": "Brand 2", "logo": "/brands/brand2.svg" },
+      { "name": "Brand 3", "logo": "/brands/brand3.svg" },
+      { "name": "Brand 4", "logo": "/brands/brand4.svg" },
+      { "name": "Brand 5", "logo": "/brands/brand5.svg" }
     ]
   },
-  "copyright": "© 2025 Tishonator. All rights reserved."
+  "about": {
+    "title": "Our Story",
+    "imagePath": "/about-us.jpg",
+    "content": "Our family business began with a shared love for books and a dream to create something meaningful together.\n\nWhat started as a small garage project has grown into a trusted shop known for its handpicked collection, personal touch, and commitment to sustainability.\n\nWe believe in the power of storytelling, the value of independent creators, and the joy of sharing great reads with the community. Every book we sell is chosen with care—and every customer becomes part of our extended family."
+  },
+  "contactForm": {
+    "title": "Contact Us",
+    "nameLabel": "Name",
+    "emailLabel": "Email",
+    "messageLabel": "Message",
+    "namePlaceholder": "Your Name",
+    "emailPlaceholder": "you@example.com",
+    "messagePlaceholder": "Your Message",
+    "buttonText": "Send Message",
+    "successMessage": "Your message has been sent successfully!",
+    "errorMessage": "Failed to send message. Please try again later.",
+    "captchaError": "reCAPTCHA is not yet available."
+  },
+  "copyright": "© 2025 Tihomir Ivanov @tishonator. All rights reserved."
 }

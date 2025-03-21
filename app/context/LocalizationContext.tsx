@@ -29,6 +29,24 @@ interface LocalizationData {
       buttonText: string;
     };
   };
+  about: {
+    title: string;
+    imagePath: string;
+    content: string;
+  };
+  contactForm: {
+    title: string;
+    nameLabel: string;
+    emailLabel: string;
+    messageLabel: string;
+    namePlaceholder: string;
+    emailPlaceholder: string;
+    messagePlaceholder: string;
+    buttonText: string;
+    successMessage: string;
+    errorMessage: string;
+    captchaError: string;
+  };
   email: string;
   phone: string;
   address: string;

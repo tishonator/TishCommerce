@@ -85,9 +85,9 @@ export default async function ProductPage({
   return (
     <section className="py-12 bg-stone-100">
       <div className="container mx-auto px-4">
-        <h1 className="text-3xl font-bold text-gray-800">{product.Title}</h1>
+        <h1 className="text-3xl font-bold text-center text-gray-800">{product.Title}</h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+        <div className="grid mt-2 grid-cols-1 md:grid-cols-2 gap-6 mt-6">
           {/* LEFT COLUMN: IMAGES */}
           <ProductLightbox images={[product.FeatureImageURL, ...product.ProductImageGallery]} />
 
