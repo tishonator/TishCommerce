@@ -1,4 +1,4 @@
-import ProductCard from "../products/ProductCard";
+import ProductCardWithProvider from "../products/ProductCardWithProvider";
 import { getLocalization } from "../../utils/getLocalization";
 import getProducts from "../../utils/getProducts";
 import { Product } from "../../../types/Product";
@@ -8,7 +8,7 @@ export default async function RecentProducts() {
   const labels = localeData.labels;
 
   const allProducts = await getProducts();
-  const recentProducts = allProducts.slice(0, 3); // Get the 3 most recent products
+  const recentProducts = allProducts.slice(0, 3);
 
   if (recentProducts.length === 0) {
     return <p className="text-center text-gray-500">{labels.noProductsFound}</p>;
@@ -21,10 +21,9 @@ export default async function RecentProducts() {
           {labels.recentProducts}
         </h2>
 
-        {/* Use the same layout as `ProductGrid.tsx` */}
         <div className="grid grid-cols-1 sm:grid-cols-2 mt-4 md:grid-cols-3 gap-6">
           {recentProducts.map((product: Product) => (
-            <ProductCard key={product.ID} product={product} />
+            <ProductCardWithProvider key={product.ID} product={product} />
           ))}
         </div>
       </div>

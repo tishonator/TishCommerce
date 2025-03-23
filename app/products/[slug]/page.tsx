@@ -4,6 +4,7 @@ import { getProductBySlug } from "../../utils/getProducts";
 import { getCurrencySymbol } from "../../utils/getCurrencySymbol";
 import ProductLightbox from "../../components/products/ProductLightbox";
 import { getLocalization } from "../../utils/getLocalization";
+import AddToCartButtonWrapper from "../../components/products/AddToCartButtonWrapper";
 
 // Define a type for route params as a Promise
 type AsyncParams = Promise<{ slug?: string }>;
@@ -95,6 +96,10 @@ export default async function ProductPage({
           <div>
             <p className="text-lg text-gray-700">{product.ShortDescription}</p>
             <div className="mt-4">{priceBlock}</div>
+
+            <div className="mt-4">
+              <AddToCartButtonWrapper product={product} />
+            </div>
           </div>
         </div>
 

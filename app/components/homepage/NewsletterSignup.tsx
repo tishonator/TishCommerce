@@ -43,7 +43,7 @@ export default function NewsletterSignup() {
             onChange={(e) => setEmail(e.target.value)}
             placeholder={newsletter.placeholder}
             required
-            className="px-4 py-3 w-72 border border-gray-300 rounded-l-md focus:outline-none"
+            className="px-4 py-3 w-72 border border-gray-300 bg-white rounded-l-md focus:outline-none"
           />
           <button
             type="submit"

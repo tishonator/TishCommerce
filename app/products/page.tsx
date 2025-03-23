@@ -1,6 +1,7 @@
 import ProductGrid from "../components/products/ProductGrid";
 import { getLocalization } from "../utils/getLocalization";
 import type { Metadata } from "next";
+import { ReduxProvider } from "../providers";
 
 // Fetch localization data
 const localeData = getLocalization();
@@ -19,7 +20,9 @@ export default function ProductsPage() {
           {localeData.labels.products}
         </h2>
         <div className="mt-2">
-          <ProductGrid />
+          <ReduxProvider>
+            <ProductGrid />
+          </ReduxProvider>
         </div>
       </div>
     </section>

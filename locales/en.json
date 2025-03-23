@@ -20,7 +20,17 @@
     "noProductsFound": "No products found...",
     "productDetails": "Product Details",
     "products": "Products",
-    "recentProducts": "Recent Products"
+    "recentProducts": "Recent Products",
+    "addToCart": "Add to Cart",
+    "cartEmpty": "Your cart is empty.",
+    "viewCart": "View Cart",
+    "total": "Total",
+    "quantity": "Quantity",
+    "proceedToCheckout": "Proceed to Checkout",
+    "remove": "Remove",
+    "unitPrice": "Unit Price",
+    "productTotal": "Product Total",
+    "cartTitle": "Your Shopping Cart"
   },
   "menu": [
     { "label": "Home", "href": "/" },
