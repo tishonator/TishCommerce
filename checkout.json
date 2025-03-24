@@ -1,0 +1,54 @@
+{
+    "shippingMethods": [
+      {
+        "id": "standard",
+        "name": "Standard Shipping (5–7 days)",
+        "price": 5.00,
+        "currency": "USD"
+      },
+      {
+        "id": "express",
+        "name": "Express Shipping (2–3 days)",
+        "price": 15.00,
+        "currency": "USD"
+      },
+      {
+        "id": "overnight",
+        "name": "Overnight Shipping",
+        "price": 25.00,
+        "currency": "USD"
+      }
+    ],
+    "shippingCountries": [
+      { "code": "US", "name": "United States" },
+      { "code": "CA", "name": "Canada" },
+      { "code": "GB", "name": "United Kingdom" },
+      { "code": "DE", "name": "Germany" },
+      { "code": "FR", "name": "France" }
+    ],
+    "billingCountries": [
+      { "code": "US", "name": "United States" },
+      { "code": "CA", "name": "Canada" },
+      { "code": "GB", "name": "United Kingdom" },
+      { "code": "DE", "name": "Germany" },
+      { "code": "FR", "name": "France" }
+    ],
+    "paymentMethods": [
+      {
+        "id": "cod",
+        "name": "Cash on Delivery",
+        "enabled": true
+      },
+      {
+        "id": "paypal",
+        "name": "PayPal",
+        "enabled": true
+      },
+      {
+        "id": "stripe",
+        "name": "Stripe (Credit/Debit Card)",
+        "enabled": true
+      }
+    ]
+  }
+  
