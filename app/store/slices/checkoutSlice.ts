@@ -15,6 +15,8 @@ interface FormData {
 }
 
 interface CheckoutState {
+  orderId: string;
+  orderDate: string;
   shippingForm: FormData;
   billingForm: FormData;
   shippingMethodId: string;
@@ -35,6 +37,8 @@ const initialForm: FormData = {
 };
 
 const initialState: CheckoutState = {
+  orderId: "",
+  orderDate: "",
   shippingForm: initialForm,
   billingForm: initialForm,
   shippingMethodId: "",
@@ -45,6 +49,10 @@ const checkoutSlice = createSlice({
   name: "checkout",
   initialState,
   reducers: {
+    setOrderInfo(state, action: PayloadAction<{ id: string; date: string }>) {
+      state.orderId = action.payload.id;
+      state.orderDate = action.payload.date;
+    },
     setShippingForm(state, action: PayloadAction<Partial<FormData>>) {
       state.shippingForm = { ...state.shippingForm, ...action.payload };
     },
@@ -61,6 +69,7 @@ const checkoutSlice = createSlice({
 });
 
 export const {
+  setOrderInfo,
   setShippingForm,
   setBillingForm,
   setShippingMethod,

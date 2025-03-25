@@ -25,6 +25,8 @@ interface LocalizationData {
     productDetails: string;
     products: string;
     recentProducts: string;
+    orderConfirmationTitle: string;
+    orderConfirmationMessage: string;
   };
   menu: { label: string; href: string }[];
   footerLinks: { label: string; href: string }[];
@@ -86,6 +88,8 @@ const defaultLocalization: LocalizationData = {
     productDetails: "Product Details",
     products: "Products",
     recentProducts: "Recent Products",
+    orderConfirmationTitle: "Your Order Confirmation",
+    orderConfirmationMessage: "Your order was placed successfully. We’ll notify you once it’s processed.",
   },
   menu: [
     { label: "Homepage", href: "/" },

@@ -1,9 +1,10 @@
 import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
 
 export async function POST(req: Request) {
   const { name, email, message, token } = await req.json();
 
+  // Step 1: reCAPTCHA Validation
   const verifyRes = await fetch(
     `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`,
     {
@@ -14,37 +15,30 @@ export async function POST(req: Request) {
   const captchaValidation = await verifyRes.json();
 
   if (!captchaValidation.success || captchaValidation.score < 0.5) {
-    return NextResponse.json({ success: false, message: 'CAPTCHA verification failed.' }, { status: 400 });
+    return NextResponse.json(
+      { success: false, message: 'CAPTCHA verification failed.' },
+      { status: 400 }
+    );
   }
 
-  const transporter = nodemailer.createTransport({
-    host: process.env.EMAIL_HOST,
-    port: Number(process.env.EMAIL_PORT),
-    secure: process.env.EMAIL_SECURE === 'true',
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASSWORD,
-    },
-    authMethod: process.env.EMAIL_AUTHMETHOD,
-    tls: {
-      minVersion: 'TLSv1.2', // Ensuring compatibility with modern TLS
-      rejectUnauthorized: false, // Disable certificate verification (only if needed)
-    },
-  });
+  // Step 2: Setup Resend
+  const resend = new Resend(process.env.RESEND_API_KEY);
 
   try {
-    await transporter.sendMail({
-      from: email,
-      to: process.env.RECEIVING_EMAIL,
+    await resend.emails.send({
+      from: process.env.RESEND_FROM_EMAIL!,
+      to: process.env.ADMIN_EMAIL!,
       subject: `Contact Form Submission from ${name}`,
-      html: `<p><strong>Name:</strong> ${name}</p>
-             <p><strong>Email:</strong> ${email}</p>
-             <p><strong>Message:</strong> ${message}</p>`,
+      html: `
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Message:</strong><br/>${message.replace(/\n/g, '<br/>')}</p>
+      `,
     });
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error(error);
+    console.error('❌ Failed to send email via Resend:', error);
     return NextResponse.json({ success: false }, { status: 500 });
   }
 }

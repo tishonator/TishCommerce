@@ -1,6 +1,7 @@
 # TishCommerce - Database-Free eCommerce Solution  
 
-TishCommerce is a **database-free, self-hosted eCommerce solution** built with **Next.js 15, TypeScript, Tailwind CSS, and Redux**. It is designed for developers and small business owners who want to sell products online **without paying monthly SaaS fees** like Shopify, Snipcart, or Medusa.
+**TishCommerce** is a **database-free, self-hosted eCommerce solution** built with **Next.js 15, TypeScript, Tailwind CSS, and Redux**. It’s optimized for **small stores** with up to **200 products**, making it ideal for **independent developers and small business owners** who want to sell online **without monthly SaaS fees** like Shopify, Snipcart, or Medusa.
+
 
 ## Live Demo
 https://tishcommerce.vercel.app/
@@ -14,7 +15,7 @@ https://tishcommerce.vercel.app/
 - **Cart & Checkout** – LocalStorage cart + Stripe, PayPal, and Cash on Delivery checkout. 
 - **Newsletter Integration (MailChimp)** – Capture leads via a newsletter signup connected to your MailChimp list.
 - **Contact Form with Google reCAPTCHA v3** – Protects your inbox from spam while collecting user inquiries.
-- **Order Processing via Email** – No database, just simple email notifications.
+- **Order Processing via Email (Resend)** – Uses Resend to send order notifications to admins and customers. 
 - **SEO Optimized** – Fast, indexable product pages.  
 - **Deploy Anywhere** – Works on Vercel, or any static hosting.  
 
@@ -73,10 +74,24 @@ Use this to customize language, structure, and brand messaging across your store
 
 This file allows you to customize your checkout options without any backend logic. It’s perfect for adjusting your business model or enabling/disabling services easily.
 
-**/.env.local** - Stores sensitive environment variables and runtime configuration like:
-- Email service API keys (e.g. Resend, SendGrid, SMTP)
-- Payment gateways (e.g. Stripe secret key, PayPal client ID)
-- Admin passwords, reCAPTCHA keys, feature flags
+**/.env.local** – Stores sensitive environment variables and runtime configuration for your store:
+
+- **Newsletter (Mailchimp)**  
+  - `MAILCHIMP_API_KEY` – Your Mailchimp API key  
+  - `MAILCHIMP_AUDIENCE_ID` – ID of your Mailchimp Audience/List  
+  - `MAILCHIMP_SERVER_PREFIX` – Server prefix from your Mailchimp account (e.g., `us19`, `us8`)
+
+- **Google reCAPTCHA v3**  
+  - `RECAPTCHA_SECRET_KEY` – Server-side reCAPTCHA key  
+  - `NEXT_PUBLIC_RECAPTCHA_SITE_KEY` – Client-side reCAPTCHA key  
+
+- **Email Notifications (Resend)**  
+  - `RESEND_API_KEY` – Resend API key for sending transactional emails  
+  - `RESEND_FROM_EMAIL` – Verified sender email address  
+
+- **Admin**  
+  - `ADMIN_EMAIL` – Email address where new order notifications are sent
+
 
 Note: Never commit this file to Git or public repositories.
 

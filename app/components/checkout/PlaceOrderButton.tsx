@@ -18,6 +18,8 @@ export default function PlaceOrderButton() {
   const billingForm = useAppSelector((state) => state.checkout.billingForm);
   const shippingMethodId = useAppSelector((state) => state.checkout.shippingMethodId);
   const paymentMethodId = useAppSelector((state) => state.checkout.paymentMethodId);
+  const orderId = useAppSelector((state) => state.checkout.orderId);
+  const orderDate = useAppSelector((state) => state.checkout.orderDate);
 
   const [errorMsg, setErrorMsg] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -60,6 +62,8 @@ export default function PlaceOrderButton() {
 
     const shippingMethod = shippingMethods.find((s) => s.id === shippingMethodId);
     const orderData = {
+      orderId,
+      orderDate,
       cartItems,
       shippingForm,
       billingForm,
@@ -97,7 +101,10 @@ export default function PlaceOrderButton() {
     <div className="mt-6">
       <button
         onClick={handlePlaceOrder}
-        className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-md transition"
+        className={`w-full text-white font-semibold py-3 px-4 rounded-md transition
+          ${isLoading
+            ? "bg-gray-400 cursor-not-allowed"
+            : "bg-green-600 hover:bg-green-700"}`}
         disabled={isLoading}
       >
         {isLoading

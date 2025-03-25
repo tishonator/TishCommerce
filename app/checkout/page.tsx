@@ -1,5 +1,4 @@
-// app/checkout/page.tsx
-
+import OrderInfoInitializer from "../components/checkout/OrderInfoInitializer";
 import ShippingForm from "../components/checkout/ShippingForm";
 import ShippingMethod from "../components/checkout/ShippingMethod";
 import BillingForm from "../components/checkout/BillingForm";
@@ -17,6 +16,7 @@ export default function CheckoutPage() {
           <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Left Column - Main Forms */}
             <div className="lg:col-span-2 space-y-8">
+              <OrderInfoInitializer />
               <ShippingForm />
               <ShippingMethod />
               <BillingForm />

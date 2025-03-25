@@ -54,7 +54,9 @@
     "orderFailed": "Failed to place order. Please try again.",
     "sameAsShipping": "Same as Shipping",
     "orderConfirmationMessage": "Your order was placed successfully. We’ll notify you once it’s processed.",
-    "orderDetails": "Order Details"
+    "orderDetails": "Order Details",
+    "orderId": "Order ID",
+    "orderDate": "Order Date"
   },
   "menu": [
     { "label": "Home", "href": "/" },

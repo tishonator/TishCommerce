@@ -22,6 +22,7 @@ interface CheckoutSettings {
     id: string;
     name: string;
     enabled: boolean;
+    icon: string;
   }[];
 }
 

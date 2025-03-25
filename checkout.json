@@ -37,17 +37,20 @@
       {
         "id": "cod",
         "name": "Cash on Delivery",
-        "enabled": true
+        "enabled": true,
+        "icon": "/payments/cash.png"
       },
       {
         "id": "paypal",
         "name": "PayPal",
-        "enabled": true
+        "enabled": true,
+        "icon": "/payments/paypal.png"
       },
       {
         "id": "stripe",
         "name": "Stripe (Credit/Debit Card)",
-        "enabled": true
+        "enabled": true,
+        "icon": "/payments/stripe.png"
       }
     ]
   }

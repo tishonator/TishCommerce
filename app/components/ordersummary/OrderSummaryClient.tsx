@@ -33,6 +33,8 @@ interface ShippingMethod {
 }
 
 interface OrderData {
+  orderId: string;
+  orderDate: string;
   cartItems: CartItem[];
   shippingForm: Address;
   billingForm: Address;
@@ -87,11 +89,16 @@ export default function OrderSummaryClient() {
       <h1 className="text-3xl font-bold text-gray-800 mb-4">
         {labels.orderSummary || "Order Summary"}
       </h1>
-      <p className="text-gray-600 mb-8">
+      <p className="text-gray-600 mt-3 mb-8">
         {labels.orderConfirmationMessage ||
           "Your order was placed successfully. We’ll notify you once it’s processed."}
       </p>
-
+      <p className="text-sm text-gray-600 mb-4">
+        {labels.orderId || "Order ID"}: {order.orderId}
+      </p>
+      <p className="text-sm text-gray-600 mb-4">
+        {labels.orderDate || "Order Date"}: {order.orderDate}
+      </p>
       <div className="bg-white p-6 rounded-md shadow-md">
         <h2 className="text-xl font-semibold text-gray-700 mb-4">
           {labels.orderDetails || "Order Details"}

@@ -124,6 +124,13 @@ export default function MiniCart() {
               >
                 {labels.viewCart || "View Cart"}
               </Link>
+
+              <Link
+                href="/checkout"
+                className="mt-4 inline-block w-full text-center bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-md text-sm font-semibold transition"
+              >
+                {labels.proceedToCheckout || "Proceed to Checkout"}
+              </Link>
             </>
           )}
         </div>
