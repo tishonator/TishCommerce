@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 
-// Define the shape of checkout.json
+// Define the shape of configs/checkout.json
 interface CheckoutSettings {
   shippingMethods: {
     id: string;

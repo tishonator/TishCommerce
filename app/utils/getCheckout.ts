@@ -54,11 +54,11 @@ const defaultCheckoutSettings: CheckoutSettings = {
 // Fetch Checkout Settings
 export const getCheckoutSettings = (): CheckoutSettings => {
   try {
-    const filePath = path.join(process.cwd(), "checkout.json");
+    const filePath = path.join(process.cwd(), "configs/checkout.json");
     const fileData = fs.readFileSync(filePath, "utf-8");
     return JSON.parse(fileData) as CheckoutSettings;
   } catch (error) {
-    console.error("Error loading checkout.json:", error);
+    console.error("Error loading configs/checkout.json:", error);
     return defaultCheckoutSettings;
   }
 };

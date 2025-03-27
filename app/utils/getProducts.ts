@@ -5,7 +5,7 @@ import { Product } from "../../types/Product";
 // Define function to get all products
 export default async function getProducts(): Promise<Product[]> {
   try {
-    const filePath = path.join(process.cwd(), "products.json");
+    const filePath = path.join(process.cwd(), "configs/products.json");
 
     if (!fs.existsSync(filePath)) {
       return [];
@@ -22,7 +22,7 @@ export default async function getProducts(): Promise<Product[]> {
 // Function to get a product by slug
 export function getProductBySlug(slug: string): Product | undefined {
   try {
-    const filePath = path.join(process.cwd(), "products.json");
+    const filePath = path.join(process.cwd(), "configs/products.json");
 
     if (!fs.existsSync(filePath)) {
       return undefined;

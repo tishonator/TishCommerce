@@ -141,7 +141,7 @@ const defaultLocalization: LocalizationData = {
 // Fetch Localization Data
 export const getLocalization = (): LocalizationData => {
   try {
-    const localePath = path.join(process.cwd(), "locales/en.json");
+    const localePath = path.join(process.cwd(), "configs/locale.en.json");
     const data = fs.readFileSync(localePath, "utf-8");
     return JSON.parse(data) as LocalizationData;
   } catch (error) {

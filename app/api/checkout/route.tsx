@@ -3,7 +3,7 @@ import { getCheckoutSettings } from "../../utils/getCheckout"; // Use centralize
 
 export async function GET() {
   try {
-    const checkoutData = getCheckoutSettings(); // Fetch data from checkout.json
+    const checkoutData = getCheckoutSettings(); // Fetch data from configs/checkout.json
     return NextResponse.json(checkoutData);
   } catch (error) {
     console.error("Error loading checkout file:", error);

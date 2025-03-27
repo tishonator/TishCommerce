@@ -51,14 +51,14 @@ npm install
 
 ### Configuration
 
-**/products.json** - Contains all the product data for your store. Each product includes fields like:
+**/configs/products.json** - Contains all the product data for your store. Each product includes fields like:
 - ID, Title, Slug, ShortDescription, LongDescription
 - RegularPrice, SalePrice, Currency, FeatureImageURL
 - ProductImageGallery, Category, SubscriptionType, etc.
 
 This file is the source of truth for product listings shown on the site and is fully editable without a database. You can manage physical or digital products here.
 
-**/locales/en.json** - Manages all localized content for your store’s interface including:
+**/configs/locale.en.json** - Manages all localized content for your store’s interface including:
 - UI labels (buttons, messages)
 - Navigation menu items
 - Footer and contact info
@@ -67,7 +67,7 @@ This file is the source of truth for product listings shown on the site and is f
 
 Use this to customize language, structure, and brand messaging across your storefront.
 
-**/checkout.json** - Defines all settings related to the checkout experience:
+**/configs/checkout.json** - Defines all settings related to the checkout experience:
 - Shipping Methods: Names, prices, and currencies
 - Available Countries: Separate lists for shipping and billing countries
 - Payment Methods: Includes Stripe, PayPal, and Cash on Delivery with enable/disable flags
