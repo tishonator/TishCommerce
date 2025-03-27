@@ -92,6 +92,10 @@ This file allows you to customize your checkout options without any backend logi
 - **Admin**  
   - `ADMIN_EMAIL` – Email address where new order notifications are sent
 
+- **Payment (PayPal)**
+  - `PAYPAL_USE_SANDBOX` – true to use PayPal sandbox (for testing), false for live transactions
+  - `NEXT_PUBLIC_PAYPAL_CLIENT_ID` – PayPal Client ID (sandbox or live, depending on the flag)
+  - `PAYPAL_CLIENT_SECRET` – PayPal Client Secret (used server-side to capture/verify orders)
 
 Note: Never commit this file to Git or public repositories.
 

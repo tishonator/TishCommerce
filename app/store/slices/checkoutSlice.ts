@@ -1,7 +1,7 @@
 // Purpose: Redux slice to manage checkout state (shipping method, billing/shipping forms, payment method)
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface FormData {
+export interface FormData {
   firstName: string;
   lastName: string;
   country: string;
@@ -14,13 +14,15 @@ interface FormData {
   email: string;
 }
 
-interface CheckoutState {
+export interface CheckoutState {
   orderId: string;
   orderDate: string;
   shippingForm: FormData;
   billingForm: FormData;
   shippingMethodId: string;
   paymentMethodId: string;
+  isPayPalApproved: boolean; // new field
+  payPalOrderID: string; // optional: store PayPal order ID
 }
 
 const initialForm: FormData = {
@@ -43,6 +45,8 @@ const initialState: CheckoutState = {
   billingForm: initialForm,
   shippingMethodId: "",
   paymentMethodId: "",
+  isPayPalApproved: false,
+  payPalOrderID: ""
 };
 
 const checkoutSlice = createSlice({
@@ -65,6 +69,12 @@ const checkoutSlice = createSlice({
     setPaymentMethod(state, action: PayloadAction<string>) {
       state.paymentMethodId = action.payload;
     },
+    setPayPalApproved(state, action: PayloadAction<boolean>) {
+      state.isPayPalApproved = action.payload;
+    },
+    setPayPalOrderID(state, action: PayloadAction<string>) {
+      state.payPalOrderID = action.payload;
+    },    
   },
 });
 
@@ -74,6 +84,8 @@ export const {
   setBillingForm,
   setShippingMethod,
   setPaymentMethod,
+  setPayPalApproved,
+  setPayPalOrderID
 } = checkoutSlice.actions;
 
 export default checkoutSlice.reducer;

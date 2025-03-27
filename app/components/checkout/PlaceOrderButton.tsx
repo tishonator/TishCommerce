@@ -56,6 +56,12 @@ export default function PlaceOrderButton() {
   };
 
   const handlePlaceOrder = async () => {
+    // Note: Only Cash on Delivery should trigger this button
+    if (paymentMethodId !== "cod") {
+      setErrorMsg("Please select Cash on Delivery to place the order here.");
+      return;
+    }
+
     if (!validate()) return;
 
     setIsLoading(true);
