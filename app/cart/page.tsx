@@ -9,6 +9,7 @@ import Link from "next/link";
 import { removeFromCart, updateQuantity } from "../store/slices/cartSlice";
 import { showMiniCart } from "../utils/MiniCartController";
 import { X, Plus, Minus } from "lucide-react";
+import PayPalBasketExpressWrapper from "../components/paypal/PayPalBasketExpressWrapper";
 
 function CartContent() {
   const { labels } = useLocalization();
@@ -97,17 +98,27 @@ function CartContent() {
               })}
             </div>
 
-            <div className="mt-8 text-right">
+            <div className="mt-8 text-right space-y-4">
               <p className="text-xl font-semibold text-gray-800">
                 {labels.total || "Total"}: ${total.toFixed(2)}
               </p>
+
+              {/* PayPal Button Above Checkout Button */}
+              <div className="flex justify-end">
+                <div className="w-[260px]"> {/* Customize width as needed */}
+                  <PayPalBasketExpressWrapper />
+                </div>
+              </div>
+
+              {/* Checkout Button Below */}
               <Link
                 href="/checkout"
-                className="inline-block mt-4 bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-md text-sm font-semibold transition"
+                className="inline-block bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-md text-sm font-semibold transition"
               >
                 {labels.proceedToCheckout || "Proceed to Checkout"}
               </Link>
             </div>
+
           </>
         )}
       </div>
