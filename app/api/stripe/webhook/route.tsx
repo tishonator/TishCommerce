@@ -1,8 +1,4 @@
-import { buffer } from "micro";
 import Stripe from "stripe";
-import { NextApiRequest, NextApiResponse } from "next";
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {});
 
 export const config = {
   api: {
@@ -10,33 +6,41 @@ export const config = {
   },
 };
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method === "POST") {
-    const sig = req.headers["stripe-signature"]!;
-    const buf = await buffer(req);
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {});
 
-    try {
-      const event = stripe.webhooks.constructEvent(
-        buf.toString(),
-        sig,
-        process.env.STRIPE_WEBHOOK_SECRET!
-      );
+export async function POST(req: Request) {
+  const sig = req.headers.get("stripe-signature");
 
-      if (event.type === "payment_intent.succeeded") {
-        const paymentIntent = event.data.object as Stripe.PaymentIntent;
-        console.log("✅ Payment succeeded:", paymentIntent.id);
-      }
-
-      return res.status(200).send("ok");
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        console.error("❌ Webhook error:", err.message);
-        return res.status(400).send(`Webhook Error: ${err.message}`);
-      }
-      return res.status(400).send("Webhook Error: Unknown error");
-    }
+  if (!sig) {
+    return new Response("Missing Stripe signature", { status: 400 });
   }
 
-  res.setHeader("Allow", "POST");
-  res.status(405).end("Method Not Allowed");
+  let rawBody: string;
+
+  try {
+    rawBody = await req.text();
+  } catch {
+    return new Response("Failed to read request body", { status: 400 });
+  }
+
+  let event: Stripe.Event;
+
+  try {
+    event = stripe.webhooks.constructEvent(
+      rawBody,
+      sig,
+      process.env.STRIPE_WEBHOOK_SECRET!
+    );
+  } catch (err) {
+    const message = err instanceof Error ? err.message : "Unknown error";
+    console.error("❌ Webhook error:", message);
+    return new Response(`Webhook Error: ${message}`, { status: 400 });
+  }
+
+  if (event.type === "payment_intent.succeeded") {
+    const paymentIntent = event.data.object as Stripe.PaymentIntent;
+    console.log("✅ Payment succeeded:", paymentIntent.id);
+  }
+
+  return new Response("ok", { status: 200 });
 }
