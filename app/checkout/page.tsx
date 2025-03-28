@@ -3,7 +3,7 @@ import ShippingForm from "../components/checkout/ShippingForm";
 import ShippingMethod from "../components/checkout/ShippingMethod";
 import BillingForm from "../components/checkout/BillingForm";
 import OrderSummary from "../components/checkout/OrderSummary";
-import PaymentMethod from "../components/checkout/PaymentMethod";
+import PaymentMethods from "../components/checkout/PaymentMethods";
 import { CheckoutProvider } from "../context/CheckoutContext";
 import { ReduxProvider } from "../providers";
 
@@ -19,7 +19,7 @@ export default function CheckoutPage() {
               <ShippingForm />
               <ShippingMethod />
               <BillingForm />
-              <PaymentMethod />
+              <PaymentMethods />
             </div>
 
             {/* Right Column - Order Summary */}

@@ -5,10 +5,11 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { setPaymentMethod } from "../../store/slices/checkoutSlice";
 import { useLocalization } from "../../context/LocalizationContext";
 import PayPalButton from "./PayPalButton";
+import StripeClientSecretLoader from "./StripeClientSecretLoader";
 import PlaceOrderButton from "./PlaceOrderButton";
 import Image from "next/image";
 
-export default function PaymentMethod() {
+export default function PaymentMethods() {
   const { labels } = useLocalization();
   const { paymentMethods } = useCheckoutSettings();
   const dispatch = useAppDispatch();
@@ -101,6 +102,12 @@ export default function PaymentMethod() {
               {method.id === "cod" && selectedMethodId === "cod" && (
                 <div className="mt-4 ml-6">
                   <PlaceOrderButton />
+                </div>
+              )}
+
+              {method.id === "stripe" && selectedMethodId === "stripe" && formReady && (
+                <div className="mt-4 ml-6">
+                  <StripeClientSecretLoader />
                 </div>
               )}
             </div>

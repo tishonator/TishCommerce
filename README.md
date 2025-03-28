@@ -12,7 +12,8 @@ https://tishcommerce.vercel.app/
 ## Features  
 - **No Database Required** – Products are stored in JSON files.  
 - **Fast & Lightweight** – Built with Next.js and optimized for performance.  
-- **Cart & Checkout** – LocalStorage cart + Stripe, PayPal, and Cash on Delivery checkout. 
+- **Cart & Checkout** – LocalStorage cart with Stripe, PayPal (Standard + Express Checkout), and Cash on Delivery.
+- **PayPal Express Checkout** – Available directly from the cart page and product details page for a faster checkout experience.
 - **Newsletter Integration (MailChimp)** – Capture leads via a newsletter signup connected to your MailChimp list.
 - **Contact Form with Google reCAPTCHA v3** – Protects your inbox from spam while collecting user inquiries.
 - **Order Processing via Email (Resend)** – Uses Resend to send order notifications to admins and customers. 
@@ -31,7 +32,10 @@ https://tishcommerce.vercel.app/
 ## Tech Stack  
 - **Frontend**: Next.js 15, TypeScript, Tailwind CSS, Redux  
 - **Storage**: JSON-based file system (No DB required)  
-- **Payments**: Stripe API, PayPal API  
+- **Payments**:
+  - **Stripe Payment Element** – Embedded card payments using the official Stripe Elements integration.
+  - **PayPal Standard Checkout** – Classic checkout flow after form completion.
+  - **PayPal Express Checkout** – Instant checkout available directly from cart and product pages.  
 - **Hosting**: Vercel, or any static hosting  
 
 ---
@@ -97,6 +101,11 @@ This file allows you to customize your checkout options without any backend logi
   - `NEXT_PUBLIC_PAYPAL_CLIENT_ID` – PayPal Client ID (sandbox or live, depending on the flag)
   - `PAYPAL_CLIENT_SECRET` – PayPal Client Secret (used server-side to capture/verify orders)
 
+- **Payment (Stripe Payment Element)**
+  - `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` – Stripe publishable key used to initialize Stripe.js and the Stripe Payment Element on the client side
+  - `STRIPE_SECRET_KEY` – Stripe secret key used on the server side to create PaymentIntents
+  - `STRIPE_WEBHOOK_SECRET` – Secret used to verify Stripe webhook events (e.g., payment success/failure notifications)
+
 Note: Never commit this file to Git or public repositories.
 
 When deploying to Vercel, add these as Environment Variables in your project’s Settings → Environment Variables panel.
@@ -121,20 +130,22 @@ Then open http://localhost:3000 in your browser.
 
 
 ### How It Works
-- Product Listings – Products are stored in a simple products.json file.  
-- Cart & Checkout – Users add items to cart (stored in LocalStorage).  
-- Payment Processing – Integrated with PayPal & Stripe APIs.  
-- Order Confirmation – Orders are emailed to the store owner.  
+- **Product Listings** – All product data is stored in a flat products.json file. No database or backend is needed for product management.
+- **Cart & Checkout** – Users add products to a cart, which is managed entirely in the browser using LocalStorage. During checkout, users enter shipping/billing info and select a payment method.
+- **Payment Processing**
+  - **PayPal**: Supports Express Checkout directly from the Cart and Product pages using the PayPal JavaScript SDK.
+  - **Stripe:** Uses Stripe Payment Element to securely accept card and alternative payments inside the checkout page.
+  - **Cash on Delivery**: Allows customers to place orders without upfront payment.
+- **Order Confirmation & Email** – After payment, orders are stored in localStorage and a summary page is shown. A confirmation email is sent to both the customer and store admin via the Resend API.
 
 ### Release Notes
 
-##### Release 1.0.0: MVP (30-April-2025)
+##### Release 1.0.0: MVP (28-March-2025)
 
 - JSON-based product listings
 - Cart stored in LocalStorage
 - Checkout with Cash on Delivery, PayPal, Stripe
 - Orders sent via email
-- Basic JSON Admin Panel
 
 
 ### License

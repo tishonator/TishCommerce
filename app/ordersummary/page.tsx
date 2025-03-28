@@ -1,10 +1,10 @@
 import { ProductProvider } from "../context/ProductContext";
-import OrderSummaryPage from "../components/ordersummary/OrderSummaryClient";
+import OrderSummaryWrapper from "../components/ordersummary/OrderSummaryWrapper";
 
-export default function OrderSummaryWrapper() {
+export default function OrderSummaryPage() {
   return (
     <ProductProvider>
-      <OrderSummaryPage />
+      <OrderSummaryWrapper />
     </ProductProvider>
   );
 }

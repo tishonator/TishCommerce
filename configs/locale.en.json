@@ -57,7 +57,8 @@
     "orderDetails": "Order Details",
     "orderId": "Order ID",
     "orderDate": "Order Date",
-    "completeBeforePayment": "Please complete all shipping and billing fields before selecting a payment method."
+    "completeBeforePayment": "Please complete all shipping and billing fields before selecting a payment method.",
+    "payNow": "Pay Now"
   },
   "menu": [
     { "label": "Home", "href": "/" },

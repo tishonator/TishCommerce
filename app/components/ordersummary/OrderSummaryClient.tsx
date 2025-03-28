@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useLocalization } from "../../context/LocalizationContext";
 import { useProductContext } from "../../context/ProductContext";
+import { useAppDispatch } from "../../store/hooks";
+import { clearCart } from "../../store/slices/cartSlice";
 import Image from "next/image";
 import { Product } from "../../../types/Product";
 
@@ -47,15 +49,26 @@ export default function OrderSummaryClient() {
   const { labels } = useLocalization();
   const { products } = useProductContext();
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const data = localStorage.getItem("recentOrder");
-    if (data) {
-      setOrder(JSON.parse(data) as OrderData);
+    const orderIdFromQuery = searchParams.get("orderId");
+    const recent = localStorage.getItem("recentOrder");
+  
+    if (recent) {
+      const parsed = JSON.parse(recent) as OrderData;
+  
+      setOrder(parsed);
+  
+      // Clear cart ONCE if we're redirected from Stripe with orderId in query,
+      if (orderIdFromQuery && parsed.orderId === orderIdFromQuery) {
+        dispatch(clearCart());
+      }
     } else {
       router.push("/cart");
     }
-  }, [router]);
+  }, [searchParams, router, dispatch]);
 
   if (!order) return null;
 
@@ -99,6 +112,7 @@ export default function OrderSummaryClient() {
       <p className="text-sm text-gray-600 mb-4">
         {labels.orderDate || "Order Date"}: {order.orderDate}
       </p>
+
       <div className="bg-white p-6 rounded-md shadow-md">
         <h2 className="text-xl font-semibold text-gray-700 mb-4">
           {labels.orderDetails || "Order Details"}
@@ -111,18 +125,14 @@ export default function OrderSummaryClient() {
             return (
               <li key={item.ID} className="flex items-center justify-between text-sm">
                 <div className="flex items-center gap-4">
-                  {imageUrl && (
-                    <Image
-                      src={imageUrl}
-                      alt={item.Title}
-                      width={60}
-                      height={80}
-                      className="rounded object-cover"
-                    />
-                  )}
-                  <span className="text-gray-800">
-                    {item.Title} × {item.quantity}
-                  </span>
+                  <Image
+                    src={imageUrl}
+                    alt={item.Title}
+                    width={60}
+                    height={80}
+                    className="rounded object-cover"
+                  />
+                  <span className="text-gray-800">{item.Title} × {item.quantity}</span>
                 </div>
                 <span className="text-gray-700">${(price * item.quantity).toFixed(2)}</span>
               </li>
@@ -137,9 +147,7 @@ export default function OrderSummaryClient() {
           </div>
           <div className="flex justify-between">
             <span>{labels.shipping || "Shipping"}: {order.shippingMethod?.name}</span>
-            <span>
-              ${shippingCost.toFixed(2)}
-            </span>
+            <span>${shippingCost.toFixed(2)}</span>
           </div>
           <div className="flex justify-between font-semibold text-gray-900 border-t pt-2">
             <span>{labels.total || "Total"}:</span>
@@ -163,7 +171,6 @@ export default function OrderSummaryClient() {
           </p>
         </div>
 
-        {/* Shipping and Billing Info */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
           {renderAddress(labels.shippingInformation || "Shipping Info", order.shippingForm)}
           {renderAddress(labels.billingInformation || "Billing Info", order.billingForm)}
