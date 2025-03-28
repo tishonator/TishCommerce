@@ -27,7 +27,7 @@ export default function Header() {
         </p>
 
         {/* Social Icons */}
-        <div className="flex gap-4 mx-auto md:mx-0">
+        <div className="flex gap-2 sm:gap-4 mx-auto md:mx-0">
           {content.socialLinks.map(({ id, icon, url }) => {
             const IconComponent = iconMap[icon as keyof typeof iconMap];
             return (
@@ -40,7 +40,6 @@ export default function Header() {
 
         {/* Mobile Email */}
         <p className="block md:hidden text-center w-full mt-2">
-          {content.labels.email}:{" "}
           <Link href={`mailto:${content.email}`} className="text-gray-800 hover:text-gray-600 transition">
             {content.email}
           </Link>

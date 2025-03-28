@@ -43,11 +43,11 @@ export default function NewsletterSignup() {
             onChange={(e) => setEmail(e.target.value)}
             placeholder={newsletter.placeholder}
             required
-            className="px-4 py-3 w-72 border border-gray-300 bg-white rounded-l-md focus:outline-none"
+            className="px-4 py-3 w-40 sm:w-72 border border-gray-300 bg-white rounded-l-md focus:outline-none"
           />
           <button
             type="submit"
-            className="px-6 py-3 bg-gray-800 text-white font-bold rounded-r-md hover:bg-gray-900 transition"
+            className="px-3 sm:px-6 py-1 sm:py-3 bg-gray-800 text-white font-bold rounded-r-md hover:bg-gray-900 transition"
             disabled={status === "loading"}
           >
             {status === "loading" ? "Processing..." : newsletter.buttonText}
