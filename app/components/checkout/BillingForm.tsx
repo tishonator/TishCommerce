@@ -63,8 +63,6 @@ export default function BillingForm() {
           ))}
         </select>
 
-        <input name="city" value={billingForm.city} onChange={handleChange} placeholder={labels.city} className="input bg-white border border-gray-300 p-1 pl-2 rounded" required />
-
         {/* Conditionally render state dropdown if states available */}
         {availableStates ? (
           <select name="state" value={billingForm.state} onChange={handleChange} className="input bg-white border border-gray-300 p-1">
@@ -73,6 +71,8 @@ export default function BillingForm() {
             ))}
           </select>
         ) : null}
+
+        <input name="city" value={billingForm.city} onChange={handleChange} placeholder={labels.city} className="input bg-white border border-gray-300 p-1 pl-2 rounded" required />
 
         <input name="address1" value={billingForm.address1} onChange={handleChange} placeholder={labels.address1} className="input bg-white border border-gray-300 p-1 pl-2 rounded" required />
         <input name="address2" value={billingForm.address2} onChange={handleChange} placeholder={labels.address2} className="input bg-white border border-gray-300 p-1 pl-2 rounded" />
