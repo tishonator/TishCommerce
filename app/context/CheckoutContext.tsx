@@ -24,6 +24,12 @@ interface CheckoutSettings {
     enabled: boolean;
     icon: string;
   }[];
+  countryStates: {
+    [countryCode: string]: {
+      code: string;
+      name: string;
+    }[];
+  };
 }
 
 // Create context
