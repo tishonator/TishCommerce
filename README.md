@@ -150,3 +150,14 @@ Then open http://localhost:3000 in your browser.
 
 ### License
 TishCommerce is released under the MIT License.
+
+
+### Support My Work
+I built TishCommerce as a free and open-source eCommerce solution to help small businesses and developers sell online without paying monthly SaaS fees.
+Maintaining and improving this project takes a lot of time and effort. If you find it helpful, please consider supporting my work:
+
+[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/donate/?hosted_button_id=S88TKD55YVK7S)
+
+
+Your support helps me keep this project alive and improve it further.
+Thank you! ❤️
