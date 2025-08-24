@@ -55,20 +55,16 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "One or more product prices are invalid." }, { status: 400 });
     }
 
-    // Send emails in background
-    void (async () => {
-      try {
-        await sendAdminEmail(body);
-      } catch (err) {
-        console.error("❌ Failed to send admin email:", err);
-      }
-
-      try {
-        await sendCustomerEmail(body);
-      } catch (err) {
-        console.error("❌ Failed to send customer email:", err);
-      }
-    })();
+    try {
+      await sendAdminEmail(body);
+    } catch (err) {
+      console.error("❌ Failed to send admin email:", err);
+    }
+    try {
+      await sendCustomerEmail(body);
+    } catch (err) {
+      console.error("❌ Failed to send customer email:", err);
+    }
 
     return NextResponse.json({ message: "Order placed successfully" });
   } catch (error) {
