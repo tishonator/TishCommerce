@@ -14,6 +14,8 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
+  const effectivePrice = parseFloat(product.SalePrice || product.RegularPrice);
+  const isFree = effectivePrice === 0;
   const hasDiscount = parseFloat(product.SalePrice) < parseFloat(product.RegularPrice);
   const currencySymbol = getCurrencySymbol(product.Currency);
   const dispatch = useAppDispatch();
@@ -31,7 +33,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   return (
     <div className="bg-white shadow-md rounded-lg overflow-hidden transition hover:scale-105">
       {/* Product Image with Link to Product Page */}
-      <Link href={`/products/${product.Slug}`}>
+      <Link href={`/product/${product.Slug}`}>
         <div className="w-full">
           <Image
             src={product.FeatureImageURL}
@@ -46,7 +48,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       {/* Product Info */}
       <div className="p-6">
         <h3 className="text-xl font-semibold text-gray-900 truncate">
-          <Link href={`/products/${product.Slug}`} className="hover:text-gray-600">
+          <Link href={`/product/${product.Slug}`} className="hover:text-gray-600">
             {product.Title}
           </Link>
         </h3>
@@ -54,7 +56,11 @@ export default function ProductCard({ product }: ProductCardProps) {
         <p className="text-gray-700 mt-2 text-sm line-clamp-2">{product.ShortDescription}</p>
 
         <div className="mt-3">
-          {hasDiscount ? (
+          {isFree ? (
+            <span className="text-lg font-bold text-green-600">
+              FREE
+            </span>
+          ) : hasDiscount ? (
             <div className="flex items-center gap-2">
               <span className="text-lg font-bold text-red-600">
                 {currencySymbol}
@@ -73,19 +79,45 @@ export default function ProductCard({ product }: ProductCardProps) {
           )}
         </div>
 
-        <div className="mt-4 flex flex-col sm:flex-row gap-2">
-          <Link href={`/products/${product.Slug}`} className="sm:w-1/2">
-            <span className="w-full inline-block bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-md text-sm font-semibold text-center transition">
-              {labels.viewProduct || "View Product"}
-            </span>
-          </Link>
+        <div className="mt-4 flex flex-col gap-2">
+          {/* Main action buttons row */}
+          <div className="flex flex-col sm:flex-row gap-2">
+            <Link href={`/product/${product.Slug}`} className={(!isFree || !product.DownloadURL) ? "sm:w-1/2" : "sm:w-1/2"}>
+              <span className="w-full inline-block bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-md text-sm font-semibold text-center transition">
+                {labels.viewProduct || "View Product"}
+              </span>
+            </Link>
 
-          <button
-            onClick={handleAddToCart}
-            className="w-full sm:w-1/2 bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-md text-sm font-semibold text-center transition"
-          >
-            {labels.addToCart || "Add to Cart"}
-          </button>
+            {isFree && product.DownloadURL ? (
+              <a
+                href={product.DownloadURL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-1/2 inline-block bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-semibold text-center transition"
+              >
+                Download
+              </a>
+            ) : !isFree ? (
+              <button
+                onClick={handleAddToCart}
+                className="w-full sm:w-1/2 bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-md text-sm font-semibold text-center transition"
+              >
+                {labels.addToCart || "Add to Cart"}
+              </button>
+            ) : null}
+          </div>
+
+          {/* Demo button - full width */}
+          {product.DemoURL && (
+            <a
+              href={product.DemoURL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-semibold text-center transition"
+            >
+              DEMO
+            </a>
+          )}
         </div>
       </div>
     </div>

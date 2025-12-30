@@ -15,5 +15,7 @@ export interface Product {
     SubscriptionEnabled: boolean;
     SubscriptionType: string;
     SaleSubscriptionType?: string;
+    DownloadURL?: string;
+    DemoURL?: string;
   }
   

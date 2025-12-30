@@ -50,16 +50,24 @@ export async function sendEmail({
   text: string;
 }) {
   try {
+    console.log('📧 Attempting to send email...');
+    console.log('📧 From:', process.env.RESEND_FROM_EMAIL);
+    console.log('📧 To:', to);
+    console.log('📧 Subject:', subject);
+
     const resend = new Resend(process.env.RESEND_API_KEY);
 
-    await resend.emails.send({
+    const result = await resend.emails.send({
       from: process.env.RESEND_FROM_EMAIL!,
       to,
       subject,
       text,
     });
+
+    console.log('✅ Email sent successfully:', result);
   } catch (error) {
     console.error("❌ Failed to send email to:", to, "\nError:", error);
+    throw error; // Re-throw to let caller know it failed
   }
 }
 
@@ -128,12 +136,18 @@ Date: ${new Date().toLocaleString()}
 export function generateCustomerEmail(
   body: OrderBody,
   summary: string,
-  total: number
+  total: number,
+  downloadURL?: string
 ): string {
   const { labels, siteName } = getLocalization();
+
+  const downloadSection = downloadURL
+    ? `\n\nDownload your purchased items here:\n${downloadURL}\n`
+    : '';
+
   return `Hi ${body.shippingForm.firstName},
 
-${labels.orderConfirmationMessage || "Your order was placed successfully. We’ll notify you once it’s processed."}
+${labels.orderConfirmationMessage || "Your order was placed successfully. We'll notify you once it's processed."}
 
 Order ID: ${body.orderId}
 Order Date: ${body.orderDate}
@@ -148,7 +162,7 @@ ${body.shippingForm.city}, ${body.shippingForm.state}, ${body.shippingForm.count
 Order Summary:
 ${summary}
 
-Total: $${total.toFixed(2)}
+Total: $${total.toFixed(2)}${downloadSection}
 
 Thank you for shopping with us!
 ${siteName || "TishCommerce"}
@@ -174,12 +188,20 @@ export async function sendAdminEmail(body: OrderBody) {
 
 // ----- Send Customer Email -----
 
-export async function sendCustomerEmail(body: OrderBody) {
+export async function sendCustomerEmail(body: OrderBody, baseURL?: string) {
   const { lines, subtotal } = formatOrderSummary(body.cartItems);
   const shipping = body.shippingMethod?.price || 0;
   const total = subtotal + shipping;
 
-  const text = generateCustomerEmail(body, lines, total);
+  // Check if any product in cart has downloadable content
+  const hasDownloads = body.cartItems.some((item) => (item as any).DownloadURL);
+
+  // Generate download URL if there are downloadable products and we have baseURL
+  const downloadURL = hasDownloads && baseURL
+    ? `${baseURL}/ordersummary?orderId=${body.orderId}`
+    : undefined;
+
+  const text = generateCustomerEmail(body, lines, total, downloadURL);
   const subject =
     getLocalization().labels.orderConfirmationTitle || "Your Order Confirmation";
 

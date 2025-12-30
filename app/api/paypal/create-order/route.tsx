@@ -26,6 +26,7 @@ export async function POST(req: Request) {
 
   const items = cartItems.map((item) => ({
     name: item.Title,
+    sku: item.ID, // Store product ID for download verification
     unit_amount: {
       currency_code: currency,
       value: parseFloat(item.SalePrice || item.RegularPrice).toFixed(2),

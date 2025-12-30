@@ -34,6 +34,7 @@ export async function POST(req: Request) {
 
     if (Array.isArray(cartItems)) {
       cartItems.forEach((item, index) => {
+        metadata[`item_${index + 1}_id`] = item.ID; // Store product ID for download verification
         metadata[`item_${index + 1}_title`] = item.Title;
         metadata[`item_${index + 1}_qty`] = item.quantity.toString();
         metadata[`item_${index + 1}_price`] = (item.SalePrice || item.RegularPrice).toString();

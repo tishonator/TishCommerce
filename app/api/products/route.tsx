@@ -15,16 +15,22 @@ export async function GET(request: NextRequest) {
     // Load all products from existing function
     const products = await getProducts();
 
+    // Filter out DownloadURL from all products for security
+    const filterDownloadURL = (product: any) => {
+      const { DownloadURL, ...productWithoutDownload } = product;
+      return productWithoutDownload;
+    };
+
     // If "slug" is present, return just that product. Otherwise, return all products
     if (slug) {
       const product = products.find((p) => p.Slug === slug);
       if (!product) {
         return NextResponse.json({ error: "Product not found" }, { status: 404 });
       }
-      return NextResponse.json(product);
+      return NextResponse.json(filterDownloadURL(product));
     } else {
-      // Return all products if no slug provided
-      return NextResponse.json(products);
+      // Return all products if no slug provided (without download URLs)
+      return NextResponse.json(products.map(filterDownloadURL));
     }
   } catch (error) {
     console.error("Error fetching products:", error);

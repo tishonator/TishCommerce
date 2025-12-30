@@ -55,13 +55,18 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "One or more product prices are invalid." }, { status: 400 });
     }
 
+    // Extract base URL from request for download links
+    const host = req.headers.get("host");
+    const protocol = req.headers.get("x-forwarded-proto") || "http";
+    const baseURL = `${protocol}://${host}`;
+
     try {
       await sendAdminEmail(body);
     } catch (err) {
       console.error("❌ Failed to send admin email:", err);
     }
     try {
-      await sendCustomerEmail(body);
+      await sendCustomerEmail(body, baseURL);
     } catch (err) {
       console.error("❌ Failed to send customer email:", err);
     }

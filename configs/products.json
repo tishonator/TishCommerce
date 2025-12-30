@@ -21,7 +21,9 @@
        "SalePrice":"14.99",
        "Currency": "USD",
        "SubscriptionEnabled":false,
-       "SubscriptionType":""
+       "SubscriptionType":"",
+       "DownloadURL":"https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_HERE",
+       "DemoURL":"https://example.com/demo"
     },
     {
        "ID":"book-002",

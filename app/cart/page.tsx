@@ -57,7 +57,7 @@ function CartContent() {
                     />
                     <div className="flex-1">
                       <Link
-                        href={`/products/${item.Slug}`}
+                        href={`/product/${item.Slug}`}
                         className="text-lg font-semibold text-gray-800 hover:text-gray-600"
                       >
                         {item.Title}

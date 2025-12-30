@@ -90,6 +90,7 @@ export default function PayPalButton() {
               billingForm,
               shippingMethod,
               paymentMethodId,
+              paypalOrderId: data.orderID, // Store PayPal order ID for download verification
             };
 
             const placeOrderRes = await fetch("/api/checkout/placeorder", {

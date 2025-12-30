@@ -44,8 +44,17 @@ interface OrderData {
   paymentMethodId: string;
 }
 
+// Download interface
+interface Download {
+  productId: string;
+  productTitle: string;
+  downloadURL: string;
+}
+
 export default function OrderSummaryClient() {
   const [order, setOrder] = useState<OrderData | null>(null);
+  const [downloads, setDownloads] = useState<Download[]>([]);
+  const [downloadError, setDownloadError] = useState<string>("");
   const { labels } = useLocalization();
   const { products } = useProductContext();
   const router = useRouter();
@@ -55,15 +64,71 @@ export default function OrderSummaryClient() {
   useEffect(() => {
     const orderIdFromQuery = searchParams.get("orderId");
     const recent = localStorage.getItem("recentOrder");
-  
+
     if (recent) {
-      const parsed = JSON.parse(recent) as OrderData;
-  
+      const parsed = JSON.parse(recent) as OrderData & { paypalOrderId?: string };
+
       setOrder(parsed);
-  
+
       // Clear cart ONCE if we're redirected from Stripe with orderId in query,
       if (orderIdFromQuery && parsed.orderId === orderIdFromQuery) {
         dispatch(clearCart());
+      }
+
+      // Handle Stripe order placement and download links
+      const handleStripeOrder = async (paymentIntent: string) => {
+        try {
+          // Place order on server (send emails)
+          const placeOrderRes = await fetch("/api/checkout/placeorder", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(parsed),
+          });
+
+          if (!placeOrderRes.ok) {
+            console.error("❌ Failed to place Stripe order on server");
+          }
+
+          // Fetch downloads
+          const res = await fetch(`/api/download?payment_intent_id=${paymentIntent}`);
+          const data = await res.json();
+
+          if (res.ok && data.downloads) {
+            setDownloads(data.downloads);
+          } else if (data.error) {
+            setDownloadError(data.error);
+          }
+        } catch (error) {
+          console.error("Error handling Stripe order:", error);
+          setDownloadError("Failed to process order");
+        }
+      };
+
+      // Handle PayPal downloads (order already placed)
+      const handlePayPalDownloads = async (paypalOrderId: string) => {
+        try {
+          const res = await fetch(`/api/download?paypal_order_id=${paypalOrderId}`);
+          const data = await res.json();
+
+          if (res.ok && data.downloads) {
+            setDownloads(data.downloads);
+          } else if (data.error) {
+            setDownloadError(data.error);
+          }
+        } catch (error) {
+          console.error("Error fetching PayPal downloads:", error);
+          setDownloadError("Failed to fetch download links");
+        }
+      };
+
+      // Fetch download links if payment is confirmed
+      const paymentIntent = searchParams.get("payment_intent");
+      const paypalOrderId = parsed.paypalOrderId;
+
+      if (paymentIntent) {
+        handleStripeOrder(paymentIntent);
+      } else if (paypalOrderId) {
+        handlePayPalDownloads(paypalOrderId);
       }
     } else {
       router.push("/cart");
@@ -176,6 +241,47 @@ export default function OrderSummaryClient() {
           {renderAddress(labels.billingInformation || "Billing Info", order.billingForm)}
         </div>
       </div>
+
+      {/* Download Links Section */}
+      {downloads.length > 0 && (
+        <div className="bg-green-50 p-6 rounded-md shadow-md mt-6 border-2 border-green-200">
+          <h2 className="text-xl font-semibold text-green-800 mb-4 flex items-center">
+            <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
+            </svg>
+            Download Your Products
+          </h2>
+          <p className="text-sm text-gray-700 mb-4">
+            Your payment has been confirmed! Click the links below to download your products:
+          </p>
+          <ul className="space-y-3">
+            {downloads.map((download) => (
+              <li key={download.productId} className="flex items-center">
+                <svg className="w-5 h-5 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <a
+                  href={download.downloadURL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:text-blue-800 underline font-medium"
+                >
+                  {download.productTitle}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* Download Error Message */}
+      {downloadError && (
+        <div className="bg-yellow-50 p-4 rounded-md shadow-md mt-6 border-2 border-yellow-200">
+          <p className="text-sm text-yellow-800">
+            {downloadError}
+          </p>
+        </div>
+      )}
     </section>
   );
 }

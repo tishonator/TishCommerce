@@ -66,23 +66,30 @@ export default async function ProductPage({
     return notFound();
   }
 
+  // Check if product is free
+  const effectivePrice = parseFloat(product.SalePrice || product.RegularPrice);
+  const isFree = effectivePrice === 0;
+
   // Build SSR UI
-  const priceBlock =
-    product.SalePrice !== product.RegularPrice ? (
-      <p className="text-xl font-bold text-red-600">
-        {getCurrencySymbol(product.Currency)}
-        {product.SalePrice}
-        <span className="ml-2 text-gray-500 line-through">
-          {getCurrencySymbol(product.Currency)}
-          {product.RegularPrice}
-        </span>
-      </p>
-    ) : (
-      <p className="text-xl font-bold text-gray-900">
+  const priceBlock = isFree ? (
+    <p className="text-2xl font-bold text-green-600">
+      FREE
+    </p>
+  ) : product.SalePrice !== product.RegularPrice ? (
+    <p className="text-xl font-bold text-red-600">
+      {getCurrencySymbol(product.Currency)}
+      {product.SalePrice}
+      <span className="ml-2 text-gray-500 line-through">
         {getCurrencySymbol(product.Currency)}
         {product.RegularPrice}
-      </p>
-    );
+      </span>
+    </p>
+  ) : (
+    <p className="text-xl font-bold text-gray-900">
+      {getCurrencySymbol(product.Currency)}
+      {product.RegularPrice}
+    </p>
+  );
 
   return (
     <section className="py-12 bg-stone-100">
@@ -98,13 +105,41 @@ export default async function ProductPage({
             <p className="text-lg text-gray-700">{product.ShortDescription}</p>
             <div className="mt-4">{priceBlock}</div>
 
-            <div className="mt-4">
-              <AddToCartButtonWrapper product={product} />
-            </div>
+            {isFree && product.DownloadURL ? (
+              <div className="mt-4">
+                <a
+                  href={product.DownloadURL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-md text-base font-semibold transition"
+                >
+                  Download Now
+                </a>
+              </div>
+            ) : !isFree ? (
+              <>
+                <div className="mt-4">
+                  <AddToCartButtonWrapper product={product} />
+                </div>
 
-            <div className="mt-4 max-w-48">
-              <PayPalExpressButtonWrapper product={product} />
-            </div>
+                <div className="mt-4 max-w-48">
+                  <PayPalExpressButtonWrapper product={product} />
+                </div>
+              </>
+            ) : null}
+
+            {product.DemoURL && (
+              <div className="mt-4">
+                <a
+                  href={product.DemoURL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md text-base font-semibold transition"
+                >
+                  View DEMO
+                </a>
+              </div>
+            )}
 
           </div>
         </div>
