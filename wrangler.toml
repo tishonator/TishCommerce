@@ -1,0 +1,28 @@
+# Cloudflare Workers configuration for TishCommerce
+# See https://developers.cloudflare.com/workers/wrangler/configuration/
+
+name = "tishcommerce"
+main = ".open-next/worker.js"
+compatibility_date = "2025-12-01"
+compatibility_flags = ["nodejs_compat", "global_fetch_strictly_public"]
+
+[assets]
+directory = ".open-next/assets"
+binding = "ASSETS"
+
+# Self-reference service binding for caching
+# See https://opennext.js.org/cloudflare/caching
+[[services]]
+binding = "WORKER_SELF_REFERENCE"
+service = "tishcommerce"
+
+# R2 bucket for incremental cache
+# See https://opennext.js.org/cloudflare/caching
+[[r2_buckets]]
+binding = "NEXT_INC_CACHE_R2_BUCKET"
+bucket_name = "tishcommerce-cache"
+
+# Enable image optimization
+# See https://opennext.js.org/cloudflare/howtos/image
+[images]
+binding = "IMAGES"
