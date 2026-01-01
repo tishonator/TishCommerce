@@ -1,26 +1,18 @@
 "use client";
 
 import { useAppSelector } from "../../store/hooks";
-import { useCheckoutSettings } from "../../context/CheckoutContext";
 import { useLocalization } from "../../context/LocalizationContext";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function OrderSummary() {
   const cartItems = useAppSelector((state) => state.cart.items);
-  const { shippingMethodId } = useAppSelector((state) => state.checkout);
-  const { shippingMethods } = useCheckoutSettings();
   const { labels } = useLocalization();
 
-  const shipping = shippingMethods.find((s) => s.id === shippingMethodId);
-
-  const cartTotal = cartItems.reduce(
+  const totalAmount = cartItems.reduce(
     (acc, item) => acc + item.quantity * parseFloat(item.SalePrice || item.RegularPrice),
     0
   );
-
-  const shippingCost = shipping?.price || 0;
-  const totalAmount = cartTotal + shippingCost;
 
   return (
     <div className="bg-white rounded-lg shadow-md p-6">
@@ -46,18 +38,6 @@ export default function OrderSummary() {
             </div>
           </div>
         ))}
-
-        <hr className="my-4" />
-
-        <div className="flex justify-between text-sm">
-          <span>{labels.subtotal || "Subtotal"}:</span>
-          <span>${cartTotal.toFixed(2)}</span>
-        </div>
-
-        <div className="flex justify-between text-sm">
-          <span>{labels.shipping || "Shipping"}:</span>
-          <span>{shipping ? `${shipping.name} $${shipping.price.toFixed(2)}` : labels.noShippingSelected || "Not selected"}</span>
-        </div>
 
         <hr className="my-4" />
 

@@ -6,13 +6,16 @@ import ProductFilters from "./ProductFilters";
 import { useProductContext } from "../../context/ProductContext";
 import { useLocalization } from "../../context/LocalizationContext";
 
-export default function ProductGrid() {
+interface ProductGridProps {
+  pageSize?: number;
+}
+
+export default function ProductGrid({ pageSize = 18 }: ProductGridProps) {
   const { filteredProducts, categories, setSearchQuery, setCategoryFilter, setSortBy } = useProductContext();
   const { labels } = useLocalization();
 
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 6; // Show 6 products per page
 
   // Calculate total pages
   const totalPages = Math.ceil(filteredProducts.length / pageSize);

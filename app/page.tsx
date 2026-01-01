@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getLocalization } from "./utils/getLocalization";
+import { getHomepageSettings } from "./utils/getHomepage";
 import HomepageBanner from "./components/homepage/HomepageBanner";
 import RecentProducts from "./components/homepage/RecentProducts";
 import BrandStory from "./components/homepage/BrandStory";
@@ -16,14 +17,18 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
+  const homepageSettings = getHomepageSettings();
+
   return (
     <main>
-      <HomepageBanner />
-      <RecentProducts />
-      <BrandStory />
-      <Testimonials />
-      <NewsletterSignup />
-      <Brands />
+      {homepageSettings.banner.enabled && <HomepageBanner />}
+      {homepageSettings.recentProducts.enabled && (
+        <RecentProducts count={homepageSettings.recentProducts.count} />
+      )}
+      {homepageSettings.brandStory.enabled && <BrandStory />}
+      {homepageSettings.testimonials.enabled && <Testimonials />}
+      {homepageSettings.newsletter.enabled && <NewsletterSignup />}
+      {homepageSettings.brands.enabled && <Brands />}
     </main>
   );
 }

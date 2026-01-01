@@ -1,313 +1,746 @@
 [
-    {
-       "ID":"book-001",
-       "Title":"1984",
-       "Slug":"1984-george-orwell",
-       "Enabled":true,
-       "CatalogVisible":true,
-       "ProductCategories":[
-          "Books",
-          "Fiction",
-          "Dystopian"
-       ],
-       "FeatureImageURL":"/books/book-1.jpg",
-       "ProductImageGallery":[
-          "/books/book-a.jpg",
-          "/books/book-b.jpg"
-       ],
-       "ShortDescription":"A dystopian novel by George Orwell about surveillance and totalitarianism.",
-       "LongDescription":"Published in 1949, George Orwell’s '1984' is a cautionary tale about a totalitarian regime that enforces thought control and relentless surveillance. The story follows Winston Smith, a man struggling against the oppressive Party and its leader, Big Brother.",
-       "RegularPrice":"19.99",
-       "SalePrice":"14.99",
-       "Currency": "USD",
-       "SubscriptionEnabled":false,
-       "SubscriptionType":"",
-       "DownloadURL":"https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_HERE",
-       "DemoURL":"https://example.com/demo"
-    },
-    {
-       "ID":"book-002",
-       "Title":"To Kill a Mockingbird",
-       "Slug":"to-kill-a-mockingbird",
-       "Enabled":true,
-       "CatalogVisible":true,
-       "ProductCategories":[
-          "Books",
-          "Fiction",
-          "Classic"
-       ],
-       "FeatureImageURL":"/books/book-2.jpg",
-       "ProductImageGallery":[
-          "/books/book-a.jpg",
-          "/books/book-b.jpg"
-       ],
-       "ShortDescription":"A novel by Harper Lee exploring racial injustice in the Deep South.",
-       "LongDescription":"'To Kill a Mockingbird' by Harper Lee is a deeply moving novel set in the racially segregated American South. It follows young Scout Finch as she navigates issues of morality, prejudice, and justice through the trial of Tom Robinson, a Black man falsely accused of a crime.",
-       "RegularPrice":"15.99",
-       "SalePrice":"12.99",
-       "Currency": "USD",
-       "SubscriptionEnabled":false,
-       "SubscriptionType":""
-    },
-    {
-       "ID":"book-003",
-       "Title":"The Great Gatsby",
-       "Slug":"the-great-gatsby",
-       "Enabled":true,
-       "CatalogVisible":true,
-       "ProductCategories":[
-          "Books",
-          "Fiction",
-          "Classic"
-       ],
-       "FeatureImageURL":"/books/book-3.jpg",
-       "ProductImageGallery":[
-          "/books/book-a.jpg",
-          "/books/book-b.jpg"
-       ],
-       "ShortDescription":"A novel by F. Scott Fitzgerald depicting the Jazz Age.",
-       "LongDescription":"'The Great Gatsby' by F. Scott Fitzgerald is a tragic love story set in the Roaring Twenties. It follows Jay Gatsby, a wealthy and mysterious man, who throws lavish parties in hopes of reuniting with his lost love, Daisy Buchanan.",
-       "RegularPrice":"14.99",
-       "SalePrice":"11.99",
-       "Currency": "USD",
-       "SubscriptionEnabled":false,
-       "SubscriptionType":""
-    },
-    {
-       "ID":"book-004",
-       "Title":"Moby-Dick",
-       "Slug":"moby-dick",
-       "Enabled":true,
-       "CatalogVisible":true,
-       "ProductCategories":[
-          "Books",
-          "Fiction",
-          "Adventure"
-       ],
-       "FeatureImageURL":"/books/book-4.jpg",
-       "ProductImageGallery":[
-          "/books/book-a.jpg",
-          "/books/book-b.jpg"
-       ],
-       "ShortDescription":"A novel by Herman Melville about the obsessive quest for revenge against a white whale.",
-       "LongDescription":"Herman Melville’s 'Moby-Dick' is a gripping tale of Captain Ahab’s relentless pursuit of the great white whale. This epic novel explores themes of obsession, revenge, and the human struggle against nature.",
-       "RegularPrice":"22.99",
-       "SalePrice":"18.99",
-       "Currency": "USD",
-       "SubscriptionEnabled":false,
-       "SubscriptionType":""
-    },
-    {
-       "ID":"book-005",
-       "Title":"Pride and Prejudice",
-       "Slug":"pride-and-prejudice",
-       "Enabled":true,
-       "CatalogVisible":true,
-       "ProductCategories":[
-          "Books",
-          "Fiction",
-          "Romance"
-       ],
-       "FeatureImageURL":"/books/book-5.jpg",
-       "ProductImageGallery":[
-          "/books/book-a.jpg",
-          "/books/book-b.jpg"
-       ],
-       "ShortDescription":"A novel by Jane Austen that explores themes of love and social standing.",
-       "LongDescription":"Jane Austen’s 'Pride and Prejudice' is a classic romance novel about Elizabeth Bennet and her evolving relationship with the wealthy and reserved Mr. Darcy. It examines themes of pride, class distinctions, and societal expectations in 19th-century England.",
-       "RegularPrice":"17.99",
-       "SalePrice":"14.99",
-       "Currency": "USD",
-       "SubscriptionEnabled":false,
-       "SubscriptionType":""
-    },
-    {
-       "ID":"book-006",
-       "Title":"War and Peace",
-       "Slug":"war-and-peace",
-       "Enabled":true,
-       "CatalogVisible":true,
-       "ProductCategories":[
-          "Books",
-          "Fiction",
-          "Historical"
-       ],
-       "FeatureImageURL":"/books/book-6.jpg",
-       "ProductImageGallery":[
-          "/books/book-a.jpg",
-          "/books/book-b.jpg"
-       ],
-       "ShortDescription":"A historical novel by Leo Tolstoy that tells the story of Russian society during the Napoleonic Wars.",
-       "LongDescription":"One of the greatest novels ever written, War and Peace chronicles the French invasion of Russia and the impact of the Napoleonic era on Tsarist society. With a broad array of characters and intricate storytelling, Tolstoy paints a vivid picture of life, love, and war.",
-       "RegularPrice":"29.99",
-       "SalePrice":"24.99",
-       "Currency": "USD",
-       "SubscriptionEnabled":false,
-       "SubscriptionType":""
-    },
-    {
-       "ID":"book-007",
-       "Title":"Crime and Punishment",
-       "Slug":"crime-and-punishment",
-       "Enabled":true,
-       "CatalogVisible":true,
-       "ProductCategories":[
-          "Books",
-          "Fiction",
-          "Psychological"
-       ],
-       "FeatureImageURL":"/books/book-7.jpg",
-       "ProductImageGallery":[
-          "/books/book-a.jpg",
-          "/books/book-b.jpg"
-       ],
-       "ShortDescription":"A novel by Fyodor Dostoevsky that explores guilt, redemption, and moral dilemmas.",
-       "LongDescription":"Crime and Punishment is a psychological thriller that follows the young and impoverished Raskolnikov as he commits a murder in St. Petersburg and struggles with guilt and paranoia. The novel delves deep into morality, justice, and the human condition.",
-       "RegularPrice":"21.99",
-       "SalePrice":"17.99",
-       "Currency": "USD",
-       "SubscriptionEnabled":false,
-       "SubscriptionType":""
-    },
-    {
-       "ID":"book-008",
-       "Title":"Brave New World",
-       "Slug":"brave-new-world",
-       "Enabled":true,
-       "CatalogVisible":true,
-       "ProductCategories":[
-          "Books",
-          "Fiction",
-          "Dystopian"
-       ],
-       "FeatureImageURL":"/books/book-8.jpg",
-       "ProductImageGallery":[
-          "/books/book-a.jpg",
-          "/books/book-b.jpg"
-       ],
-       "ShortDescription":"A dystopian novel by Aldous Huxley exploring the consequences of technological and genetic advancements.",
-       "LongDescription":"Set in a futuristic world, Brave New World explores the dangers of a society built on consumerism, technological advancement, and state-controlled happiness. Huxley presents a chilling vision of a world where individuality and freedom are sacrificed for stability.",
-       "RegularPrice":"18.99",
-       "SalePrice":"14.99",
-       "Currency": "USD",
-       "SubscriptionEnabled":false,
-       "SubscriptionType":""
-    },
-    {
-       "ID":"book-009",
-       "Title":"The Catcher in the Rye",
-       "Slug":"the-catcher-in-the-rye",
-       "Enabled":true,
-       "CatalogVisible":true,
-       "ProductCategories":[
-          "Books",
-          "Fiction",
-          "Classic"
-       ],
-       "FeatureImageURL":"/books/book-9.jpg",
-       "ProductImageGallery":[
-          "/books/book-a.jpg",
-          "/books/book-b.jpg"
-       ],
-       "ShortDescription":"A novel by J.D. Salinger about teenage alienation and identity crisis.",
-       "LongDescription":"Narrated by the cynical teenager Holden Caulfield, The Catcher in the Rye follows his experiences in New York after being expelled from prep school. The novel explores themes of adolescence, alienation, and the struggles of finding one's place in the world.",
-       "RegularPrice":"16.99",
-       "SalePrice":"13.99",
-       "Currency": "USD",
-       "SubscriptionEnabled":false,
-       "SubscriptionType":""
-    },
-    {
-       "ID":"book-010",
-       "Title":"The Hobbit",
-       "Slug":"the-hobbit",
-       "Enabled":true,
-       "CatalogVisible":true,
-       "ProductCategories":[
-          "Books",
-          "Fiction",
-          "Fantasy"
-       ],
-       "FeatureImageURL":"/books/book-10.jpg",
-       "ProductImageGallery":[
-          "/books/book-a.jpg",
-          "/books/book-b.jpg"
-       ],
-       "ShortDescription":"A fantasy novel by J.R.R. Tolkien that follows the adventure of Bilbo Baggins.",
-       "LongDescription":"The Hobbit is a timeless fantasy adventure that follows Bilbo Baggins, a humble hobbit, as he is swept into an epic journey to reclaim a treasure guarded by the dragon Smaug. Filled with magic, courage, and heroism, it serves as a prelude to The Lord of the Rings.",
-       "RegularPrice":"19.99",
-       "SalePrice":"16.99",
-       "Currency": "USD",
-       "SubscriptionEnabled":false,
-       "SubscriptionType":""
-    },
-    {
-       "ID":"sub-001",
-       "Title":"Basic Hosting Plan",
-       "Slug":"basic-hosting",
-       "Enabled":true,
-       "CatalogVisible":false,
-       "ProductCategories":[
-          "Hosting",
-          "Subscription"
-       ],
-       "FeatureImageURL":"/books/300x400?text=Basic-Hosting",
-       "ProductImageGallery":[
-          
-       ],
-       "ShortDescription":"A basic hosting plan suitable for small websites.",
-       "LongDescription":"The Basic Hosting Plan is perfect for individuals and small businesses that need a reliable, low-cost hosting solution. It includes essential features like domain hosting, email support, and basic security.",
-       "RegularPrice":"9.99",
-       "SalePrice":"99.99",
-       "Currency": "USD",
-       "SubscriptionEnabled":false,
-       "SubscriptionType":"month",
-       "SaleSubscriptionType":"year"
-    },
-    {
-       "ID":"sub-002",
-       "Title":"Premium Hosting Plan",
-       "Slug":"premium-hosting",
-       "Enabled":true,
-       "CatalogVisible":false,
-       "ProductCategories":[
-          "Hosting",
-          "Subscription"
-       ],
-       "FeatureImageURL":"/books/300x400?text=Premium-Hosting",
-       "ProductImageGallery":[
-          
-       ],
-       "ShortDescription":"A premium hosting plan with more resources for larger websites.",
-       "LongDescription":"The Premium Hosting Plan is designed for businesses that require enhanced performance, security, and support. It includes higher bandwidth, SSL certification, and dedicated customer service.",
-       "RegularPrice":"19.99",
-       "SalePrice":"179.99",
-       "Currency": "USD",
-       "SubscriptionEnabled":true,
-       "SubscriptionType":"month",
-       "SaleSubscriptionType":"year"
-    },
-    {
-       "ID":"sub-003",
-       "Title":"Enterprise Hosting Plan",
-       "Slug":"enterprise-hosting",
-       "Enabled":true,
-       "CatalogVisible":false,
-       "ProductCategories":[
-          "Hosting",
-          "Subscription"
-       ],
-       "FeatureImageURL":"/books/300x400?text=Enterprise-Hosting",
-       "ProductImageGallery":[
-          
-       ],
-       "ShortDescription":"An enterprise-level hosting plan for large-scale websites and businesses.",
-       "LongDescription":"The Enterprise Hosting Plan is the ultimate hosting solution for large businesses and organizations. It provides premium security, high-speed servers, unlimited bandwidth, and advanced support for mission-critical applications.",
-       "RegularPrice":"49.99",
-       "SalePrice":"499.99",
-       "Currency": "USD",
-       "SubscriptionEnabled":true,
-       "SubscriptionType":"month",
-       "SaleSubscriptionType":"year"
-    }
- ]
+   {
+      "ID":"theme-001",
+      "Title":"Minimalist Pro WordPress Theme",
+      "Slug":"minimalist-pro-theme",
+      "Enabled":true,
+      "CatalogVisible":true,
+      "ProductCategories":[
+         "WordPress Themes",
+         "Business",
+         "Portfolio"
+      ],
+      "FeatureImageURL":"/products/product-1.jpg",
+      "ProductImageGallery":[
+         "/products/product-2.jpg",
+         "/products/product-3.jpg"
+      ],
+      "ShortDescription":"A clean, minimalist WordPress theme perfect for portfolios and business websites.",
+      "LongDescription":"Minimalist Pro is a modern WordPress theme with a clean design, fully responsive layout, and powerful customization options. Perfect for creative professionals, agencies, and businesses who want an elegant web presence. Includes custom widgets, page templates, and SEO optimization.",
+      "RegularPrice":"49.99",
+      "SalePrice":"39.99",
+      "Currency":"USD",
+      "DownloadURL":"https://drive.google.com/uc?export=download&id=1aB2cD3eF4gH5iJ6kL7mN8oP9qR0sT1uV",
+      "DemoURL":"https://demo.minimalistpro.com"
+   },
+   {
+      "ID":"plugin-001",
+      "Title":"Advanced Contact Form Plugin",
+      "Slug":"advanced-contact-form",
+      "Enabled":true,
+      "CatalogVisible":true,
+      "ProductCategories":[
+         "WordPress Plugins",
+         "Forms",
+         "Tools"
+      ],
+      "FeatureImageURL":"/products/product-2.jpg",
+      "ProductImageGallery":[
+         "/products/product-1.jpg",
+         "/products/product-3.jpg"
+      ],
+      "ShortDescription":"Powerful contact form plugin with spam protection and email notifications.",
+      "LongDescription":"Build beautiful, responsive contact forms with drag-and-drop ease. Features include reCAPTCHA integration, conditional logic, file uploads, multi-step forms, email notifications, and integration with popular email marketing services. No coding required!",
+      "RegularPrice":"29.99",
+      "SalePrice":"24.99",
+      "Currency":"USD",
+      "DownloadURL":"https://drive.google.com/uc?export=download&id=2bC3dE4fG5hI6jK7lM8nO9pQ0rS1tU2vW",
+      "DemoURL":"https://demo.contactformpro.com"
+   },
+   {
+      "ID":"uikit-001",
+      "Title":"Modern Dashboard UI Kit",
+      "Slug":"modern-dashboard-ui-kit",
+      "Enabled":true,
+      "CatalogVisible":true,
+      "ProductCategories":[
+         "UI Kits",
+         "Design",
+         "Figma"
+      ],
+      "FeatureImageURL":"/products/product-3.jpg",
+      "ProductImageGallery":[
+         "/products/product-1.jpg",
+         "/products/product-2.jpg"
+      ],
+      "ShortDescription":"Complete dashboard UI kit with 100+ components and screens for Figma.",
+      "LongDescription":"A comprehensive dashboard UI kit featuring over 100 carefully crafted components and 50+ pre-designed screens. Perfect for building admin panels, SaaS dashboards, and analytics platforms. Fully customizable with organized layers, auto-layout, and design system. Compatible with Figma.",
+      "RegularPrice":"59.99",
+      "SalePrice":"",
+      "Currency":"USD",
+      "DownloadURL":"https://drive.google.com/uc?export=download&id=3cD4eF5gH6iJ7kL8mN9oP0qR1sT2uV3wX",
+      "DemoURL":"https://www.figma.com/community/file/dashboard-ui-kit"
+   },
+   {
+      "ID":"theme-002",
+      "Title":"eCommerce Storefront Theme",
+      "Slug":"ecommerce-storefront-theme",
+      "Enabled":true,
+      "CatalogVisible":true,
+      "ProductCategories":[
+         "WordPress Themes",
+         "eCommerce",
+         "WooCommerce"
+      ],
+      "FeatureImageURL":"/products/product-1.jpg",
+      "ProductImageGallery":[
+         "/products/product-2.jpg",
+         "/products/product-3.jpg"
+      ],
+      "ShortDescription":"Professional WooCommerce theme for online stores and digital products.",
+      "LongDescription":"Launch your online store with this feature-rich WooCommerce theme. Includes product quick view, advanced filtering, wishlist functionality, multiple homepage layouts, mega menu, and optimized for performance. Perfect for fashion, electronics, digital products, and more.",
+      "RegularPrice":"69.99",
+      "SalePrice":"54.99",
+      "Currency":"USD",
+      "DownloadURL":"https://drive.google.com/uc?export=download&id=4dE5fG6hI7jK8lM9nO0pQ1rS2tU3vW4xY",
+      "DemoURL":"https://demo.storefrontpro.com"
+   },
+   {
+      "ID":"plugin-002",
+      "Title":"SEO Optimization Suite",
+      "Slug":"seo-optimization-suite",
+      "Enabled":true,
+      "CatalogVisible":true,
+      "ProductCategories":[
+         "WordPress Plugins",
+         "SEO",
+         "Marketing"
+      ],
+      "FeatureImageURL":"/products/product-2.jpg",
+      "ProductImageGallery":[
+         "/products/product-1.jpg",
+         "/products/product-3.jpg"
+      ],
+      "ShortDescription":"Complete SEO plugin with on-page optimization, sitemaps, and schema markup.",
+      "LongDescription":"Boost your website's search engine rankings with our comprehensive SEO plugin. Features include advanced on-page analysis, XML sitemaps, schema markup, social media integration, local SEO, breadcrumbs, and detailed SEO reports. Works seamlessly with all WordPress themes.",
+      "RegularPrice":"39.99",
+      "SalePrice":"",
+      "Currency":"USD",
+      "DownloadURL":"https://drive.google.com/uc?export=download&id=5eF6gH7iJ8kL9mN0oP1qR2sT3uV4wX5yZ",
+      "DemoURL":"https://demo.seosuiteplus.com"
+   },
+   {
+      "ID":"icons-001",
+      "Title":"Premium Icon Pack - 500 Icons",
+      "Slug":"premium-icon-pack-500",
+      "Enabled":true,
+      "CatalogVisible":true,
+      "ProductCategories":[
+         "Icons",
+         "Design",
+         "Graphics"
+      ],
+      "FeatureImageURL":"/products/product-3.jpg",
+      "ProductImageGallery":[
+         "/products/product-1.jpg",
+         "/products/product-2.jpg"
+      ],
+      "ShortDescription":"500 hand-crafted icons in multiple formats: SVG, PNG, and icon font.",
+      "LongDescription":"A meticulously designed collection of 500 icons covering business, technology, social media, e-commerce, and more. Available in SVG, PNG (multiple sizes), and web font formats. Perfect for websites, apps, presentations, and print. Fully editable and scalable.",
+      "RegularPrice":"34.99",
+      "SalePrice":"19.99",
+      "Currency":"USD",
+      "DownloadURL":"https://drive.google.com/uc?export=download&id=6fG7hI8jK9lM0nO1pQ2rS3tU4vW5xY6zA",
+      "DemoURL":"https://icons.designpack.com/preview"
+   },
+   {
+      "ID":"theme-003",
+      "Title":"Blog Magazine Theme",
+      "Slug":"blog-magazine-theme",
+      "Enabled":true,
+      "CatalogVisible":true,
+      "ProductCategories":[
+         "WordPress Themes",
+         "Blog",
+         "Magazine"
+      ],
+      "FeatureImageURL":"/products/product-1.jpg",
+      "ProductImageGallery":[
+         "/products/product-2.jpg",
+         "/products/product-3.jpg"
+      ],
+      "ShortDescription":"Modern magazine theme with multiple post layouts and advertising spaces.",
+      "LongDescription":"Perfect for news sites, magazines, and content-heavy blogs. Features include multiple homepage layouts, post formats, mega menu, review system, social sharing, ad management, infinite scroll, and newsletter integration. SEO optimized and blazing fast.",
+      "RegularPrice":"54.99",
+      "SalePrice":"44.99",
+      "Currency":"USD",
+      "DownloadURL":"https://drive.google.com/uc?export=download&id=7gH8iJ9kL0mN1oP2qR3sT4uV5wX6yZ7aB",
+      "DemoURL":"https://demo.magtheme.com"
+   },
+   {
+      "ID":"template-001",
+      "Title":"Email Marketing Templates Pack",
+      "Slug":"email-marketing-templates",
+      "Enabled":true,
+      "CatalogVisible":true,
+      "ProductCategories":[
+         "Templates",
+         "Email",
+         "Marketing"
+      ],
+      "FeatureImageURL":"/products/product-2.jpg",
+      "ProductImageGallery":[
+         "/products/product-1.jpg",
+         "/products/product-3.jpg"
+      ],
+      "ShortDescription":"25 responsive email templates for newsletters, promotions, and campaigns.",
+      "LongDescription":"Professional email templates designed for maximum engagement and conversions. Includes 25 fully responsive templates compatible with all major email clients (Gmail, Outlook, Apple Mail). Easy to customize with inline CSS. Perfect for newsletters, product launches, sales, and announcements.",
+      "RegularPrice":"29.99",
+      "SalePrice":"",
+      "Currency":"USD",
+      "DownloadURL":"https://drive.google.com/uc?export=download&id=8hI9jK0lM1nO2pQ3rS4tU5vW6xY7zA8bC",
+      "DemoURL":"https://templates.emailpro.com"
+   },
+   {
+      "ID":"ebook-001",
+      "Title":"Complete Guide to WordPress Development",
+      "Slug":"wordpress-development-guide",
+      "Enabled":true,
+      "CatalogVisible":true,
+      "ProductCategories":[
+         "Ebooks",
+         "Education",
+         "WordPress"
+      ],
+      "FeatureImageURL":"/products/product-3.jpg",
+      "ProductImageGallery":[
+         "/products/product-1.jpg",
+         "/products/product-2.jpg"
+      ],
+      "ShortDescription":"350-page comprehensive guide to WordPress theme and plugin development.",
+      "LongDescription":"Master WordPress development with this in-depth ebook covering themes, plugins, custom post types, REST API, security best practices, and modern development workflows. Includes code examples, real-world projects, and bonus resources. Perfect for beginners to advanced developers.",
+      "RegularPrice":"39.99",
+      "SalePrice":"29.99",
+      "Currency":"USD",
+      "DownloadURL":"https://drive.google.com/uc?export=download&id=9iJ0kL1mN2oP3qR4sT5uV6wX7yZ8aB9cD",
+      "DemoURL":"https://preview.wpdevbook.com"
+   },
+   {
+      "ID":"plugin-003",
+      "Title":"Membership & Subscriptions Pro",
+      "Slug":"membership-subscriptions-pro",
+      "Enabled":true,
+      "CatalogVisible":true,
+      "ProductCategories":[
+         "WordPress Plugins",
+         "Membership",
+         "eCommerce"
+      ],
+      "FeatureImageURL":"/products/product-1.jpg",
+      "ProductImageGallery":[
+         "/products/product-2.jpg",
+         "/products/product-3.jpg"
+      ],
+      "ShortDescription":"Create membership sites with recurring subscriptions and content restrictions.",
+      "LongDescription":"Build profitable membership sites with ease. Features include multiple membership levels, recurring payments, content dripping, email notifications, member dashboard, coupon codes, and reports. Integrates with Stripe and PayPal. Perfect for courses, premium content, and communities.",
+      "RegularPrice":"79.99",
+      "SalePrice":"59.99",
+      "Currency":"USD",
+      "DownloadURL":"https://drive.google.com/uc?export=download&id=0jK1lM2nO3pQ4rS5tU6vW7xY8zA9bC0dE",
+      "DemoURL":"https://demo.membershipspro.com"
+   },
+   {
+      "ID":"course-001",
+      "Title":"Mastering React & Next.js Video Course",
+      "Slug":"react-nextjs-course",
+      "Enabled":true,
+      "CatalogVisible":true,
+      "ProductCategories":[
+         "Courses",
+         "Video",
+         "Development"
+      ],
+      "FeatureImageURL":"/products/product-2.jpg",
+      "ProductImageGallery":[
+         "/products/product-1.jpg",
+         "/products/product-3.jpg"
+      ],
+      "ShortDescription":"12-hour video course covering React, Next.js, TypeScript, and modern web development.",
+      "LongDescription":"Learn to build modern web applications with React and Next.js. This comprehensive 12-hour course includes 80+ video lessons covering hooks, context, server components, API routes, authentication, deployment, and best practices. Includes source code and project files.",
+      "RegularPrice":"99.99",
+      "SalePrice":"79.99",
+      "Currency":"USD",
+      "DownloadURL":"https://drive.google.com/uc?export=download&id=1kL2mN3oP4qR5sT6uV7wX8yZ9aB0cD1eF",
+      "DemoURL":"https://preview.reactnextcourse.com"
+   },
+   {
+      "ID":"uikit-002",
+      "Title":"Mobile App UI Kit for Sketch",
+      "Slug":"mobile-app-ui-kit-sketch",
+      "Enabled":true,
+      "CatalogVisible":true,
+      "ProductCategories":[
+         "UI Kits",
+         "Mobile",
+         "Sketch"
+      ],
+      "FeatureImageURL":"/products/product-3.jpg",
+      "ProductImageGallery":[
+         "/products/product-1.jpg",
+         "/products/product-2.jpg"
+      ],
+      "ShortDescription":"80+ mobile screens and 200+ components for iOS and Android app design.",
+      "LongDescription":"Accelerate your mobile app design process with this comprehensive UI kit. Includes 80+ screens covering onboarding, authentication, profiles, messaging, e-commerce, and more. All components are organized with symbols and text styles. Compatible with Sketch.",
+      "RegularPrice":"49.99",
+      "SalePrice":"",
+      "Currency":"USD",
+      "DownloadURL":"https://drive.google.com/uc?export=download&id=2lM3nO4pQ5rS6tU7vW8xY9zA0bC1dE2fG",
+      "DemoURL":"https://www.sketch.com/s/mobile-ui-kit"
+   },
+   {
+      "ID":"theme-004",
+      "Title":"Corporate Business Theme",
+      "Slug":"corporate-business-theme",
+      "Enabled":true,
+      "CatalogVisible":true,
+      "ProductCategories":[
+         "WordPress Themes",
+         "Business",
+         "Corporate"
+      ],
+      "FeatureImageURL":"/products/product-1.jpg",
+      "ProductImageGallery":[
+         "/products/product-2.jpg",
+         "/products/product-3.jpg"
+      ],
+      "ShortDescription":"Professional corporate theme for businesses, agencies, and consultancies.",
+      "LongDescription":"Impress clients with this elegant corporate WordPress theme. Features include team profiles, case studies, service pages, testimonials, portfolio, contact forms, and blog. Fully responsive, translation ready, and includes one-click demo import.",
+      "RegularPrice":"59.99",
+      "SalePrice":"",
+      "Currency":"USD",
+      "DownloadURL":"https://drive.google.com/uc?export=download&id=3mN4oP5qR6sT7uV8wX9yZ0aB1cD2eF3gH",
+      "DemoURL":"https://demo.corporatepro.com"
+   },
+   {
+      "ID":"plugin-004",
+      "Title":"Social Sharing & Analytics Plugin",
+      "Slug":"social-sharing-analytics",
+      "Enabled":true,
+      "CatalogVisible":true,
+      "ProductCategories":[
+         "WordPress Plugins",
+         "Social Media",
+         "Analytics"
+      ],
+      "FeatureImageURL":"/products/product-2.jpg",
+      "ProductImageGallery":[
+         "/products/product-1.jpg",
+         "/products/product-3.jpg"
+      ],
+      "ShortDescription":"Beautiful social sharing buttons with detailed analytics and tracking.",
+      "LongDescription":"Increase social engagement with customizable sharing buttons for all major platforms. Track shares, clicks, and engagement with built-in analytics. Features include floating bars, inline buttons, share counts, click-to-tweet, and UTM parameter support.",
+      "RegularPrice":"24.99",
+      "SalePrice":"19.99",
+      "Currency":"USD",
+      "DownloadURL":"https://drive.google.com/uc?export=download&id=4nO5pQ6rS7tU8vW9xY0zA1bC2dE3fG4hI",
+      "DemoURL":"https://demo.socialshare.com"
+   },
+   {
+      "ID":"graphics-001",
+      "Title":"Abstract Background Collection",
+      "Slug":"abstract-background-collection",
+      "Enabled":true,
+      "CatalogVisible":true,
+      "ProductCategories":[
+         "Graphics",
+         "Design",
+         "Backgrounds"
+      ],
+      "FeatureImageURL":"/products/product-3.jpg",
+      "ProductImageGallery":[
+         "/products/product-1.jpg",
+         "/products/product-2.jpg"
+      ],
+      "ShortDescription":"100 high-resolution abstract backgrounds in JPG and AI formats.",
+      "LongDescription":"Stunning collection of 100 abstract backgrounds perfect for websites, presentations, posters, and social media. Each background is available in 4K resolution (3840x2160px) as JPG and fully editable AI files. Includes gradients, geometric patterns, and fluid designs.",
+      "RegularPrice":"19.99",
+      "SalePrice":"",
+      "Currency":"USD",
+      "DownloadURL":"https://drive.google.com/uc?export=download&id=5oP6qR7sT8uV9wX0yZ1aB2cD3eF4gH5iJ",
+      "DemoURL":"https://gallery.abstractbg.com"
+   },
+   {
+      "ID":"theme-005",
+      "Title":"Restaurant & Cafe Theme",
+      "Slug":"restaurant-cafe-theme",
+      "Enabled":true,
+      "CatalogVisible":true,
+      "ProductCategories":[
+         "WordPress Themes",
+         "Restaurant",
+         "Food"
+      ],
+      "FeatureImageURL":"/products/product-1.jpg",
+      "ProductImageGallery":[
+         "/products/product-2.jpg",
+         "/products/product-3.jpg"
+      ],
+      "ShortDescription":"Beautiful theme for restaurants, cafes, and food businesses with online menu.",
+      "LongDescription":"Perfect for restaurants, cafes, bakeries, and food businesses. Features include online menu with pricing, table reservation system, gallery, chef profiles, events calendar, location map, and online ordering integration. Mobile-optimized for on-the-go customers.",
+      "RegularPrice":"44.99",
+      "SalePrice":"34.99",
+      "Currency":"USD",
+      "DownloadURL":"https://drive.google.com/uc?export=download&id=6pQ7rS8tU9vW0xY1zA2bC3dE4fG5hI6jK",
+      "DemoURL":"https://demo.restauranttheme.com"
+   },
+   {
+      "ID":"template-002",
+      "Title":"Landing Page Templates Bundle",
+      "Slug":"landing-page-templates-bundle",
+      "Enabled":true,
+      "CatalogVisible":true,
+      "ProductCategories":[
+         "Templates",
+         "HTML",
+         "Marketing"
+      ],
+      "FeatureImageURL":"/products/product-2.jpg",
+      "ProductImageGallery":[
+         "/products/product-1.jpg",
+         "/products/product-3.jpg"
+      ],
+      "ShortDescription":"15 conversion-optimized HTML landing page templates for various industries.",
+      "LongDescription":"Launch high-converting landing pages quickly with this bundle of 15 professionally designed templates. Includes templates for SaaS, apps, products, services, webinars, and more. Built with HTML5, CSS3, and Bootstrap. Fully responsive and easy to customize.",
+      "RegularPrice":"49.99",
+      "SalePrice":"39.99",
+      "Currency":"USD",
+      "DownloadURL":"https://drive.google.com/uc?export=download&id=7qR8sT9uV0wX1yZ2aB3cD4eF5gH6iJ7kL",
+      "DemoURL":"https://landingpages.demo.com"
+   },
+   {
+      "ID":"plugin-005",
+      "Title":"Backup & Migration Pro",
+      "Slug":"backup-migration-pro",
+      "Enabled":true,
+      "CatalogVisible":true,
+      "ProductCategories":[
+         "WordPress Plugins",
+         "Backup",
+         "Security"
+      ],
+      "FeatureImageURL":"/products/product-3.jpg",
+      "ProductImageGallery":[
+         "/products/product-1.jpg",
+         "/products/product-2.jpg"
+      ],
+      "ShortDescription":"Complete backup solution with automated backups and easy site migration.",
+      "LongDescription":"Protect your WordPress site with automated backups to cloud storage (Dropbox, Google Drive, Amazon S3). Features include scheduled backups, one-click restore, site migration, database optimization, and email notifications. Essential security tool for every WordPress site.",
+      "RegularPrice":"34.99",
+      "SalePrice":"",
+      "Currency":"USD",
+      "DownloadURL":"https://drive.google.com/uc?export=download&id=8rS9tU0vW1xY2zA3bC4dE5fG6hI7jK8lM",
+      "DemoURL":"https://demo.backuppro.com"
+   },
+   {
+      "ID":"icons-002",
+      "Title":"Line Icons Mega Pack - 1000 Icons",
+      "Slug":"line-icons-mega-pack",
+      "Enabled":true,
+      "CatalogVisible":true,
+      "ProductCategories":[
+         "Icons",
+         "Design",
+         "Graphics"
+      ],
+      "FeatureImageURL":"/products/product-1.jpg",
+      "ProductImageGallery":[
+         "/products/product-2.jpg",
+         "/products/product-3.jpg"
+      ],
+      "ShortDescription":"1000 clean line icons in SVG, PNG, and web font formats.",
+      "LongDescription":"Massive collection of 1000 minimalist line icons covering every category imaginable. Perfect for modern interfaces and clean designs. Includes SVG files, PNG exports (16px to 512px), and web font. Fully editable stroke width and compatible with all design tools.",
+      "RegularPrice":"44.99",
+      "SalePrice":"29.99",
+      "Currency":"USD",
+      "DownloadURL":"https://drive.google.com/uc?export=download&id=9sT0uV1wX2yZ3aB4cD5eF6gH7iJ8kL9mN",
+      "DemoURL":"https://lineicons.demo.com"
+   },
+   {
+      "ID":"ebook-002",
+      "Title":"Digital Marketing Strategy Handbook",
+      "Slug":"digital-marketing-handbook",
+      "Enabled":true,
+      "CatalogVisible":true,
+      "ProductCategories":[
+         "Ebooks",
+         "Marketing",
+         "Business"
+      ],
+      "FeatureImageURL":"/products/product-2.jpg",
+      "ProductImageGallery":[
+         "/products/product-1.jpg",
+         "/products/product-3.jpg"
+      ],
+      "ShortDescription":"Comprehensive guide to modern digital marketing strategies and tactics.",
+      "LongDescription":"Learn proven digital marketing strategies that drive results. This 280-page handbook covers SEO, content marketing, social media, email marketing, PPC advertising, analytics, and conversion optimization. Includes templates, checklists, and case studies from successful campaigns.",
+      "RegularPrice":"34.99",
+      "SalePrice":"",
+      "Currency":"USD",
+      "DownloadURL":"https://drive.google.com/uc?export=download&id=0tU1vW2xY3zA4bC5dE6fG7hI8jK9lM0nO",
+      "DemoURL":"https://preview.marketingbook.com"
+   },
+   {
+      "ID":"font-001",
+      "Title":"Modern Sans Serif Font Family",
+      "Slug":"modern-sans-serif-font",
+      "Enabled":true,
+      "CatalogVisible":true,
+      "ProductCategories":[
+         "Fonts",
+         "Typography",
+         "Design"
+      ],
+      "FeatureImageURL":"/products/product-3.jpg",
+      "ProductImageGallery":[
+         "/products/product-1.jpg",
+         "/products/product-2.jpg"
+      ],
+      "ShortDescription":"Professional sans serif font family with 8 weights and italics.",
+      "LongDescription":"A versatile sans serif font family perfect for branding, web design, and print. Includes 8 weights (Thin to Black) plus matching italics, for a total of 16 font files. Supports extended Latin characters and web font formats (WOFF, WOFF2). Commercial license included.",
+      "RegularPrice":"39.99",
+      "SalePrice":"24.99",
+      "Currency":"USD",
+      "DownloadURL":"https://drive.google.com/uc?export=download&id=1uV2wX3yZ4aB5cD6eF7gH8iJ9kL0mN1oP",
+      "DemoURL":"https://fonts.moderntype.com/preview"
+   },
+   {
+      "ID":"uikit-003",
+      "Title":"E-commerce UI Kit - Complete Set",
+      "Slug":"ecommerce-ui-kit-complete",
+      "Enabled":true,
+      "CatalogVisible":true,
+      "ProductCategories":[
+         "UI Kits",
+         "eCommerce",
+         "Figma"
+      ],
+      "FeatureImageURL":"/products/product-1.jpg",
+      "ProductImageGallery":[
+         "/products/product-2.jpg",
+         "/products/product-3.jpg"
+      ],
+      "ShortDescription":"Complete e-commerce UI kit with 120+ screens for online stores.",
+      "LongDescription":"Everything you need to design a complete e-commerce platform. Includes 120+ screens covering product listings, filters, cart, checkout, user accounts, wishlists, reviews, and admin panel. Built with auto-layout and components. Available for Figma.",
+      "RegularPrice":"69.99",
+      "SalePrice":"49.99",
+      "Currency":"USD",
+      "DownloadURL":"https://drive.google.com/uc?export=download&id=2vW3xY4zA5bC6dE7fG8hI9jK0lM1nO2pQ",
+      "DemoURL":"https://www.figma.com/community/file/ecommerce-ui"
+   },
+   {
+      "ID":"course-002",
+      "Title":"Complete UI/UX Design Bootcamp",
+      "Slug":"ui-ux-design-bootcamp",
+      "Enabled":true,
+      "CatalogVisible":true,
+      "ProductCategories":[
+         "Courses",
+         "Video",
+         "Design"
+      ],
+      "FeatureImageURL":"/products/product-2.jpg",
+      "ProductImageGallery":[
+         "/products/product-1.jpg",
+         "/products/product-3.jpg"
+      ],
+      "ShortDescription":"15-hour comprehensive UI/UX design course with real-world projects.",
+      "LongDescription":"Master UI/UX design from scratch with this intensive bootcamp. Covers design principles, user research, wireframing, prototyping, Figma mastery, portfolio building, and landing your first clients. Includes 100+ video lessons, project files, and design resources.",
+      "RegularPrice":"149.99",
+      "SalePrice":"99.99",
+      "Currency":"USD",
+      "DownloadURL":"https://drive.google.com/uc?export=download&id=3wX4yZ5aB6cD7eF8gH9iJ0kL1mN2oP3qR",
+      "DemoURL":"https://preview.uiuxbootcamp.com"
+   },
+   {
+      "ID":"plugin-free-001",
+      "Title":"Simple Contact Form - Free",
+      "Slug":"simple-contact-form-free",
+      "Enabled":true,
+      "CatalogVisible":true,
+      "ProductCategories":[
+         "WordPress Plugins",
+         "Forms",
+         "Free"
+      ],
+      "FeatureImageURL":"/products/product-3.jpg",
+      "ProductImageGallery":[
+         "/products/product-1.jpg",
+         "/products/product-2.jpg"
+      ],
+      "ShortDescription":"Free, lightweight contact form plugin with spam protection.",
+      "LongDescription":"A simple yet powerful contact form plugin perfect for small websites. Features include customizable fields, email notifications, basic spam protection, and responsive design. Easy to set up with shortcode support. Great for getting started with WordPress contact forms.",
+      "RegularPrice":"0",
+      "SalePrice":"",
+      "Currency":"USD",
+      "DownloadURL":"https://drive.google.com/uc?export=download&id=4xY5zA6bC7dE8fG9hI0jK1lM2nO3pQ4rS",
+      "DemoURL":"https://demo.simpleform.com"
+   },
+   {
+      "ID":"graphics-002",
+      "Title":"Social Media Graphics Template Pack",
+      "Slug":"social-media-graphics-pack",
+      "Enabled":true,
+      "CatalogVisible":true,
+      "ProductCategories":[
+         "Graphics",
+         "Templates",
+         "Social Media"
+      ],
+      "FeatureImageURL":"/products/product-1.jpg",
+      "ProductImageGallery":[
+         "/products/product-2.jpg",
+         "/products/product-3.jpg"
+      ],
+      "ShortDescription":"200+ customizable social media templates for Instagram, Facebook, and Twitter.",
+      "LongDescription":"Create stunning social media posts in minutes with this mega pack of 200+ templates. Includes posts, stories, covers, and ads for all major platforms. Fully editable in Photoshop, Illustrator, and Canva. Perfect for businesses, influencers, and agencies.",
+      "RegularPrice":"29.99",
+      "SalePrice":"19.99",
+      "Currency":"USD",
+      "DownloadURL":"https://drive.google.com/uc?export=download&id=5yZ6aB7cD8eF9gH0iJ1kL2mN3oP4qR5sT",
+      "DemoURL":"https://socialtemplates.demo.com"
+   },
+   {
+      "ID":"template-003",
+      "Title":"Invoice & Receipt Templates",
+      "Slug":"invoice-receipt-templates",
+      "Enabled":true,
+      "CatalogVisible":true,
+      "ProductCategories":[
+         "Templates",
+         "Business",
+         "Finance"
+      ],
+      "FeatureImageURL":"/products/product-2.jpg",
+      "ProductImageGallery":[
+         "/products/product-1.jpg",
+         "/products/product-3.jpg"
+      ],
+      "ShortDescription":"Professional invoice and receipt templates in Word, Excel, and PDF formats.",
+      "LongDescription":"10 professionally designed invoice templates and 5 receipt templates for your business. Each template is fully customizable and includes automatic calculations. Available in Microsoft Word, Excel, and editable PDF formats. Includes tax calculations and multiple currency support.",
+      "RegularPrice":"14.99",
+      "SalePrice":"",
+      "Currency":"USD",
+      "DownloadURL":"https://drive.google.com/uc?export=download&id=6zA7bC8dE9fG0hI1jK2lM3nO4pQ5rS6tU",
+      "DemoURL":"https://invoice-templates.demo.com"
+   },
+   {
+      "ID":"ebook-003",
+      "Title":"Freelancer's Guide to Success",
+      "Slug":"freelancer-guide-success",
+      "Enabled":true,
+      "CatalogVisible":true,
+      "ProductCategories":[
+         "Ebooks",
+         "Business",
+         "Freelancing"
+      ],
+      "FeatureImageURL":"/products/product-3.jpg",
+      "ProductImageGallery":[
+         "/products/product-1.jpg",
+         "/products/product-2.jpg"
+      ],
+      "ShortDescription":"Complete guide to building a successful freelance business from scratch.",
+      "LongDescription":"Everything you need to know about freelancing: finding clients, setting rates, contracts, proposals, time management, scaling your business, and financial planning. This 220-page guide includes templates, scripts, and real-world advice from successful freelancers.",
+      "RegularPrice":"24.99",
+      "SalePrice":"",
+      "Currency":"USD",
+      "DownloadURL":"https://drive.google.com/uc?export=download&id=7aB8cD9eF0gH1iJ2kL3mN4oP5qR6sT7uV",
+      "DemoURL":"https://preview.freelancerbook.com"
+   },
+   {
+      "ID":"icons-003",
+      "Title":"3D Icon Collection - 300 Icons",
+      "Slug":"3d-icon-collection-300",
+      "Enabled":true,
+      "CatalogVisible":true,
+      "ProductCategories":[
+         "Icons",
+         "3D",
+         "Design"
+      ],
+      "FeatureImageURL":"/products/product-1.jpg",
+      "ProductImageGallery":[
+         "/products/product-2.jpg",
+         "/products/product-3.jpg"
+      ],
+      "ShortDescription":"300 modern 3D icons in PNG and Blender source files.",
+      "LongDescription":"Stand out with these stunning 3D icons perfect for modern web and app design. Includes 300 icons in 4K PNG format with transparent backgrounds, plus editable Blender source files. Categories include business, technology, social media, finance, and lifestyle.",
+      "RegularPrice":"54.99",
+      "SalePrice":"39.99",
+      "Currency":"USD",
+      "DownloadURL":"https://drive.google.com/uc?export=download&id=8bC9dE0fG1hI2jK3lM4nO5pQ6rS7tU8vW",
+      "DemoURL":"https://3dicons.gallery.com"
+   },
+   {
+      "ID":"font-002",
+      "Title":"Elegant Script Font Bundle",
+      "Slug":"elegant-script-font-bundle",
+      "Enabled":true,
+      "CatalogVisible":true,
+      "ProductCategories":[
+         "Fonts",
+         "Typography",
+         "Design"
+      ],
+      "FeatureImageURL":"/products/product-2.jpg",
+      "ProductImageGallery":[
+         "/products/product-1.jpg",
+         "/products/product-3.jpg"
+      ],
+      "ShortDescription":"3 elegant script fonts perfect for branding and wedding designs.",
+      "LongDescription":"A beautiful collection of 3 handcrafted script fonts ideal for logos, branding, invitations, and editorial design. Each font includes uppercase, lowercase, numerals, punctuation, and ligatures. Available in OTF and TTF formats with web font support. Commercial license included.",
+      "RegularPrice":"49.99",
+      "SalePrice":"34.99",
+      "Currency":"USD",
+      "DownloadURL":"https://drive.google.com/uc?export=download&id=9cD0eF1gH2iJ3kL4mN5oP6qR7sT8uV9wX",
+      "DemoURL":"https://fonts.elegantscript.com"
+   },
+   {
+      "ID":"graphics-free-001",
+      "Title":"Free Watercolor Texture Pack",
+      "Slug":"free-watercolor-texture-pack",
+      "Enabled":true,
+      "CatalogVisible":true,
+      "ProductCategories":[
+         "Graphics",
+         "Textures",
+         "Free"
+      ],
+      "FeatureImageURL":"/products/product-3.jpg",
+      "ProductImageGallery":[
+         "/products/product-1.jpg",
+         "/products/product-2.jpg"
+      ],
+      "ShortDescription":"Free pack of 20 high-resolution watercolor textures for creative projects.",
+      "LongDescription":"Beautiful collection of 20 hand-painted watercolor textures in high resolution (3000x2000px). Perfect for backgrounds, overlays, and design projects. Each texture is unique and provided as JPG files. Free for personal and commercial use.",
+      "RegularPrice":"0",
+      "SalePrice":"",
+      "Currency":"USD",
+      "DownloadURL":"https://drive.google.com/uc?export=download&id=0dE1fG2hI3jK4lM5nO6pQ7rS8tU9vW0xY",
+      "DemoURL":"https://watercolor.freegraphics.com"
+   },
+   {
+      "ID":"software-001",
+      "Title":"Code Snippet Manager Desktop App",
+      "Slug":"code-snippet-manager-app",
+      "Enabled":true,
+      "CatalogVisible":true,
+      "ProductCategories":[
+         "Software",
+         "Development",
+         "Productivity"
+      ],
+      "FeatureImageURL":"/products/product-1.jpg",
+      "ProductImageGallery":[
+         "/products/product-2.jpg",
+         "/products/product-3.jpg"
+      ],
+      "ShortDescription":"Desktop application for organizing and managing your code snippets efficiently.",
+      "LongDescription":"Keep your code snippets organized and accessible with this powerful desktop app for Windows, macOS, and Linux. Features include syntax highlighting for 100+ languages, tags, folders, search, cloud sync, team sharing, and dark mode. Perfect for developers who want to save time.",
+      "RegularPrice":"49.99",
+      "SalePrice":"39.99",
+      "Currency":"USD",
+      "DownloadURL":"https://drive.google.com/uc?export=download&id=1eF2gH3iJ4kL5mN6oP7qR8sT9uV0wX1yZ",
+      "DemoURL":"https://demo.snippetmanager.com"
+   }
+]

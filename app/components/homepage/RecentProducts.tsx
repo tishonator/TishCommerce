@@ -3,12 +3,16 @@ import { getLocalization } from "../../utils/getLocalization";
 import getProducts from "../../utils/getProducts";
 import { Product } from "../../../types/Product";
 
-export default async function RecentProducts() {
+interface RecentProductsProps {
+  count?: number;
+}
+
+export default async function RecentProducts({ count = 3 }: RecentProductsProps) {
   const localeData = getLocalization();
   const labels = localeData.labels;
 
   const allProducts = await getProducts();
-  const recentProducts = allProducts.slice(0, 3);
+  const recentProducts = allProducts.slice(0, count);
 
   if (recentProducts.length === 0) {
     return <p className="text-center text-gray-500">{labels.noProductsFound}</p>;

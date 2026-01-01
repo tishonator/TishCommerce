@@ -1,6 +1,4 @@
 import OrderInfoInitializer from "../components/checkout/OrderInfoInitializer";
-import ShippingForm from "../components/checkout/ShippingForm";
-import ShippingMethod from "../components/checkout/ShippingMethod";
 import BillingForm from "../components/checkout/BillingForm";
 import OrderSummary from "../components/checkout/OrderSummary";
 import PaymentMethods from "../components/checkout/PaymentMethods";
@@ -16,8 +14,6 @@ export default function CheckoutPage() {
             {/* Left Column - Main Forms */}
             <div className="lg:col-span-2 space-y-8">
               <OrderInfoInitializer />
-              <ShippingForm />
-              <ShippingMethod />
               <BillingForm />
               <PaymentMethods />
             </div>

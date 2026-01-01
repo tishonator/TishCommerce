@@ -6,7 +6,6 @@ import { setPaymentMethod } from "../../store/slices/checkoutSlice";
 import { useLocalization } from "../../context/LocalizationContext";
 import PayPalButton from "./PayPalButton";
 import StripeClientSecretLoader from "./StripeClientSecretLoader";
-import PlaceOrderButton from "./PlaceOrderButton";
 import Image from "next/image";
 
 export default function PaymentMethods() {
@@ -14,30 +13,22 @@ export default function PaymentMethods() {
   const { paymentMethods } = useCheckoutSettings();
   const dispatch = useAppDispatch();
   const selectedMethodId = useAppSelector((state) => state.checkout.paymentMethodId);
-
-  const shippingForm = useAppSelector((state) => state.checkout.shippingForm);
   const billingForm = useAppSelector((state) => state.checkout.billingForm);
-  const shippingMethodId = useAppSelector((state) => state.checkout.shippingMethodId);
 
   const isFormComplete = () => {
     const formFields = [
-      shippingForm.firstName,
-      shippingForm.lastName,
-      shippingForm.country,
-      shippingForm.address1,
-      shippingForm.postalCode,
-      shippingForm.phone,
-      shippingForm.email,
       billingForm.firstName,
       billingForm.lastName,
-      billingForm.country,
-      billingForm.address1,
-      billingForm.postalCode,
-      billingForm.phone,
       billingForm.email,
-      shippingMethodId,
     ];
-    return formFields.every((field) => field && field.trim() !== "");
+
+    if (!formFields.every((field) => field && field.trim() !== "")) {
+      return false;
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(billingForm.email);
   };
 
   const formReady = isFormComplete();
@@ -96,12 +87,6 @@ export default function PaymentMethods() {
               {method.id === "paypal" && selectedMethodId === "paypal" && (
                 <div className="mt-4 ml-6">
                   <PayPalButton />
-                </div>
-              )}
-
-              {method.id === "cod" && selectedMethodId === "cod" && (
-                <div className="mt-4 ml-6">
-                  <PlaceOrderButton />
                 </div>
               )}
 

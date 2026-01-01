@@ -4,32 +4,12 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 // Define the shape of configs/checkout.json
 interface CheckoutSettings {
-  shippingMethods: {
-    id: string;
-    name: string;
-    price: number;
-    currency: string;
-  }[];
-  shippingCountries: {
-    code: string;
-    name: string;
-  }[];
-  billingCountries: {
-    code: string;
-    name: string;
-  }[];
   paymentMethods: {
     id: string;
     name: string;
     enabled: boolean;
     icon: string;
   }[];
-  countryStates: {
-    [countryCode: string]: {
-      code: string;
-      name: string;
-    }[];
-  };
 }
 
 // Create context

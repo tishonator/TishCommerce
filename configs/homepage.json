@@ -1,0 +1,21 @@
+{
+  "banner": {
+    "enabled": true
+  },
+  "recentProducts": {
+    "enabled": true,
+    "count": 3
+  },
+  "brandStory": {
+    "enabled": true
+  },
+  "testimonials": {
+    "enabled": true
+  },
+  "newsletter": {
+    "enabled": true
+  },
+  "brands": {
+    "enabled": true
+  }
+}

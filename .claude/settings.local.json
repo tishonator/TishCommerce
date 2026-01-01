@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(ncu)",
+      "Bash(ncu -u:*)",
+      "Bash(if exist node_modules rmdir /s /q node_modules)",
+      "Bash(if exist package-lock.json del package-lock.json)",
+      "Bash(npm run build:*)",
+      "Bash(npm run dev:*)",
+      "Bash(tasklist:*)",
+      "Bash(findstr:*)",
+      "Bash(taskkill:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(npm run lint)",
+      "Bash(npx tsc:*)",
+      "Bash(npx eslint:*)",
+      "Bash(npx next lint:*)",
+      "Bash(cd:*)",
+      "Bash(npx next --version)"
+    ]
+  }
+}

@@ -86,7 +86,9 @@ export async function GET(request: NextRequest) {
         // Extract product IDs from purchase units
         // PayPal order structure: purchase_units[0].items[]
         if (orderData.purchase_units && orderData.purchase_units[0]?.items) {
-          productIds = orderData.purchase_units[0].items.map((item: any) => item.sku || item.name);
+          productIds = orderData.purchase_units[0].items
+            .map((item: any) => item.sku || item.name)
+            .filter((id: string) => id !== "SHIPPING"); // Exclude shipping item
         }
       } catch (error) {
         console.error("PayPal verification error:", error);

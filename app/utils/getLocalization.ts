@@ -1,15 +1,12 @@
-import fs from "fs";
-import path from "path";
+import localeData from "../../configs/locale.en.json";
 
 // Define Localization Structure
 interface LocalizationData {
-  email: string;
   phone: string;
   address: string;
   siteName: string;
   siteTagline: string;
   labels: {
-    email: string;
     phone: string;
     address: string;
     quickLinks: string;
@@ -66,13 +63,11 @@ interface LocalizationData {
 
 // Default Localization Fallback
 const defaultLocalization: LocalizationData = {
-  email: "contact@example.com",
   phone: "+1 234 567 890",
   address: "123 Main Street, Tish City",
   siteName: "TishCommerce",
   siteTagline: "Your Database-Free Store",
   labels: {
-    email: "Email",
     phone: "Phone",
     address: "Address",
     quickLinks: "Quick Links",
@@ -89,7 +84,7 @@ const defaultLocalization: LocalizationData = {
     products: "Products",
     recentProducts: "Recent Products",
     orderConfirmationTitle: "Your Order Confirmation",
-    orderConfirmationMessage: "Your order was placed successfully. We’ll notify you once it’s processed.",
+    orderConfirmationMessage: "Your order was placed successfully. Thank you for your purchase!",
   },
   menu: [
     { label: "Homepage", href: "/" },
@@ -139,13 +134,7 @@ const defaultLocalization: LocalizationData = {
 };
 
 // Fetch Localization Data
+// Now using direct import for compatibility with Vercel, Cloudflare, and Netlify
 export const getLocalization = (): LocalizationData => {
-  try {
-    const localePath = path.join(process.cwd(), "configs/locale.en.json");
-    const data = fs.readFileSync(localePath, "utf-8");
-    return JSON.parse(data) as LocalizationData;
-  } catch (error) {
-    console.error("Error loading localization file:", error);
-    return defaultLocalization;
-  }
+  return localeData as LocalizationData;
 };

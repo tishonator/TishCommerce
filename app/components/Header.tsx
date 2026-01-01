@@ -18,11 +18,10 @@ export default function Header() {
     <>
       {/* TOP BAR */}
       <div className="bg-gray-100 text-gray-900 py-2 px-4 flex justify-between items-center text-sm md:text-base">
-        {/* Email */}
+        {/* Contact Link */}
         <p className="hidden md:block">
-          {content.labels.email}:{" "}
-          <Link href={`mailto:${content.email}`} className="text-gray-800 hover:text-gray-600 transition">
-            {content.email}
+          <Link href="/contact" className="text-gray-800 hover:text-gray-600 transition font-medium">
+            {content.labels.contactUs || "Contact Us"}
           </Link>
         </p>
 
@@ -38,10 +37,10 @@ export default function Header() {
           })}
         </div>
 
-        {/* Mobile Email */}
+        {/* Mobile Contact Link */}
         <p className="block md:hidden text-center w-full mt-2">
-          <Link href={`mailto:${content.email}`} className="text-gray-800 hover:text-gray-600 transition">
-            {content.email}
+          <Link href="/contact" className="text-gray-800 hover:text-gray-600 transition font-medium">
+            {content.labels.contactUs || "Contact Us"}
           </Link>
         </p>
       </div>

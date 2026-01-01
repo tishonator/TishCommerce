@@ -43,7 +43,11 @@ export default function Footer() {
         {/* Contact Info */}
         <div>
           <h3 className="text-xl font-semibold mb-4 text-gray-100">{content.labels.contactUs}</h3>
-          <p>{content.labels.email}: <a href={`mailto:${content.email}`} className="text-gray-300 hover:text-gray-400 transition">{content.email}</a></p>
+          <p>
+            <Link href="/contact" className="text-gray-300 hover:text-gray-400 transition">
+              {content.labels.contactUs}
+            </Link>
+          </p>
           <p>{content.labels.phone}: <a href={`tel:${content.phone}`} className="text-gray-300 hover:text-gray-400 transition">{content.phone}</a></p>
           <p>{content.labels.address}: {content.address}</p>
         </div>

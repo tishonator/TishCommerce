@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useLocalization } from "../../context/LocalizationContext";
 import { useProductContext } from "../../context/ProductContext";
@@ -17,30 +17,14 @@ interface CartItem extends Product {
 interface Address {
   firstName: string;
   lastName: string;
-  country: string;
-  state: string;
-  city: string;
-  address1: string;
-  address2: string;
-  postalCode: string;
-  phone: string;
   email: string;
-}
-
-interface ShippingMethod {
-  id: string;
-  name: string;
-  price: number;
-  currency: string;
 }
 
 interface OrderData {
   orderId: string;
   orderDate: string;
   cartItems: CartItem[];
-  shippingForm: Address;
   billingForm: Address;
-  shippingMethod: ShippingMethod;
   paymentMethodId: string;
 }
 
@@ -61,6 +45,9 @@ export default function OrderSummaryClient() {
   const searchParams = useSearchParams();
   const dispatch = useAppDispatch();
 
+  // Track if we've already processed this payment to prevent duplicate API calls
+  const processedPaymentRef = useRef<string | null>(null);
+
   useEffect(() => {
     const orderIdFromQuery = searchParams.get("orderId");
     const recent = localStorage.getItem("recentOrder");
@@ -75,60 +62,81 @@ export default function OrderSummaryClient() {
         dispatch(clearCart());
       }
 
-      // Handle Stripe order placement and download links
+      // Handle Stripe order - verify payment and display downloads
       const handleStripeOrder = async (paymentIntent: string) => {
+        // Prevent duplicate API calls for the same payment intent
+        if (processedPaymentRef.current === paymentIntent) {
+          console.log("⏭️ Payment already processed, skipping duplicate API call");
+          return;
+        }
+
+        processedPaymentRef.current = paymentIntent;
         try {
-          // Place order on server (send emails)
-          const placeOrderRes = await fetch("/api/checkout/placeorder", {
+          // Verify payment with Stripe and send emails
+          const verifyRes = await fetch("/api/stripe/verify-payment", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(parsed),
+            body: JSON.stringify({ payment_intent_id: paymentIntent }),
           });
 
-          if (!placeOrderRes.ok) {
-            console.error("❌ Failed to place Stripe order on server");
+          const verifyData = await verifyRes.json();
+
+          if (!verifyRes.ok || !verifyData.success) {
+            console.error("❌ Payment verification failed:", verifyData);
+            setDownloadError("Payment verification failed. Please contact support.");
+            return;
           }
 
-          // Fetch downloads
-          const res = await fetch(`/api/download?payment_intent_id=${paymentIntent}`);
-          const data = await res.json();
+          console.log("✅ Payment verified with Stripe");
 
-          if (res.ok && data.downloads) {
-            setDownloads(data.downloads);
-          } else if (data.error) {
-            setDownloadError(data.error);
+          if (verifyData.emailsSent) {
+            console.log("✅ Order confirmation emails sent");
+          } else {
+            console.log("ℹ️ Emails already sent previously");
+          }
+
+          // Display download links from verification response
+          if (verifyData.downloads && verifyData.downloads.length > 0) {
+            setDownloads(verifyData.downloads);
+          } else {
+            // Fallback to cart items if no downloads returned
+            const downloadLinks = parsed.cartItems
+              .filter((item) => item.DownloadURL)
+              .map((item) => ({
+                productId: item.ID,
+                productTitle: item.Title,
+                downloadURL: item.DownloadURL!,
+              }));
+            setDownloads(downloadLinks);
           }
         } catch (error) {
-          console.error("Error handling Stripe order:", error);
-          setDownloadError("Failed to process order");
+          console.error("❌ Error verifying Stripe payment:", error);
+          setDownloadError("Failed to verify payment. Please contact support.");
         }
       };
 
-      // Handle PayPal downloads (order already placed)
-      const handlePayPalDownloads = async (paypalOrderId: string) => {
-        try {
-          const res = await fetch(`/api/download?paypal_order_id=${paypalOrderId}`);
-          const data = await res.json();
+      // Handle PayPal order (already placed) and display direct downloads
+      const handlePayPalDownloads = () => {
+        // Display direct download links from cart items
+        const downloadLinks = parsed.cartItems
+          .filter((item) => item.DownloadURL) // Only products with download URLs
+          .map((item) => ({
+            productId: item.ID,
+            productTitle: item.Title,
+            downloadURL: item.DownloadURL!,
+          }));
 
-          if (res.ok && data.downloads) {
-            setDownloads(data.downloads);
-          } else if (data.error) {
-            setDownloadError(data.error);
-          }
-        } catch (error) {
-          console.error("Error fetching PayPal downloads:", error);
-          setDownloadError("Failed to fetch download links");
-        }
+        setDownloads(downloadLinks);
       };
 
-      // Fetch download links if payment is confirmed
+      // Display download links if payment is confirmed
       const paymentIntent = searchParams.get("payment_intent");
       const paypalOrderId = parsed.paypalOrderId;
 
       if (paymentIntent) {
         handleStripeOrder(paymentIntent);
       } else if (paypalOrderId) {
-        handlePayPalDownloads(paypalOrderId);
+        handlePayPalDownloads();
       }
     } else {
       router.push("/cart");
@@ -142,22 +150,17 @@ export default function OrderSummaryClient() {
     return sum + price * item.quantity;
   }, 0);
 
-  const shippingCost = order.shippingMethod?.price || 0;
-  const grandTotal = total + shippingCost;
+  const grandTotal = total;
 
   const getProductImage = (id: string): string => {
     const product = products.find((p) => p.ID === id);
     return product?.FeatureImageURL || "/placeholder.png";
   };
 
-  const renderAddress = (title: string, data: Address) => (
+  const renderCustomerInfo = (title: string, data: Address) => (
     <div className="mb-6">
       <h3 className="font-semibold text-gray-800 mb-2">{title}</h3>
       <p className="text-sm text-gray-700">{data.firstName} {data.lastName}</p>
-      <p className="text-sm text-gray-700">{data.address1}</p>
-      {data.address2 && <p className="text-sm text-gray-700">{data.address2}</p>}
-      <p className="text-sm text-gray-700">{data.city}, {data.state}, {data.country} {data.postalCode}</p>
-      <p className="text-sm text-gray-700">{data.phone}</p>
       <p className="text-sm text-gray-700">{data.email}</p>
     </div>
   );
@@ -206,15 +209,7 @@ export default function OrderSummaryClient() {
         </ul>
 
         <div className="border-t mt-6 pt-4 space-y-2 text-sm text-gray-700">
-          <div className="flex justify-between">
-            <span>{labels.subtotal || "Subtotal"}:</span>
-            <span>${total.toFixed(2)}</span>
-          </div>
-          <div className="flex justify-between">
-            <span>{labels.shipping || "Shipping"}: {order.shippingMethod?.name}</span>
-            <span>${shippingCost.toFixed(2)}</span>
-          </div>
-          <div className="flex justify-between font-semibold text-gray-900 border-t pt-2">
+          <div className="flex justify-between font-semibold text-gray-900">
             <span>{labels.total || "Total"}:</span>
             <span>${grandTotal.toFixed(2)}</span>
           </div>
@@ -222,13 +217,8 @@ export default function OrderSummaryClient() {
 
         <div className="mt-6 text-sm text-gray-600 space-y-1">
           <p>
-            {labels.shippingMethod || "Shipping Method"}: {order.shippingMethod?.name}
-          </p>
-          <p>
             {labels.paymentMethod || "Payment Method"}:{" "}
-            {order.paymentMethodId === "cod"
-              ? "Cash on Delivery"
-              : order.paymentMethodId === "paypal"
+            {order.paymentMethodId === "paypal"
               ? "PayPal"
               : order.paymentMethodId === "stripe"
               ? "Credit Card (Stripe)"
@@ -236,9 +226,8 @@ export default function OrderSummaryClient() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-          {renderAddress(labels.shippingInformation || "Shipping Info", order.shippingForm)}
-          {renderAddress(labels.billingInformation || "Billing Info", order.billingForm)}
+        <div className="mt-8">
+          {renderCustomerInfo(labels.customerInformation || "Customer Information", order.billingForm)}
         </div>
       </div>
 

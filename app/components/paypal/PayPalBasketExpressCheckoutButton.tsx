@@ -11,7 +11,6 @@ import {
   setPayPalApproved,
   setPayPalOrderID,
 } from "../../store/slices/checkoutSlice";
-import { useCheckoutSettings } from "../../context/CheckoutContext";
 
 export default function PayPalBasketExpressCheckoutButton() {
   const dispatch = useAppDispatch();
@@ -19,19 +18,16 @@ export default function PayPalBasketExpressCheckoutButton() {
   const cartItems = useAppSelector((state) => state.cart.items);
   const orderId = useAppSelector((state) => state.checkout.orderId);
   const orderDate = useAppSelector((state) => state.checkout.orderDate);
-  const { shippingMethods } = useCheckoutSettings();
-  const shippingMethod = shippingMethods[0];
 
   const [ready, setReady] = useState(false);
   const [localOrderId, setLocalOrderId] = useState("");
 
-  const total =
-    cartItems.reduce(
-      (acc, item) => acc + item.quantity * parseFloat(item.SalePrice || item.RegularPrice),
-      0
-    ) + (shippingMethod?.price || 0);
+  const total = cartItems.reduce(
+    (acc, item) => acc + item.quantity * parseFloat(item.SalePrice || item.RegularPrice),
+    0
+  );
 
-  const currency = shippingMethod?.currency || "USD";
+  const currency = "USD";
 
   useEffect(() => {
     if (!orderId) {
@@ -68,7 +64,6 @@ export default function PayPalBasketExpressCheckoutButton() {
               currency,
               orderId: localOrderId,
               cartItems,
-              shippingMethodName: shippingMethod?.name || "Shipping",
             }),
           });
 
@@ -93,52 +88,24 @@ export default function PayPalBasketExpressCheckoutButton() {
 
           dispatch(setPayPalApproved(true));
 
-          const shipping =
-            result.details?.purchase_units?.[0]?.shipping?.address || {};
-          const name =
-            result.details?.purchase_units?.[0]?.shipping?.name?.full_name || "";
+          const name = result.details?.payer?.name?.given_name
+            ? `${result.details.payer.name.given_name} ${result.details.payer.name.surname || ""}`
+            : result.details?.purchase_units?.[0]?.shipping?.name?.full_name || "";
           const [firstName, ...lastParts] = name.split(" ");
-          const lastName = lastParts.join(" ");
+          const lastName = lastParts.join(" ") || "";
           const email = result.details?.payer?.email_address || "";
-
-          const address1 = shipping.address_line_1 || "";
-          const address2 = shipping.address_line_2 || "";
-          const city = shipping.admin_area_2 || "";
-          const state = shipping.admin_area_1 || "";
-          const postalCode = shipping.postal_code || "";
-          const country = shipping.country_code || "";
 
           const orderData = {
             orderId: localOrderId,
             orderDate,
             cartItems,
-            shippingForm: {
-              firstName,
-              lastName,
-              email,
-              country,
-              state,
-              city,
-              address1,
-              address2,
-              postalCode,
-              phone: "",
-            },
             billingForm: {
               firstName,
               lastName,
               email,
-              country,
-              state,
-              city,
-              address1,
-              address2,
-              postalCode,
-              phone: "",
             },
-            shippingMethod,
             paymentMethodId: "paypal",
-            payPalOrderID: data.orderID,
+            paypalOrderId: data.orderID,
           };
 
           const orderRes = await fetch("/api/checkout/placeorder", {
@@ -155,7 +122,15 @@ export default function PayPalBasketExpressCheckoutButton() {
             return;
           }
 
-          localStorage.setItem("recentOrder", JSON.stringify(orderData));
+          const orderResult = await orderRes.json();
+
+          // Use enriched cart items with download URLs from server response
+          const orderDataWithDownloads = {
+            ...orderData,
+            cartItems: orderResult.cartItems || cartItems, // Use enriched items if available
+          };
+
+          localStorage.setItem("recentOrder", JSON.stringify(orderDataWithDownloads));
           dispatch(clearCart());
           router.push("/ordersummary");
         }}

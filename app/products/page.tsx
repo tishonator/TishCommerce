@@ -1,5 +1,6 @@
 import ProductGrid from "../components/products/ProductGrid";
 import { getLocalization } from "../utils/getLocalization";
+import { getProductsListingSettings } from "../utils/getProductsListing";
 import type { Metadata } from "next";
 import { ReduxProvider } from "../providers";
 
@@ -13,6 +14,8 @@ export const metadata: Metadata = {
 };
 
 export default function ProductsPage() {
+  const productsListingSettings = getProductsListingSettings();
+
   return (
     <section className="py-12 bg-stone-100">
       <div className="container mx-auto px-4">
@@ -21,7 +24,7 @@ export default function ProductsPage() {
         </h2>
         <div className="mt-2">
           <ReduxProvider>
-            <ProductGrid />
+            <ProductGrid pageSize={productsListingSettings.pageSize} />
           </ReduxProvider>
         </div>
       </div>

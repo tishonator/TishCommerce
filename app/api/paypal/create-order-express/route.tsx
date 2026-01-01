@@ -8,7 +8,6 @@ interface PayPalExpressBody {
   currency: string;
   orderId: string;
   cartItems: CartItem[];
-  shippingMethodName: string;
 }
 
 export async function POST(req: Request) {
@@ -18,15 +17,13 @@ export async function POST(req: Request) {
       currency,
       orderId,
       cartItems,
-      shippingMethodName,
     }: PayPalExpressBody = await req.json();
 
     if (
       !amount ||
       !currency ||
       !orderId ||
-      !cartItems?.length ||
-      !shippingMethodName
+      !cartItems?.length
     ) {
       return NextResponse.json(
         { error: "Missing or invalid PayPal request data" },
@@ -53,24 +50,6 @@ export async function POST(req: Request) {
       },
       quantity: item.quantity.toString(),
     }));
-
-    // Calculate item total
-    const itemTotal = items.reduce(
-      (acc, item) =>
-        acc + parseFloat(item.unit_amount.value) * parseInt(item.quantity),
-      0
-    );
-
-    const shippingValue = (parseFloat(amount) - itemTotal).toFixed(2);
-
-    items.push({
-      name: `Shipping: ${shippingMethodName}`,
-      unit_amount: {
-        currency_code: currency,
-        value: shippingValue,
-      },
-      quantity: "1",
-    });
 
     const invoiceId = `${orderId}-${Date.now()}`;
 

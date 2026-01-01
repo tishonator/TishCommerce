@@ -12,7 +12,6 @@ import {
   setOrderInfo,
 } from "../../store/slices/checkoutSlice";
 import { Product } from "../../../types/Product";
-import { useCheckoutSettings } from "../../context/CheckoutContext";
 
 export default function PayPalSingleProductExpressButton({
   product,
@@ -21,8 +20,6 @@ export default function PayPalSingleProductExpressButton({
 }) {
   const dispatch = useAppDispatch();
   const router = useRouter();
-  const { shippingMethods } = useCheckoutSettings();
-  const shippingMethod = shippingMethods[0]; // Default shipping method
 
   const orderId = useAppSelector((state) => state.checkout.orderId);
   const orderDate = useAppSelector((state) => state.checkout.orderDate);
@@ -37,10 +34,8 @@ export default function PayPalSingleProductExpressButton({
   }, [orderId, dispatch]);
 
   const cartItems = [{ ...product, quantity: 1 }];
-  const total =
-    parseFloat(product.SalePrice || product.RegularPrice) +
-    (shippingMethod?.price || 0);
-  const currency = shippingMethod?.currency || "USD";
+  const total = parseFloat(product.SalePrice || product.RegularPrice);
+  const currency = "USD";
 
   return (
     <PayPalScriptProvider
@@ -62,7 +57,6 @@ export default function PayPalSingleProductExpressButton({
                 currency,
                 orderId,
                 cartItems,
-                shippingMethodName: shippingMethod?.name || "Shipping",
               }),
             });
 
@@ -92,54 +86,25 @@ export default function PayPalSingleProductExpressButton({
 
             dispatch(setPayPalApproved(true));
 
-            // ✅ Extract customer info from PayPal capture result
-            const shipping =
-              result.details?.purchase_units?.[0]?.shipping?.address || {};
-            const name =
-              result.details?.purchase_units?.[0]?.shipping?.name?.full_name ||
-              "PayPal Customer";
+            // Extract customer info from PayPal capture result
+            const name = result.details?.payer?.name?.given_name
+              ? `${result.details.payer.name.given_name} ${result.details.payer.name.surname || ""}`
+              : result.details?.purchase_units?.[0]?.shipping?.name?.full_name || "PayPal Customer";
             const [firstName, ...lastParts] = name.split(" ");
-            const lastName = lastParts.join(" ");
+            const lastName = lastParts.join(" ") || "";
             const email = result.details?.payer?.email_address || "";
-
-            const address1 = shipping.address_line_1 || "";
-            const address2 = shipping.address_line_2 || "";
-            const city = shipping.admin_area_2 || "";
-            const state = shipping.admin_area_1 || "";
-            const postalCode = shipping.postal_code || "";
-            const country = shipping.country_code || "";
 
             const orderData = {
               orderId,
               orderDate,
               cartItems,
-              shippingForm: {
-                firstName,
-                lastName,
-                email,
-                country,
-                state,
-                city,
-                address1,
-                address2,
-                postalCode,
-                phone: "",
-              },
               billingForm: {
                 firstName,
                 lastName,
                 email,
-                country,
-                state,
-                city,
-                address1,
-                address2,
-                postalCode,
-                phone: "",
               },
-              shippingMethod,
               paymentMethodId: "paypal",
-              payPalOrderID: data.orderID,
+              paypalOrderId: data.orderID,
             };
 
             const orderRes = await fetch("/api/checkout/placeorder", {
@@ -156,8 +121,16 @@ export default function PayPalSingleProductExpressButton({
               return;
             }
 
-            dispatch(setCartItems(cartItems));
-            localStorage.setItem("recentOrder", JSON.stringify(orderData));
+            const orderResult = await orderRes.json();
+
+            // Use enriched cart items with download URLs from server response
+            const orderDataWithDownloads = {
+              ...orderData,
+              cartItems: orderResult.cartItems || cartItems, // Use enriched items if available
+            };
+
+            dispatch(setCartItems(orderResult.cartItems || cartItems));
+            localStorage.setItem("recentOrder", JSON.stringify(orderDataWithDownloads));
             dispatch(clearCart());
             router.push("/ordersummary");
           } catch (err) {

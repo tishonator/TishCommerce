@@ -29,9 +29,10 @@ export default function ProductLightbox({ images }: ProductLightboxProps) {
           src={images[0]}
           alt="Main Product Image"
           width={800}
-          height={0} // auto height
+          height={600}
           className="w-full h-auto object-contain rounded-lg border"
           priority
+          unoptimized
         />
       </div>
 
@@ -52,6 +53,7 @@ export default function ProductLightbox({ images }: ProductLightboxProps) {
               width={96}
               height={96}
               className="object-contain w-full h-full"
+              unoptimized
             />
           </div>
         ))}

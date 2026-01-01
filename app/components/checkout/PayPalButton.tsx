@@ -4,7 +4,6 @@ import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { setPayPalApproved, setPayPalOrderID } from "../../store/slices/checkoutSlice";
 import { useRouter } from "next/navigation";
-import { useCheckoutSettings } from "../../context/CheckoutContext";
 import { clearCart } from "../../store/slices/cartSlice";
 
 export default function PayPalButton() {
@@ -12,23 +11,21 @@ export default function PayPalButton() {
   const router = useRouter();
 
   const cartItems = useAppSelector((state) => state.cart.items);
-  const shippingForm = useAppSelector((state) => state.checkout.shippingForm);
   const billingForm = useAppSelector((state) => state.checkout.billingForm);
-  const shippingMethodId = useAppSelector((state) => state.checkout.shippingMethodId);
   const paymentMethodId = useAppSelector((state) => state.checkout.paymentMethodId);
   const orderId = useAppSelector((state) => state.checkout.orderId);
   const orderDate = useAppSelector((state) => state.checkout.orderDate);
 
-  const { shippingMethods } = useCheckoutSettings();
-  const shippingMethod = shippingMethods.find((s) => s.id === shippingMethodId);
-
-  const currency = shippingMethod?.currency || "USD";
-  const cartTotal = cartItems.reduce(
+  const currency = "USD";
+  const total = cartItems.reduce(
     (acc, item) => acc + item.quantity * parseFloat(item.SalePrice || item.RegularPrice),
     0
   );
-  const shippingCost = shippingMethod?.price || 0;
-  const total = cartTotal + shippingCost;
+
+  // Don't render PayPal buttons until orderId is ready
+  if (!orderId) {
+    return <p className="text-sm text-gray-600">Initializing payment...</p>;
+  }
 
   return (
     <PayPalScriptProvider
@@ -42,6 +39,11 @@ export default function PayPalButton() {
         style={{ layout: "vertical", color: "blue", shape: "pill" }}
         createOrder={async () => {
           try {
+            if (!orderId) {
+              console.error("❌ Order ID is missing");
+              throw new Error("Order ID is not initialized");
+            }
+
             const res = await fetch("/api/paypal/create-order", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -50,7 +52,6 @@ export default function PayPalButton() {
                 currency,
                 orderId,
                 cartItems,
-                shippingMethodName: shippingMethod?.name || "Shipping"
               }),
             });
             const data = await res.json();
@@ -77,18 +78,11 @@ export default function PayPalButton() {
 
             dispatch(setPayPalApproved(true));
 
-            if (!shippingMethod) {
-              console.error("❌ Shipping method not found.");
-              return;
-            }
-
             const orderData = {
               orderId,
               orderDate,
               cartItems,
-              shippingForm,
               billingForm,
-              shippingMethod,
               paymentMethodId,
               paypalOrderId: data.orderID, // Store PayPal order ID for download verification
             };
@@ -106,7 +100,13 @@ export default function PayPalButton() {
               return;
             }
 
-            localStorage.setItem("recentOrder", JSON.stringify(orderData));
+            // Use enriched cart items with download URLs from server response
+            const orderDataWithDownloads = {
+              ...orderData,
+              cartItems: placeOrderResult.cartItems || cartItems, // Use enriched items if available
+            };
+
+            localStorage.setItem("recentOrder", JSON.stringify(orderDataWithDownloads));
             dispatch(clearCart());
             router.push("/ordersummary");
           } catch (err) {

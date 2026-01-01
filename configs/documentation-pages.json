@@ -1,0 +1,44 @@
+[
+  {
+    "slug": "getting-started",
+    "title": "Getting Started",
+    "description": "Learn how to set up and run TishCommerce",
+    "order": 1,
+    "content": "# Getting Started\n\nWelcome to TishCommerce! This guide will help you get started with your database-free e-commerce store.\n\n## Prerequisites\n\n- Node.js 18.17 or later\n- npm or yarn package manager\n- A text editor (VS Code recommended)\n\n## Installation Steps\n\n1. Clone the repository or download the source code\n2. Navigate to the project directory\n3. Install dependencies: `npm install`\n4. Copy `.env.local.example` to `.env.local`\n5. Configure your environment variables\n6. Run the development server: `npm run dev`\n7. Open [http://localhost:3000](http://localhost:3000) in your browser\n\n## Next Steps\n\nOnce you have TishCommerce running, you can:\n\n- Configure your products in `configs/products.json`\n- Customize site settings in `configs/locale.en.json`\n- Set up payment providers (Stripe and PayPal)\n- Configure email settings for order notifications"
+  },
+  {
+    "slug": "configuration",
+    "title": "Configuration Guide",
+    "description": "Learn how to configure TishCommerce using JSON files",
+    "order": 2,
+    "content": "# Configuration Guide\n\nTishCommerce uses a **config-only customization approach**. All customization is done through JSON files in the `/configs` folder. You never need to modify the application code.\n\n## Configuration Files\n\n### configs/products.json\nDefines all products in your store. Each product includes:\n- Basic info (ID, Title, Description)\n- Pricing (RegularPrice, SalePrice)\n- Media (FeaturedImage, Gallery)\n- Categories and Tags\n- Download URL for virtual products\n\n### configs/locale.en.json\nControls all text content and labels:\n- Site name and tagline\n- Contact information (phone, address)\n- All UI labels and messages\n- Navigation menu items\n\n### configs/homepage.json\nControls which sections appear on the homepage:\n- Banner visibility\n- Recent products (show/hide + count)\n- Brand story section\n- Testimonials\n- Newsletter signup\n- Partner brands\n\n### configs/documentation-pages.json\nDefines all documentation pages (this documentation system!):\n- Page slugs and titles\n- Content for each page\n- Navigation order\n\n## Why Config-Only?\n\nThis approach provides several benefits:\n\n1. **No coding required** - Just edit JSON files\n2. **Safe updates** - Never touch application code\n3. **Easy backups** - Just backup the configs folder\n4. **Version control friendly** - Track your changes easily\n5. **Fast customization** - Change content without rebuilding"
+  },
+  {
+    "slug": "products-management",
+    "title": "Managing Products",
+    "description": "How to add, edit, and organize products",
+    "order": 3,
+    "content": "# Managing Products\n\nAll products are stored in `configs/products.json`. TishCommerce is designed for virtual/digital products.\n\n## Product Structure\n\n```json\n{\n  \"ID\": \"unique-product-id\",\n  \"Title\": \"Product Name\",\n  \"Description\": \"Product description...\",\n  \"RegularPrice\": \"99.00\",\n  \"SalePrice\": \"79.00\",\n  \"FeaturedImage\": \"/images/products/product-image.jpg\",\n  \"Gallery\": [\"/images/products/gallery1.jpg\"],\n  \"Categories\": [\"Category Name\"],\n  \"Tags\": [\"tag1\", \"tag2\"],\n  \"Stock\": \"In Stock\",\n  \"DownloadURL\": \"https://example.com/download/product.zip\"\n}\n```\n\n## Adding a New Product\n\n1. Open `configs/products.json`\n2. Copy an existing product object\n3. Update all fields with your product information\n4. Ensure the ID is unique\n5. Save the file\n6. Refresh your site - the product appears automatically!\n\n## Product Images\n\nPlace product images in the `/public/images/products/` directory and reference them in the product JSON.\n\n## Download Links\n\nFor virtual products, set the `DownloadURL` field. This link is sent to customers after purchase."
+  },
+  {
+    "slug": "payment-setup",
+    "title": "Payment Setup",
+    "description": "Configure Stripe and PayPal payment providers",
+    "order": 4,
+    "content": "# Payment Setup\n\nTishCommerce supports both Stripe and PayPal for accepting payments.\n\n## Stripe Setup\n\n### 1. Create a Stripe Account\n- Sign up at [stripe.com](https://stripe.com)\n- Complete account verification\n\n### 2. Get API Keys\n- Go to Developers > API Keys in Stripe Dashboard\n- Copy your Publishable Key and Secret Key\n\n### 3. Configure Webhook\n- Go to Developers > Webhooks\n- Add endpoint: `https://yourdomain.com/api/stripe/webhook`\n- Select events: `payment_intent.succeeded`\n- Copy the webhook signing secret\n\n### 4. Update .env.local\n```env\nNEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_...\nSTRIPE_SECRET_KEY=sk_...\nSTRIPE_WEBHOOK_SECRET=whsec_...\n```\n\n## PayPal Setup\n\n### 1. Create PayPal Business Account\n- Sign up at [paypal.com](https://paypal.com)\n\n### 2. Get Client ID\n- Go to Developer Dashboard\n- Create a new app\n- Copy Client ID and Secret\n\n### 3. Update .env.local\n```env\nNEXT_PUBLIC_PAYPAL_CLIENT_ID=your_client_id\nPAYPAL_CLIENT_SECRET=your_secret\nNEXT_PUBLIC_PAYPAL_BUSINESS_EMAIL=your@email.com\n```\n\n## Testing Payments\n\nBoth Stripe and PayPal provide test modes for safe testing before going live."
+  },
+  {
+    "slug": "email-setup",
+    "title": "Email Configuration",
+    "description": "Set up Gmail SMTP for order notifications",
+    "order": 5,
+    "content": "# Email Configuration\n\nTishCommerce uses Gmail SMTP to send order confirmation emails to customers and admin notifications.\n\n## Why Gmail?\n\n- **Free**: 500 emails per day at no cost\n- **Reliable**: Enterprise-grade delivery\n- **Simple**: Only 2 configuration values needed\n\n## Setup Steps\n\n### 1. Enable 2-Factor Authentication\n\n1. Go to [myaccount.google.com](https://myaccount.google.com)\n2. Navigate to Security\n3. Enable 2-Step Verification\n\n### 2. Generate App Password\n\n1. Go to Security > 2-Step Verification\n2. Scroll down to App passwords\n3. Select \"Mail\" and \"Other (Custom name)\"\n4. Enter \"TishCommerce\" as the name\n5. Click Generate\n6. Copy the 16-character password\n\n### 3. Configure Environment Variables\n\nUpdate `.env.local`:\n\n```env\nGMAIL_USER=your-email@gmail.com\nGMAIL_APP_PASSWORD=xxxx xxxx xxxx xxxx\n```\n\n## How It Works\n\n- **Customer emails**: Order confirmation with download links\n- **Admin emails**: Order notification sent to the same Gmail inbox\n- **Contact form**: Submissions sent to your Gmail\n\n## Troubleshooting\n\nIf emails aren't sending:\n\n1. Verify 2FA is enabled on your Google account\n2. Use an App Password, not your regular Gmail password\n3. Check spam/junk folders\n4. Review server logs for error messages"
+  },
+  {
+    "slug": "customization",
+    "title": "Customization Options",
+    "description": "Customize your store appearance and behavior",
+    "order": 6,
+    "content": "# Customization Options\n\n## Site Information\n\nEdit `configs/locale.en.json`:\n\n```json\n{\n  \"siteName\": \"Your Store Name\",\n  \"siteTagline\": \"Your Store Tagline\",\n  \"phone\": \"+1 234 567 890\",\n  \"address\": \"123 Main Street, City\"\n}\n```\n\n## Homepage Sections\n\nEdit `configs/homepage.json` to show/hide sections:\n\n```json\n{\n  \"banner\": { \"enabled\": true },\n  \"recentProducts\": { \"enabled\": true, \"count\": 3 },\n  \"brandStory\": { \"enabled\": true },\n  \"testimonials\": { \"enabled\": true },\n  \"newsletter\": { \"enabled\": false },\n  \"brands\": { \"enabled\": true }\n}\n```\n\n## Labels and Messages\n\nAll UI text is configurable in `configs/locale.en.json` under the `labels` section:\n\n- Button text\n- Form labels\n- Error messages\n- Success messages\n- Navigation items\n\n## Styling\n\nTishCommerce uses Tailwind CSS. To customize colors and styling:\n\n1. Edit `tailwind.config.ts` for theme customization\n2. Modify component styles directly if needed\n\n## Adding Custom Pages\n\nTo add custom static pages:\n\n1. Create a new file in `/app/your-page/page.tsx`\n2. Add a link in the navigation (edit Header component)\n3. The page is automatically available at `/your-page`\n\nFor dynamic content pages (like these docs), use the JSON configuration approach!"
+  }
+]
