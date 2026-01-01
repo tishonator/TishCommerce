@@ -502,50 +502,68 @@ vercel
 
 ---
 
-### Deploy to Cloudflare Pages
+### Deploy to Cloudflare Workers
 
-Cloudflare Pages offers global edge deployment with excellent performance:
+Cloudflare Workers offers global edge deployment with excellent performance using the **OpenNext adapter** (the official recommended approach):
 
 #### Prerequisites
 
-Cloudflare adapter is already installed in TishCommerce. The project is configured to work with Cloudflare Workers runtime.
+OpenNext Cloudflare adapter is already installed in TishCommerce. The project is configured to work with Cloudflare Workers runtime.
 
-#### Option 1: Deploy via Wrangler CLI
+#### Option 1: Deploy via CLI
 
 ```sh
-# Install Wrangler CLI globally
-npm install -g wrangler
+# Login to Cloudflare (one-time setup)
+npx wrangler login
 
-# Login to Cloudflare
-wrangler login
-
-# Build for Cloudflare
-npm run build:cloudflare
-
-# Deploy to Cloudflare Pages
-wrangler pages deploy .vercel/output/static
+# Deploy to Cloudflare Workers
+npm run deploy:cloudflare
 ```
 
-#### Option 2: Deploy via GitHub Integration
+This single command:
+1. Builds your Next.js app with OpenNext
+2. Deploys to Cloudflare Workers automatically
+
+#### Option 2: Preview Locally Before Deploy
+
+```sh
+# Build and preview locally on Cloudflare Workers runtime
+npm run preview:cloudflare
+
+# Open http://localhost:8787 to test
+# When ready, deploy with:
+npm run deploy:cloudflare
+```
+
+#### Option 3: Deploy via GitHub Integration (Pages)
 
 1. Push your code to GitHub
 2. Go to [Cloudflare Dashboard](https://dash.cloudflare.com/) → Pages
 3. Click "Create a project" → "Connect to Git"
 4. Select your repository
 5. Configure build settings:
+   - **Framework preset:** None (or Next.js)
    - **Build command:** `npm run build:cloudflare`
-   - **Build output directory:** `.vercel/output/static`
+   - **Build output directory:** `.open-next/worker`
    - **Root directory:** `/` (leave empty)
 6. Add environment variables in Settings → Environment Variables
    (same variables as Vercel list above)
 7. Click "Save and Deploy"
 
 **Important Notes:**
-- The Cloudflare adapter (`@cloudflare/next-on-pages`) transforms Next.js for Cloudflare Workers
+- Uses **OpenNext** (`@opennextjs/cloudflare`) - the official recommended adapter for Cloudflare
+- Replaced deprecated `@cloudflare/next-on-pages` package
 - All config files are bundled at build time (no runtime file system access needed)
+- Supports Node.js runtime with full Cloudflare Workers compatibility
 - Environment variables work the same way as Vercel
 
-**Deprecation Notice:** The `@cloudflare/next-on-pages` adapter is being deprecated in favor of OpenNext. If you encounter issues, consider migrating to [OpenNext](https://opennext.js.org/cloudflare) in the future.
+**Build Output:**
+- OpenNext generates output in `.open-next/` directory
+- Add `.open-next` to `.gitignore` (already configured)
+
+**Learn More:**
+- [OpenNext Cloudflare Documentation](https://opennext.js.org/cloudflare)
+- [Cloudflare Blog: Deploying Next.js with OpenNext](https://blog.cloudflare.com/deploying-nextjs-apps-to-cloudflare-workers-with-the-opennext-adapter/)
 
 ---
 
@@ -677,8 +695,14 @@ npm run dev
 # Build for Vercel (standard Next.js build)
 npm run build:vercel
 
-# Build for Cloudflare Pages
+# Build for Cloudflare Workers (using OpenNext)
 npm run build:cloudflare
+
+# Preview Cloudflare Workers locally
+npm run preview:cloudflare
+
+# Deploy to Cloudflare Workers
+npm run deploy:cloudflare
 
 # Build for Netlify (standard Next.js build)
 npm run build:netlify

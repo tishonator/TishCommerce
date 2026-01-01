@@ -6,7 +6,9 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "build:vercel": "next build",
-    "build:cloudflare": "npx @cloudflare/next-on-pages",
+    "build:cloudflare": "opennextjs-cloudflare build",
+    "preview:cloudflare": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy:cloudflare": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "build:netlify": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -32,8 +34,8 @@
     "yet-another-react-lightbox": "^3.28.0"
   },
   "devDependencies": {
-    "@cloudflare/next-on-pages": "^1.13.16",
     "@eslint/eslintrc": "^3",
+    "@opennextjs/cloudflare": "^1.14.7",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^25",
     "@types/nodemailer": "^7.0.4",
@@ -42,6 +44,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.1.1",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wrangler": "^4.54.0"
   }
 }

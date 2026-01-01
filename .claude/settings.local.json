@@ -17,7 +17,9 @@
       "Bash(npx eslint:*)",
       "Bash(npx next lint:*)",
       "Bash(cd:*)",
-      "Bash(npx next --version)"
+      "Bash(npx next --version)",
+      "WebSearch",
+      "WebFetch(domain:opennext.js.org)"
     ]
   }
 }
