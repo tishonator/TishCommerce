@@ -16,11 +16,12 @@ binding = "ASSETS"
 binding = "WORKER_SELF_REFERENCE"
 service = "tishcommerce"
 
-# R2 bucket for incremental cache
+# R2 bucket for incremental cache - DISABLED (requires R2 to be enabled in Cloudflare account)
+# Uncomment the following lines after enabling R2 in your Cloudflare dashboard
 # See https://opennext.js.org/cloudflare/caching
-[[r2_buckets]]
-binding = "NEXT_INC_CACHE_R2_BUCKET"
-bucket_name = "tishcommerce-cache"
+# [[r2_buckets]]
+# binding = "NEXT_INC_CACHE_R2_BUCKET"
+# bucket_name = "tishcommerce-cache"
 
 # Enable image optimization
 # See https://opennext.js.org/cloudflare/howtos/image
