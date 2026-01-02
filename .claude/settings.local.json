@@ -19,7 +19,12 @@
       "Bash(cd:*)",
       "Bash(npx next --version)",
       "WebSearch",
-      "WebFetch(domain:opennext.js.org)"
+      "WebFetch(domain:opennext.js.org)",
+      "Bash(npm run build:cloudflare:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nAdd wrangler.toml for Cloudflare Pages deployment\n\nThis configuration file is required by @opennextjs/cloudflare to deploy\nthe Next.js application to Cloudflare Pages. It includes:\n- Worker configuration with Node.js compatibility\n- Static assets directory configuration\n- R2 bucket configuration for incremental caching\n- Image optimization support\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nDisable R2 incremental cache for Cloudflare deployment\n\nR2 requires explicit enablement in the Cloudflare account.\nThis commit disables R2 caching to allow immediate deployment.\n\nTo enable R2 caching later:\n1. Enable R2 in your Cloudflare dashboard\n2. Uncomment the R2 configuration in wrangler.toml\n3. Uncomment the incrementalCache setting in open-next.config.ts\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
     ]
   }
 }
