@@ -70,22 +70,6 @@ export default function DocumentationPage() {
             ))}
           </div>
         )}
-
-        {/* Config-Only Customization Notice */}
-        <div className="mt-12 bg-blue-50 border border-blue-200 rounded-lg p-6">
-          <h3 className="text-lg font-semibold text-blue-900 mb-2">
-            Config-Only Customization
-          </h3>
-          <p className="text-blue-800 mb-3">
-            TishCommerce uses a config-only approach. All documentation content is managed in:
-          </p>
-          <code className="bg-blue-100 px-3 py-2 rounded text-sm text-blue-900 block">
-            configs/documentation-pages.json
-          </code>
-          <p className="text-blue-800 mt-3 text-sm">
-            Edit this file to add, remove, or modify documentation pages without touching any application code.
-          </p>
-        </div>
       </div>
     </main>
   );
