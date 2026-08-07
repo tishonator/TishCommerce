@@ -2,10 +2,13 @@
 
 **TishCommerce** is a **database-free, self-hosted eCommerce solution for selling virtual products** (digital downloads, WordPress themes, plugins, ebooks, software, etc.) built with **Next.js 16, TypeScript, Tailwind CSS, and Redux**. It's optimized for **small stores** with up to **200 products**, making it ideal for **independent developers and small business owners** who want to sell digital products online **without monthly SaaS fees** like Shopify, Snipcart, or Medusa.
 
-
 ## Deploy to Vercel
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ftishonator%2FTishCommerce&project-name=tishcommerce&env=GMAIL_USER,GMAIL_APP_PASSWORD,NEXT_PUBLIC_RECAPTCHA_SITE_KEY,RECAPTCHA_SECRET_KEY&envDescription=Configuration%20needed%20for%20TishCommerce.%20See%20README%20for%20details.&envLink=https%3A%2F%2Fgithub.com%2Ftishonator%2FTishCommerce%23configuration&demo-title=TishCommerce&demo-description=Database-Free%20eCommerce%20Solution%20built%20with%20Next.js%2C%20TypeScript%2C%20and%20Tailwind%20CSS&demo-url=https%3A%2F%2Ftishcommerce.vercel.app%2F&demo-image=https%3A%2F%2Ftishonator.github.io%2Ftishcommerce.png)
+
+## Deploy to Diploi
+
+[![launch with diploi button](https://diploi.com/launch-big.svg)](https://diploi.com/launch/tishonator/TishCommerce)
 
 ## Live Demo
 https://tishcommerce.vercel.app/
@@ -457,7 +460,7 @@ The production build is optimized for performance and should be used for deploym
 
 ## Deployment
 
-TishCommerce is fully compatible with **Vercel**, **Cloudflare Pages**, and **Netlify**. All configuration files are bundled at build time, eliminating file system dependencies and ensuring seamless deployment across all platforms.
+TishCommerce is fully compatible with **Vercel**, **Diploi**, **Cloudflare Pages**, and **Netlify**. All configuration files are bundled at build time, eliminating file system dependencies and ensuring seamless deployment across all platforms.
 
 ### Deploy to Vercel (Recommended)
 
@@ -503,6 +506,41 @@ vercel
 **Build Command:** `npm run build` or `npm run build:vercel`
 **Output Directory:** `.next` (auto-detected)
 **Install Command:** `npm install` (auto-detected)
+
+---
+
+### Deploy to Diploi
+
+[![launch with diploi button](https://diploi.com/launch-big.svg)](https://diploi.com/launch/tishonator/TishCommerce)
+
+1. Launch the project
+
+   Click the launch button above to create a new Diploi deployment.
+
+2. Add the development preview URL to `next.config.ts`
+
+   After the project is imported, open it in the **Code** tab. In `next.config.ts`, add your Diploi development preview URL to `allowedDevOrigins`. For example, if your preview URL is `my--dev-test.diploi.me`, use:
+
+   ```ts
+   import type { NextConfig } from "next";
+
+   const nextConfig: NextConfig = {
+     reactStrictMode: true,
+     allowedDevOrigins: ["my--dev-test.diploi.me"],
+   };
+
+   export default nextConfig;
+   ```
+
+3. Restart the deployment
+
+   Open the deployment dashboard, click **Restart**, then open the preview URL from your Diploi deployment page.
+
+4. Add environment variables if needed
+
+   Open the **Environment** tab in the sidebar and add the required variables manually.
+
+For more information, please visit [diploi.com](https://diploi.com/).
 
 ---
 
